@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="{% static 'nucleo/css/estilos.css' %}">
+    <!-- api mapbox -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet"> 
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+    <title>Contactanos</title>
+    <!--Para quitar la barra de arriba del traductor-->
+    <style type="text/css">
+        body{
+            top: 0 !important;
+        }
+        .goog-te-banner-frame{
+            display: none;
+        }
+        </style>
+    <!--Logos redes sociales-->
+    <!--
+                padding:  tamaño del ciculito del logo , que tan ancho lo quieres.
+                font-size: Tamaño de los logos
+                width: Tamaño del circulito donde estan los logos
+                text-align: posicion del logo
+                text-decoration: color texto
+                margin: separacion entre los logos , el primero es el margin top y bottom , el segundo es de left and rigth
+                border-radius: darle borde circular  al logo.
+        -->
+    
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#mensaje_error").hide(); //Estoy ocultando el div
+            $("#contacto").submit(function () {
+                var mensaje = "Debes completar estos campos para continuar:";
+                //validar que el campo no este vacio
+                if ($("#nombre").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo nombre no puede estar vacio";
+                }
+                if ($("#apellido").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo apellido no puede estar vacio";
+                }
+                if ($("#email").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo email no puede estar vacio";
+                }
+                if ($("#telefono").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo telefono no puede estar vacio";
+                }
+                if ($("#mensaje").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>Tiene que mandar un comentario";
+                }
+                if (isNaN($("#telefono").val())) {
+                    mensaje = mensaje + "<br>El teléfono solo puede contener números";
+                }
+
+                if (mensaje != "Debes corregir los siguientes errores para poder continuar") {
+                    $("#mensaje_error").html(mensaje); //mostrando el texto de la variable en el div
+                    $("#mensaje_error").show(); //haciendo visible mi div
+                    event.preventDefault(); //evito que el formulario se envie    
+                }
+
+
+            });
+            //validar numero de telefono largo sea 9
+            var input = document.getElementById('telefono');
+            input.addEventListener('input', function () {
+                if (this.value.length > 9)
+                    this.value = this.value.slice(0, 9);
+            })
+
+            $("#nombre").keypress(function (key) {
+                window.console.log(key.charCode)
+                if ((key.charCode < 97 || key.charCode > 122)//letras mayusculas
+                    && (key.charCode < 65 || key.charCode > 90) //letras minusculas
+                    && (key.charCode != 45) //retroceso
+                    && (key.charCode != 241) //ñ
+                    && (key.charCode != 209) //Ñ
+                    && (key.charCode != 32) //espacio
+                    && (key.charCode != 225) //á
+                    && (key.charCode != 233) //é
+                    && (key.charCode != 237) //í
+                    && (key.charCode != 243) //ó
+                    && (key.charCode != 250) //ú
+                    && (key.charCode != 193) //Á
+                    && (key.charCode != 201) //É
+                    && (key.charCode != 205) //Í
+                    && (key.charCode != 211) //Ó
+                    && (key.charCode != 218) //Ú
+
+                )
+                    return false;
+            });
+            $("#apellido").keypress(function (key) {
+                window.console.log(key.charCode)
+                if ((key.charCode < 97 || key.charCode > 122)//letras mayusculas
+                    && (key.charCode < 65 || key.charCode > 90) //letras minusculas
+                    && (key.charCode != 45) //retroceso
+                    && (key.charCode != 241) //ñ
+                    && (key.charCode != 209) //Ñ
+                    && (key.charCode != 32) //espacio
+                    && (key.charCode != 225) //á
+                    && (key.charCode != 233) //é
+                    && (key.charCode != 237) //í
+                    && (key.charCode != 243) //ó
+                    && (key.charCode != 250) //ú
+                    && (key.charCode != 193) //Á
+                    && (key.charCode != 201) //É
+                    && (key.charCode != 205) //Í
+                    && (key.charCode != 211) //Ó
+                    && (key.charCode != 218) //Ú
+
+                )
+                    return false;
+            });
+        });
+
+
+
+
+    </script>
+
+</head>
+
+<style>
+    .fa {
+        padding: 20px;
+        font-size: 30px;
+        width: 60px;
+        text-align: center;
+        text-decoration: none;
+        margin: 5px 2px;
+        border-radius: 50%;
+    }
+
+    .fa-facebook {
+        background: #3B5998;
+        color: white;
+    }
+
+    .fa-youtube {
+        background: #bb0000;
+        color: white;
+    }
+
+    .fa-instagram {
+        background: #125688;
+        color: white;
+    }
+
+    /* fondo */
+    body {
+        background-image: url("{% static 'nucleo/imagenes/fondoprueba3.png' %}");
+        background-repeat: repeat;
+        background-color: rgba(209, 209, 171, 0.473);
+    }
+</style>
+<!--FIN Logos redes sociales-->
+
+<!--Modo oscuro-->
+<script type="text/javascript">
+    function cambiarModo() {
+        var cuerpoweb = document.body;
+        cuerpoweb.classList.toggle("oscuro");
+    }
+</script>
+
+
+</head>
+
+<body>
+    <script type="text/javascript"> 
+    
+        function googleTranslateElementInit(){
+            new google.translate.TranslateElement({pageLenguage: 'es',layout: google.translate.TranslateElement.InlineLayout.SIMPLE},
+            'google_translate_element');
+        }
+        </script>
+        <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" ></script>
+    <!-- mapa body -->
+    <!-- cargar el plugin. -->
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css"
+        type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+    <!-- fin mapa body -->
+    <!--MENU PRINCIPAL-->
+    <nav class="navbar navbar-expand-md bg-danger navbar-dark color_navbar">
+        <a class="navbar-brand colorletranav perrigatos"><img class="imagen_navbar"
+                src="{% static 'nucleo/imagenes/tenor.gif' %}">PerriGatos</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'home' %}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'Seccionperruna'%}">Perros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'secciongatuna' %}">Gatos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'seccionotros' %}">Otros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'contactanos' %}">Contactanos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'carrito' %}">Carrito</a>
+                </li>
+
+                <li class="nav-item " style="padding-top: 10px;">
+                    <a class="nav-link colorletranav cambiocolor"><div id="google_translate_element"></div></a>
+                </li>
+                <li class="nav-item">
+                    <img src="{% static 'nucleo/imagenes/moon_icon_159962.png' %}" alt="icono luna"  class="icono_luna" onclick="cambiarModo()" style="margin-left: 10%;">
+                </li>
+
+
+            </ul>
+        </div>
+        <div class="search-container">
+            <a href="{% url 'inicioSesion' %}" style="color: rgb(0, 0, 0);">Iniciar Sesion </a>
+            <a href="{% url 'registro' %}" style="color: rgb(0, 0, 0);">Registrarte</a>
+            <form action="/action_page.php">
+                <input type="text" placeholder="Buscar" name="search">
+                <button class="btn btn-danger" type="submit">Buscar</button>
+            </form>
+        </div>
+    </nav>
+    <!--MENU FIN PRINCIPAL-->
+
+
+
+    <!--Contactanos-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-12">
+                    <form class="form-horizontal" method="GET" name="contacto" id="contacto">
+                        <div id="mensaje_error" class="alert alert-danger" style="margin-top: 20px;"></div>
+                        <fieldset>
+                            <legend class="text-center header">Contactanos</legend>
+
+                            <div class="form-group">
+                                <span class="col-md-1 col-md-offset-2 text-center icon"><i
+                                        class="fa fa-user bigicon "></i></span>
+                                <div class="col-md-8">
+                                    <input id="nombre" name="nombre" type="text" placeholder="Primer nombre"
+                                        class="form-control contactanos">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <span class="col-md-1 col-md-offset-2 text-center icon"><i
+                                        class="fa fa-user bigicon"></i></span>
+                                <div class="col-md-8">
+                                    <input id="apellido" name="apellido" type="text" placeholder="Apellido"
+                                        class="form-control contactanos">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <span class="col-md-1 col-md-offset-2 text-center icon"><i
+                                        class="fa fa-envelope-o bigicon"></i></span>
+                                <div class="col-md-8">
+                                    <input id="email" name="email" type="email" placeholder="Ingrese su email"
+                                        class="form-control contactanos">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <span class="col-md-1 col-md-offset-2 text-center icon"><i
+                                        class="fa fa-phone-square bigicon"></i></span>
+                                <div class="col-md-8">
+                                    <input id="telefono" name="telofono" type="tel" placeholder="+56"
+                                        class="form-control contactanos">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <span class="col-md-1 col-md-offset-2 text-center icon"><i
+                                        class="fa fa-pencil-square-o bigicon"></i></span>
+                                <div class="col-md-8">
+                                    <textarea class="form-control contactanos" id="mensaje" name="mensaje"
+                                        placeholder="Ingrese su consulta o reclamo ." rows="7"></textarea>
+                                        
+                                        <!--LBoton para escuchar-->
+                                        <button type="button" id="hablar" value="Decir" class="btn btn-warning boton_escuchar" > Click para escuchar su mensaje </button>
+                                        <script src="{% static 'nucleo/java/scrip.js' %}"></script>  <!--Llamamos al archivo de js-->
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12 text-center " >
+                                    <button type="submit" class="btn btn-warning btn-lg" >Enviar</button>
+                                    <button type="reset" class="btn btn-warning btn-lg">Limpiar campos</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- mapa -->
+    <div class="container-fluid" >
+    <div id='map'  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 offset-1 mapa"></div>
+    </div>
+    <!--PIE DE PAGINA-->
+    <footer>
+
+
+
+        <div class="container-fluid  ">
+            
+            <div class="row ">
+                <div class="col-md-12 col-sm-12 col-lg-12 col-12 pie_pagina ">
+
+                    <p class="letra_pie_pag sec1_pie">
+                        Numero de contacto : <b>+56912345678</b>
+                        <br>
+                        Nuestras redes sociales :
+                        <br>
+                        <a href="#" class="fa fa-facebook"
+                            style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
+                        <a href="#" class="fa fa-instagram"
+                            style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
+                        <a href="#" class="fa fa-youtube"
+                            style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
+                    </p>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!--FIN pie de pagina-->
+    
+</body>
+
+</html>
+
+<script type="text/javascript">
+    mapboxgl.accessToken = 'pk.eyJ1IjoicG9ueXd5emUiLCJhIjoiY2tvYzMweG16MGYxeTMybGh5NHZ0bGJxcyJ9.8F45Pp3pgB2CDC896K_GYw';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [-70.749735, -33.355620],
+        zoom: 15,
+        interactive: false
+    });
+    // create the popup
+    var popup = new mapboxgl.Popup({ offset: 25 }).setText(
+        'Sucursal Perrigatos Totoralillo 825'
+    );
+
+    // create DOM element for the marker
+    var el = document.createElement('div');
+    el.id = 'marker';
+    var marker1 = new mapboxgl.Marker()
+        .setLngLat([-70.749735, -33.355620])
+        .setPopup(popup)
+        .addTo(map);
+
+
+    // map.addControl(
+    //     new MapboxGeocoder({
+    //         accessToken: mapboxgl.accessToken,
+    //         mapboxgl: mapboxgl
+    //     })
+    // );
+</script>

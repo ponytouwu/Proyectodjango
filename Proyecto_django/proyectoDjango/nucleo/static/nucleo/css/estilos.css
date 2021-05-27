@@ -1,0 +1,767 @@
+
+/*Modo oscuro*/
+.oscuro{ 
+  background-color: #1f1f1f; 
+  color: #f1eded; 
+}
+/*icono luna*/
+.icono_luna{
+  
+  width: 13%;
+}
+
+
+/* LETRA DESCRIPCIONES /valoracion y lo otro*/
+.colorletrades{
+  color: rgb(50, 28, 151) !important;
+  font-size: 15px;
+  font-family: 'Amatic SC', cursive;
+}
+
+
+/* cambio de color de navbar letra */
+.colorletranav{
+  color: rgb(0, 0, 0) !important;
+  font-size: 1.8rem;
+}
+
+@media (min-width: 200px) and (max-width: 1000px){
+  .colorletranav{
+    color: rgb(0, 0, 0) !important;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1001px) and (max-width: 1100px){
+  .colorletranav{
+    color: rgb(0, 0, 0) !important;
+    font-size: 0.98rem;
+  }
+}
+
+
+/* NAVBAR LETRAS */
+.cambiocolor:hover{
+
+  color: rgb(255, 251, 244) !important;
+
+}
+/* SEPARACION DE DESCRIPCION */
+.separaciodes{
+  margin-top: 8%;
+  padding: 0% !important;
+}
+
+/* separacion del navbar con lo de abajo */
+.separacion_top{
+  margin-top: 3%;
+  padding: 0% !important;
+}
+/* DArle tamaño y forma redondeada a la imagen del producto. */
+
+.imagenladoiz{
+ border: 4px solid rgb(241, 142, 12);
+ width: 100%;
+ height: 100%;
+ border-radius: 15px;
+ 
+}
+
+@media (min-width: 200px) and (max-width: 800px){
+  .imagenladoiz{
+    border: 4px solid rgb(241, 142, 12);
+    width: 90%;
+    height: 90%;
+    border-radius: 15px;
+    
+   }
+}
+
+
+/*Letra descripcion dde verproducto*/
+.letra{
+font-family: 'Amatic SC', cursive;
+
+ font-size: 10px;
+ color: rgb(210,105,30);
+}
+
+/*Letra de las descripciones(valoraciones*/
+.letrades{
+  font-family: 'Amatic SC', cursive;
+
+ font-size: 15px;
+ color: rgb(210,105,30);
+
+}
+
+
+
+/* Darle borde y redondear el borde del texto del producto */
+.bloqueproducto{
+  border: 2px solid rgb(241, 142, 12);
+  background: rgb(214, 247, 245);
+  padding-left: 25px;
+  padding-right: 25px;
+  border-radius: 15px;
+  }
+
+  @media (min-width: 200px) and (max-width: 800px){
+    .bloqueproducto{
+      border: 2px solid rgb(241, 142, 12);
+      background: rgb(214, 247, 245);
+      padding-left: 25px;
+      padding-right: 25px;
+      border-radius: 15px;
+      width: 90%;
+      height: 100%;      }
+  }
+
+.bloquemasdes{
+  border: 2px solid rgb(241, 142, 12);
+  background: rgb(214, 247, 245);
+  padding-left: 25px;
+  
+  border-radius: 15px;
+  height: 100%;
+  width: 100%;
+}
+
+/* estrellas de valoraciones */
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+} 
+
+#form {
+  width: 250px;
+  margin: 0 auto;
+  height: 50px;
+}
+
+#form p {
+  text-align: center;
+}
+
+#form label {
+  font-size: 20px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  color: grey;
+}
+
+/* Con esto se maneja el color de valoracion aun por puntuar */
+label:hover,
+label:hover ~ label {
+  color: rgb(53, 230, 8);
+}
+/* Con esto se maneja el color de valoracion puntuada */
+input[type="radio"]:checked ~ label {
+  color: rgb(247, 7, 235);
+}
+/* fin estrellas de valoracion */
+
+
+
+/* cuerpo secciones de producto y home */
+
+/*Imagen del navbar*/
+.imagen_navbar {
+  height: 60px;
+  width: 60px;
+  padding:auto;
+ 
+}
+
+
+/* TITULO RESPONSIVO PERRIGATOS*/
+.perrigatos{
+  padding-top: 0.7%;
+  font-weight: 700;
+}
+
+@media (min-width: 200px) and (max-width: 1100px) {
+  .perrigatos{
+    padding-top: 0.7%;
+    font-size: large;
+    font-weight: 700;
+    
+  }
+  
+}
+
+
+.color_navbar{
+  background: rgb(236, 189, 100)!important;
+}
+
+/*Con esta centro etiquetas*/
+.centrado{
+  text-align: center;
+  /* border: 5px solid blue;*/
+}
+
+/*Con este controlo el tamaño del banner*/
+.img_tamano_banner{
+  width: 100%;
+  min-height: 500px;
+  max-height: 500px;
+
+}
+@media (min-width: 200px) and (max-width: 800px) {
+  .img_tamano_banner{
+      width: 100%;
+      min-height: 300px;
+      max-height: 300px;
+  }
+  
+}
+
+
+/*Controlo el pie de pagina para que sea adaptable a los dispositivos mobiles*/
+.pie_pagina{
+  
+  width: 100%;
+  height: 100%;
+  
+  margin-bottom: 0px;
+  background-color: rgb(78, 41, 4);
+
+}
+
+@media (min-width: 500px) and (max-width: 800px) {
+  .pie_pagina{
+  width: 100%;
+  height: 100%;
+  
+  margin-bottom: 0px;
+  background-color: rgb(78, 41, 4);
+  }
+  
+}
+
+@media (min-width: 800px) and (max-width: 1500px) {
+  .pie_pagina{
+  width: 100%;
+  height: 100%;
+  
+  margin-bottom: 0px;
+  background-color: rgb(78, 41, 4);
+  }
+  
+}
+
+
+
+
+.letra_pie_pag{
+  color: rgb(248, 248, 248);
+  text-align: center;
+  
+  
+}
+
+/* Imagen que acompaña al pie de pagina */
+
+.img_pie2{
+  padding: 0%;
+  margin-top: 20%;
+
+}
+
+@media (min-width: 100px) and (max-width: 1000px) {
+  .img_pie2{
+      padding: 0%;
+      margin-top: 25%;
+
+     height: 100%;
+     max-height: 200px;
+
+
+  }
+
+}
+
+
+@media (min-width: 1001px) and (max-width: 1100px) {
+  .img_pie2{
+      padding: 0%;
+      margin-top: 300px;
+
+     height: 100%;
+     max-height: 200px;
+
+
+  }
+
+}
+
+
+
+
+
+
+
+
+/*Control del texto de la seccion cliente satisfecho*/
+.clientes_sat{
+  
+  text-align: left;
+  width: 100%;
+  word-wrap: break-word;
+  font-size: 1rem;
+  font-family: 'Amatic SC', cursive;
+  font-weight: 300;
+  padding: 3%;
+  
+
+}
+
+@media (min-width: 1000px) and (max-width: 1100px) {
+  .clientes_sat{
+    text-align: left;
+    width: 100%;
+    word-wrap: break-word;
+    font-size: 1.5rem;
+    font-family: 'Amatic SC', cursive;
+    font-weight: 300;
+    padding: 3%;
+    
+  }
+
+}
+
+/*Control de titulo del cliente satisfecho*/
+.titulo_cliente_sat{
+  font-family:Verdana, Geneva, Tahoma, sans-serif ;
+  font-size: 3rem;
+  font-style: italic;
+  font-weight: 700;
+  
+  -webkit-text-fill-color:rgb(241, 142, 12);
+  -webkit-text-stroke: 2px rgb(0, 0, 0); 
+
+}
+
+@media (min-width: 100px) and (max-width: 700px) {
+  .titulo_cliente_sat{
+      font-family:Verdana, Geneva, Tahoma, sans-serif ;
+      font-size: 2rem;
+      font-style: italic;
+      font-weight: 700;
+  
+      -webkit-text-fill-color:rgb(241, 142, 12);
+      -webkit-text-stroke: 2px rgb(0, 0, 0); 
+  }
+
+}
+
+/*Control de texto sobre la seccion sobre nosotros*/
+.sobre_noso{
+  
+  text-align: center;
+  width: 100%;
+  word-wrap: break-word;
+  
+  font-size: 1rem;
+  font-family: 'Amatic SC', cursive;
+  font-weight: 300;
+  padding: 3%;
+}
+
+@media (min-width: 1000px) and (max-width: 1100px) {
+  .sobre_noso{
+  
+    text-align: center;
+    width: 100%;
+    word-wrap: break-word;
+    
+    font-size: 1.5rem;
+    font-family: 'Amatic SC', cursive;
+    font-weight: 300;
+    padding: 3%;
+  }
+
+}
+
+/*Control sobre el titulo sobre nosotros*/
+.titulo_sobre_noso{
+  font-family:Verdana, Geneva, Tahoma, sans-serif ;
+  font-size: 3rem;
+  font-style: italic;
+  font-weight: 700;
+
+  -webkit-text-fill-color:rgb(241, 142, 12);
+  -webkit-text-stroke: 2px rgb(0, 0, 0); 
+}
+
+@media (min-width: 100px) and (max-width: 700px) {
+  .titulo_sobre_noso{
+      font-family:Verdana, Geneva, Tahoma, sans-serif ;
+      font-size: 2rem;
+      font-style: italic;
+      font-weight: 700;
+  
+      -webkit-text-fill-color:rgb(241, 142, 12);
+      -webkit-text-stroke: 2px rgb(0, 0, 0); 
+  }
+
+}
+
+/*Aqui se controla las imagenes de las ofertas*/
+.img_oferta1{
+  width: 100%;
+  height: 100%;
+  max-width: 300px;
+  max-height: 300px;
+  padding: 5%; 
+}
+
+
+
+@media (min-width: 100px) and (max-width: 700px) {
+  .texto_of1{
+      font-size: small;
+      font-family: 'Amatic SC', cursive;
+     
+  }
+
+}
+
+
+@media (min-width: 701px) and (max-width: 9000px) {
+  .texto_of1{
+      font-size: x-large;
+      font-family: 'Amatic SC', cursive;
+  }
+
+}
+/* bordes de oferta */
+.estilo_oferta{
+  border-radius: 20px;
+  border: 3px solid rgb(177, 81, 69);
+  
+}
+
+
+@media (min-width: 1300px) and (max-width: 9999px) {
+  .estilo_oferta{
+      border-radius: 20px;
+      border: 3px solid rgb(224, 130, 118);
+      margin-left: 50px;
+      margin-right: 50px;
+  }
+
+}
+
+
+
+
+/*Seccion perros*/
+
+/*Aqui se controlan las imagenes de la seccion de perros/gatos/otros*/
+.imagen_productos{
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  max-width: 300px;
+  max-height: 300px;
+  
+}
+
+@media (min-width: 100px) and (max-width: 700px) {
+  .imagen_productos{
+      width: 100%;
+      height: 100%;
+      min-height: 100px;
+      max-width: 100px;
+      max-height: 100px;
+  }
+
+}
+
+/*Controlamos el bordes y espacios entre productos de las etiquetas de los productos*/
+.tamaño_div_producto{
+  border: 3px solid rgb(241, 142, 12);
+  text-align: center;
+  margin: 5%;
+  border-radius: 15px;
+  
+}
+
+
+/*Controlamos el titulo de las secciones*/
+.titulo_secciones{
+  font-family:Verdana, Geneva, Tahoma, sans-serif ;
+  font-size: 3rem;
+  font-style: italic;
+  font-weight: 700;
+  text-align: center;
+  -webkit-text-fill-color:rgb(74, 180, 145);
+  -webkit-text-stroke: 2px black; 
+}
+
+@media (min-width: 100px) and (max-width: 700px) {
+  .titulo_secciones{
+      font-family:Verdana, Geneva, Tahoma, sans-serif ;
+      font-size: 2rem;
+      font-style: italic;
+      text-align: center;
+      font-weight: 700;
+      -webkit-text-fill-color:rgb(74, 180, 145);
+      -webkit-text-stroke: 2px black; 
+  }
+
+}
+
+/*Controlamos el texto de los productos (la descripcion)*/
+@media (min-width: 100px) and (max-width: 700px) {
+  .descripcion{
+      font-size: small;
+      padding: 4px;
+      font-family: 'Amatic SC', cursive;
+  }
+
+}
+
+
+@media (min-width: 701px) and (max-width: 9000px) {
+  .descripcion{
+      font-size: x-large;
+      padding: 4px;
+      font-family: 'Amatic SC', cursive;
+  }
+
+}
+
+
+
+
+/* Titulo de la oferta de home */
+
+/*Aqui contolamos el tamaño , color , etc*/
+.animated-shadow {
+ color: #bb1717;
+ font: normal 140px Varela Round, sans-serif;
+ height: 140px;
+ left: 0;
+ letter-spacing: 5px;
+ text-align: center;
+ text-transform: uppercase;
+ width: 100%;
+ animation: move linear 2000ms infinite;
+ z-index: 2
+}
+
+@media (min-width: 100px) and (max-width: 1000px) {
+  .animated-shadow {
+    color: #bb1717;
+    font: normal 40px Varela Round, sans-serif;
+    height: 40px;
+    left: 0;
+    letter-spacing: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    animation: move linear 2000ms infinite;
+    z-index: 2
+   }
+
+
+  
+
+}
+/*Animación para rotar las sombras*/
+@keyframes move {
+ 0% {
+   text-shadow:
+     4px -4px 0 #da0641,
+     3px -3px 0 #da0641,
+     2px -2px 0 #da0641,
+     1px -1px 0 #da0641,
+     -4px 4px 0 #13f1fc,
+     -3px 3px 0 #13f1fc,
+     -2px 2px 0 #13f1fc,
+     -1px 1px 0 #13f1fc
+   ;
+ }
+ 25% {
+   text-shadow:
+     -4px -4px 0 #13f1fc,
+     -3px -3px 0 #13f1fc,
+     -2px -2px 0 #13f1fc,
+     -1px -1px 0 #13f1fc,
+     4px 4px 0 #da0641,
+     3px 3px 0 #da0641,
+     2px 2px 0 #da0641,
+     1px 1px 0 #da0641
+   ;
+ }
+ 50% {
+   text-shadow:
+     -4px 4px 0 #da0641,
+     -3px 3px 0 #da0641,
+     -2px 2px 0 #da0641,
+     -1px 1px 0 #da0641,
+     4px -4px 0 #13f1fc,
+     3px -3px 0 #13f1fc,
+     2px -2px 0 #13f1fc,
+     1px -1px 0 #13f1fc
+   ;
+ }
+ 75% {
+   text-shadow:
+     4px 4px 0 #13f1fc,
+     3px 3px 0 #13f1fc,
+     2px 2px 0 #13f1fc,
+     1px 1px 0 #13f1fc,
+     -4px -4px 0 #da0641,
+     -3px -3px 0 #da0641,
+     -2px -2px 0 #da0641,
+     -1px -1px 0 #da0641
+   ;
+ }
+ 100% {
+   text-shadow:
+     4px -4px 0 #da0641,
+     3px -3px 0 #da0641,
+     2px -2px 0 #da0641,
+     1px -1px 0 #da0641,
+     -4px 4px 0 #13f1fc,
+     -3px 3px 0 #13f1fc,
+     -2px 2px 0 #13f1fc,
+     -1px 1px 0 #13f1fc
+   ;
+ }
+}
+
+/* FIN LETRA TITULO */
+
+
+/*Clase que altera titulo carrito*/
+.titulos-carrito{
+  font-family:Verdana, Geneva, Tahoma, sans-serif ;
+    font-size: 3rem;
+    font-style: italic;
+    font-weight: 700;
+  
+    -webkit-text-fill-color:rgb(224, 130, 118);
+    -webkit-text-stroke: 2px rgb(0, 0, 0);
+  }
+
+
+  /*Controla el titulo de los contactos*/
+  .header {
+    color: rgb(224, 130, 118);
+    font-size: 27px;
+    padding: 10px;
+    font-weight: 900;
+}
+
+
+/*Controla los iconos de los contactos*/
+.bigicon {
+    font-size: 35px;
+    color: rgb(224, 130, 118);
+}
+
+/*Formuolario registro*/
+.formulario_reg{
+  background-color: rgb(236, 189, 100);
+  padding: 1%;
+  box-shadow: 5px 5px 10px rgb(53, 49, 49);
+}
+
+/*Letra del formulario*/
+label{
+  color: #000000;
+  font-weight: 900;
+}
+
+/*CONTROL contactanos*/
+
+@media (min-width: 100px) and (max-width: 900px) {
+  .contactanos{
+      margin-left: 0%;
+  }
+
+}
+@media (min-width: 901px) and (max-width: 9000px) {
+  .contactanos{
+      margin-left: 25%;
+  }
+
+}
+
+/*Control iconos de contactanos*/
+@media (min-width: 100px) and (max-width: 900px) {
+  .icon{
+      padding-left: 0%;
+  }
+
+}
+@media (min-width: 901px) and (max-width: 9000px) {
+  .icon{
+      padding-left: 16%;
+  }
+
+}
+
+/*Mapa*/
+@media (min-width: 100px) and (max-width: 900px) {
+  .mapa{
+    width: 200px; 
+    height: 150px;
+    z-index: 1000;
+    margin-top:80px;
+    margin-left: 65px;
+    margin-bottom: 10%;
+    
+  }
+
+}
+
+@media (min-width: 901px) and (max-width: 1300px) {
+  .mapa{
+    width: 700px; height: 250px;z-index: 1000;margin-top: 0px;
+    margin-left: 50px;
+    margin-bottom: 10%;
+  }
+
+}
+
+@media (min-width: 1301px) and (max-width: 9000px) {
+  .mapa{
+    width: 500px; height: 150px;z-index: 1000;margin-top:80px;
+    margin-left: 550px;
+    margin-bottom: 10%;
+  }
+
+}
+
+/*boton para escuchar*/
+@media (min-width: 100px) and (max-width: 900px) {
+  .boton_escuchar{
+    margin-left: 15%;
+    margin-top: 1%;
+  }
+
+}
+
+@media (min-width: 901px) and (max-width: 9000px) {
+  .boton_escuchar{
+    margin-left: 65%;
+    margin-top: 1%;
+    
+  }
+
+}
+/*Corregir cambio de color xd*/
+label:hover{
+  color: black !important;
+}

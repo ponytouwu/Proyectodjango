@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="{% static 'nucleo/css/estilos.css' %}">
+    
+    <title>Recuperar contraseña</title>
+
+     <!--Para quitar la barra de arriba del traductor-->
+     <style type="text/css">
+        body{
+            top: 0 !important;
+        }
+        .goog-te-banner-frame{
+            display: none;
+        }
+        </style>
+    
+    <style>
+
+        /* fondo */
+        body {
+            background-image: url("{% static 'nucleo/imagenes/fondoprueba3.png' %}");
+            background-repeat: repeat;
+        }
+    </style>
+
+    <!--FIN Logos redes sociales-->
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+
+
+            $("#mensaje_error").hide(); //Estoy ocultando el div
+            $("#formulario_recuperacion").submit(function(){
+            var mensaje = "Debes Solucionar los errores para poder Recuperar contraseña";
+
+
+            if($("#correo").val().trim().length == 0){
+                mensaje = mensaje + "<br>El campo email no puede estar vacio";
+            }
+
+            if(mensaje != "Debes Solucionar los errores para poder Recuperar contraseña"){
+                $("#mensaje_error").html(mensaje); //mostrando el texto de la variable en el div
+                $("#mensaje_error").show(); //haciendo visible mi div
+                event.preventDefault(); //evito que el formulario se envie
+            }
+
+        });
+
+
+        });
+
+    </script>
+    
+</head>
+
+<body>
+
+    <script type="text/javascript"> 
+    
+        function googleTranslateElementInit(){
+            new google.translate.TranslateElement({pageLenguage: 'es',layout: google.translate.TranslateElement.InlineLayout.SIMPLE},
+            'google_translate_element');
+        }
+        </script>
+        <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" ></script>
+    <div id="google_translate_element"></div>
+
+    <!-- recuperacion de contraseña-->
+    <div class="container" style="margin-top: 5%;">
+        
+
+            <form action="cambiocontra.html" method="GET" name="formulario_recuperacion" id="formulario_recuperacion" class="elememto formulario_reg">
+                <div id="mensaje_error" class="alert alert-danger"></div>
+                <h1 style="text-align: center;">Recuperacion de Contraseña</h1>
+                <h3 style="text-align: center;">Escriba su email y se le enviara un link de recuperacion de contraseña</h3>
+                <div class="form-group">
+                    <label style="margin-left: 5px;" for="correo">Correo Electrónico</label>
+                    <input type="email" class="form-control" name="correo" id="correo"
+                        placeholder="ejemplo@ejemplo.com">
+                </div>
+                <div class="form-group" style="text-align: center;">
+                    <a href="{% url 'cambiocontra' %}"><button type="button" class="btn btn-danger">Siguiente</button></a>
+                    
+
+                </div>
+                <a href="{% url 'home' %}" style="text-align: center;"> <button type="button" class="btn btn-danger">Volver</button></a>
+            </form>
+            
+    </div>
+
+    
+
+    
+</body>
+
+</html>

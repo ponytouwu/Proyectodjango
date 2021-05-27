@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static  %}
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="icon" type="gif" href="{% static 'nucleo/imagenes/tenor.gif' %}">
+        <link type="text/css" rel="stylesheet" href="{% static 'nucleo/css/estilos.css' %}">
+        <title>Inicio Sesion</title>
+
+         <!--Para quitar la barra de arriba del traductor-->
+        <style type="text/css">
+        body{
+            top: 0 !important;
+        }
+        .goog-te-banner-frame{
+            display: none;
+        }
+        </style>
+        <style>
+            /* fondo */
+        body {
+            background-image: url("{% static 'nucleo/imagenes/fondoprueba3.png' %}");
+            background-repeat: repeat;
+            background-color: rgba(209, 209, 171, 0.473);
+        }
+        </style>
+        <script type="text/javascript">
+            $(document).ready(function(){
+               
+
+                
+                $("#mensaje_error").hide(); //Estoy ocultando el div
+                $("#formulario_contacto").submit(function(){
+                var mensaje = "Debes Solucionar los errores para poder Iniciar Sesion";
+
+                
+                if($("#contraseña").val().trim().length == 0){
+                    mensaje = mensaje + "<br>El campo Contraseña no puede estar vacio";
+                }
+
+                if($("#contraseña").val().trim().length < 10){
+                    mensaje = mensaje + "<br>El campo Contraseña debe tener al menos 10 caracteres";
+                }
+
+                if($("#usuario").val().trim().length == 0){
+                    mensaje = mensaje + "<br>El campo Nombre de usuario no puede estar vacio";
+                }
+                
+               
+
+                if(mensaje != "Debes Solucionar los errores para poder Iniciar Sesion"){
+                    $("#mensaje_error").html(mensaje); //mostrando el texto de la variable en el div
+                    $("#mensaje_error").show(); //haciendo visible mi div
+                    event.preventDefault(); //evito que el formulario se envie
+                }
+
+            });
+
+            
+            });
+            
+        </script>
+        
+    </head>
+
+<body>
+    <script type="text/javascript"> 
+    
+        function googleTranslateElementInit(){
+            new google.translate.TranslateElement({pageLenguage: 'es',layout: google.translate.TranslateElement.InlineLayout.SIMPLE},
+            'google_translate_element');
+        }
+        </script>
+        <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" ></script>
+    <div id="google_translate_element"></div>
+    <div class="container" style="margin-top: 15%;">
+        <fieldset>
+            
+            <form action="home.html" method="GET" name="formulario_contacto" id="formulario_contacto" class="formulario_reg">
+                <h1>Inicio sesion PerriGatos</h1> 
+                <div id="mensaje_error" class="alert alert-danger"></div>
+                
+               <div class="form-group" >
+                    <label for="usuario">Nombre Usuario</label>
+                    <input type="text" class="form-control" name="usuario" id="usuario"
+                        placeholder="Ingrese su nombre de usuario" >
+                </div>
+                
+                <div class="form-group" >
+                    <label for="contraseña">Contraseña</label>
+                    <input type="password" class="form-control" name="contraseña" id="contraseña"
+                        placeholder="Ingrese su contraseña" >
+                      <a href="{% url 'recuperacion' %}" style="font-weight: 600;">¿Olvidaste tu contraseña?</a>
+                </div>
+        
+        
+                <div class="form-group" style="text-align: center;">
+                   <a href=""></a> <button type="button" class="btn btn-danger">Iniciar Sesion</button>
+                    
+                    
+                </div>
+                <div > <a href="{% url 'home' %}"><input type="button" class="btn btn-danger" value="Vovler a pagina de inicio"></a></div>
+            </form>
+
+
+            
+        </fieldset>
+        
+        
+</body>

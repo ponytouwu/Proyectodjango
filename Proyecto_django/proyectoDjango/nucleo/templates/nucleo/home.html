@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="icon" type="gif" href="{% static 'nucleo/imagenes/tenor.gif' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'nucleo/css/estilos.css' %}">
+    <title>Inicio</title>
+    <!--Para quitar la barra de arriba del traductor-->
+    <style type="text/css">
+    body{
+        top: 0 !important;
+    }
+    .goog-te-banner-frame{
+        display: none ;
+    }
+    </style>
+    
+    <!--
+            padding:  tamaño del ciculito del logo , que tan ancho lo quieres.
+            font-size: Tamaño de los logos
+            width: Tamaño del circulito donde estan los logos
+            text-align: ?
+            text-decoration: color texto
+            margin: separacion entre los logos , el primero es el margin top y bottom , el segundo es de left and rigth
+            border-radius: darle borde circular  al logo.
+    -->
+    <!--Logos redes sociales-->
+    <style>
+        .fa {
+            padding: 20px;
+            font-size: 30px;
+            width: 60px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+            border-radius: 50%;
+        }
+
+        .fa-facebook {
+            background: #3B5998;
+            color: white;
+        }
+
+        .fa-youtube {
+            background: #bb0000;
+            color: white;
+        }
+
+        .fa-instagram {
+            background: #125688;
+            color: white;
+        }
+
+        /* fondo */
+        body {
+            background-image: url("{% static 'nucleo/imagenes/fondoprueba3.png' %}");
+            background-repeat: no-repeat;
+            background-color: rgba(209, 209, 171, 0.473);
+        }
+    </style>
+    
+    <!--FIN Logos redes sociales-->
+
+
+    <!--Banner responsivo-->
+    <style>
+        /* Make the image fully responsive */
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <!--Banner responsivo-->
+    
+    <!--Modo oscuro-->
+    <script type="text/javascript"> 
+    function cambiarModo() { 
+      var cuerpoweb = document.body; 
+      cuerpoweb.classList.toggle("oscuro"); 
+    }
+    
+    
+  </script>
+</head>
+
+<body>
+        <script type="text/javascript"> 
+        
+        function googleTranslateElementInit(){
+            new google.translate.TranslateElement({pageLenguage: 'es',layout: google.translate.TranslateElement.InlineLayout.SIMPLE},
+            'google_translate_element');
+        }
+        </script>
+    <!--MENU PRINCIPAL-->
+    <nav class="navbar navbar-expand-md bg-danger navbar-dark color_navbar">
+        <a class="navbar-brand colorletranav perrigatos"><img class="imagen_navbar"
+                src="{% static 'nucleo/imagenes/tenor.gif' %}">PerriGatos</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'home' %}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'Seccionperruna'%}">Perros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'secciongatuna' %}">Gatos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'seccionotros' %}">Otros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'contactanos' %}">Contactanos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'carrito' %}">Carrito</a>
+                </li>
+                <li class="nav-item" style="padding-top: 10px;">
+                    <a class="nav-link colorletranav cambiocolor"><div id="google_translate_element"></div></a>
+                </li>
+                <li class="nav-item">
+                    <img src="{% static 'nucleo/imagenes/moon_icon_159962.png' %}" alt="icono luna"  class="icono_luna" onclick="cambiarModo()" style="margin-left: 10%;">
+                </li>
+                
+                
+
+
+
+
+            </ul>
+        </div>
+        <div class="search-container">
+           <a href="{% url 'inicioSesion' %}" style="color: rgb(0, 0, 0);"> Iniciar Sesion </a>
+           <a href="{% url 'registro' %}" style="color: rgb(0, 0, 0);">Registrarte</a>
+            <form action="/action_page.php">
+                <input type="text" placeholder="Buscar" name="search">
+                <button class="btn btn-danger" type="submit">Buscar</button>
+            </form>
+        </div>
+    </nav>
+    <!--MENU FIN PRINCIPAL-->
+
+    <!--BANNER-->
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'nucleo/imagenes/banner1_editado.jpg' %}" alt="1" class="img_tamano_banner">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'nucleo/imagenes/banner2_editado.jpg' %}" alt="3" class="img_tamano_banner">
+            </div>
+
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+    <!--BANNER-->
+
+
+
+
+    <!--SECCION MASCOTAS-->
+    <div class="container-fluid">
+
+
+        <h1 class="animated-shadow">OFERTAS</h1>
+
+
+
+        <div class="row centrado">
+
+            <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-6 ">
+                <div class="estilo_oferta">
+                    <a href="Verproductop.html"> <img class="img_oferta1" src="{% static 'nucleo/imagenes/accesorio1_oferta.jpg' %}" alt="Oferta1"></a>
+                    <h6 class="texto_of1" style="margin-top: 60px;">Cama para tu mascota <b>ANTES: $19.999</b> ahora a
+                        tan solo <b>$12.990</b> </h6>
+
+                </div>
+
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-6 col-xl-6 ">
+                <div class="estilo_oferta">
+                   <a href="Verproductop.html"> <img class="img_oferta1" src="{% static 'nucleo/imagenes/oferta2.jpg' %}" alt="Oferta1"></a>
+                    <h6 class="texto_of1">Comida para gatos y perros a <b style="width: 150%;"> 50%</b> de descuento
+                        <b>Hasta agotar stock</b>
+                    </h6>
+                </div>
+
+
+
+
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-6 ">
+
+                <div class="estilo_oferta " style="margin-top: 20px;">
+                    <img class="img_oferta1" src="{% static 'nucleo/imagenes/oferta3.jpg' %}" alt="Oferta1">
+                    <h6 class="texto_of1">Comida para Loros a <b style="width: 150%;"> 70%</b> de descuento
+                        <b>Hasta agotar stock</b>
+                    </h6>
+                </div>
+
+
+
+            </div>
+
+            <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-6 ">
+
+                <div class="estilo_oferta" style="margin-top: 20px;">
+                    <img class="img_oferta1" src="{% static 'nucleo/imagenes/producto3_perro.jpg' %}" alt="Oferta1">
+                    <h6 class="texto_of1">Huesitos para perro 2 x 1 <b>Hasta agotar stock</b> </h6>
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+        <div class="row" style="padding: 3%;">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 " style="border: 2px solid rgb(241, 142, 12); margin-top: 60px; border-radius: 10PX;">
+
+                <h4 class="centrado titulo_cliente_sat" style="margin-top: 5px;">Clientes satisfechos</h4>
+                <p class="clientes_sat">
+                    <b style="color: #800980;">Carla Diaz: </b> Los tiempos de entrega son estupendos, y sus precios que decir , lo mejor
+                    super recomendada.
+                    <br>
+                    <b style="color: #800980;">Jorge Mora: </b> Buenardo uwu.
+                    <br>
+                    <b style="color: #800980;">Juan Pedro burgos: </b>Muy buena pagina, super recomendada :D.
+                    <br>
+                    <b style="color: #800980;">Nicolas Jorge Mora Valenzuela: </b>Mi perro esta uwu.
+
+                </p>
+
+
+
+
+
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 "
+                style="border: 2px solid rgb(241, 142, 12);margin-top: 60px; border-radius: 10PX;">
+
+                <h4 class="centrado titulo_sobre_noso " style="margin-top: 5px;">Sobre nosotros</h4>
+                <p class="sobre_noso"> <b>Somos tu tienda PerriGatos favorita. Ven y vive la mejor experiencia en
+                        atención al cliente y asesoramiento</b>
+
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <!--FIN SECCION MASCOTAS-->
+
+
+    <!--PIE DE PAGINA-->
+    <footer>
+
+
+
+        <div class="container-fluid  ">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 img_pie2">
+                    <img src="{% static 'nucleo/imagenes/banneruwu.png' %}" alt="banner" style="width: 100%; height: 100%;">
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-12 col-sm-12 col-lg-12 col-12 pie_pagina ">
+
+
+                    <p class="letra_pie_pag sec1_pie">
+                        Numero de contacto : <b>+56912345678</b>
+                        <br>
+                        Nuestras redes sociales :
+                        <br>
+                        <a href="#" class="fa fa-facebook"
+                            style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
+                        <a href="#" class="fa fa-instagram"
+                            style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
+                        <a href="#" class="fa fa-youtube"
+                            style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
+                    </p>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!--FIN pie de pagina-->
+
+    <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" ></script>
+
+</body>
+
+</html>

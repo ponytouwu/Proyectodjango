@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="icon" type="gif" href="{% static 'nucleo/imagenes/tenor.gif' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'nucleo/css/estilos.css'%}">
+    <title>Seccion Gatuna</title>
+    <!--Para quitar la barra de arriba del traductor-->
+    <style type="text/css">
+        body{
+            top: 0 !important;
+        }
+        .goog-te-banner-frame{
+            display: none;
+        }
+        </style>
+    <!--Logos redes sociales-->
+    <!--
+            padding:  tamaño del ciculito del logo , que tan ancho lo quieres.
+            font-size: Tamaño de los logos
+            width: Tamaño del circulito donde estan los logos
+            text-align: ?
+            text-decoration: color texto
+            margin: separacion entre los logos , el primero es el margin top y bottom , el segundo es de left and rigth
+            border-radius: darle borde circular  al logo.
+    -->
+    <style>
+        .fa {
+            padding: 20px;
+            font-size: 30px;
+            width: 60px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+            border-radius: 50%;
+        }
+
+        .fa-facebook {
+            background: #3B5998;
+            color: white;
+        }
+
+        .fa-youtube {
+            background: #bb0000;
+            color: white;
+        }
+
+        .fa-instagram {
+            background: #125688;
+            color: white;
+        }
+        /* fondo */
+        body {
+            background-image: url("{% static 'nucleo/imagenes/fondoprueba3.png' %}");
+            background-repeat: repeat;
+            background-color: rgba(209, 209, 171, 0.473);
+        }
+    </style>
+    <!--FIN Logos redes sociales-->
+
+    
+    <!--Modo oscuro-->
+    <script type="text/javascript"> 
+    function cambiarModo() { 
+      var cuerpoweb = document.body; 
+      cuerpoweb.classList.toggle("oscuro"); 
+    } 
+  </script>
+
+
+</head>
+
+<body>
+    <script type="text/javascript"> 
+    
+        function googleTranslateElementInit(){
+            new google.translate.TranslateElement({pageLenguage: 'es',layout: google.translate.TranslateElement.InlineLayout.SIMPLE},
+            'google_translate_element');
+        }
+        </script>
+        <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" ></script>
+    <!--MENU PRINCIPAL-->
+    <nav class="navbar navbar-expand-md bg-danger navbar-dark color_navbar">
+        <a class="navbar-brand colorletranav perrigatos"><img class="imagen_navbar"
+                src="{% static 'nucleo/imagenes/tenor.gif' %}">PerriGatos</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'home'%}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'Seccionperruna'%}">Perros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'secciongatuna' %}">Gatos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'seccionotros' %}">Otros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'contactanos' %}">Contactanos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'carrito' %}">Carrito</a>
+                </li>
+                
+                <li class="nav-item" style="padding-top: 10px;">
+                    <a class="nav-link colorletranav cambiocolor"><div id="google_translate_element"></div></a>
+                </li>
+                <li class="nav-item">
+                    <img src="{% static 'nucleo/imagenes/moon_icon_159962.png' %}" alt="icono luna"  class="icono_luna" onclick="cambiarModo()" style="margin-left: 10%;">
+                </li>
+
+
+
+
+            </ul>
+        </div>
+        <div class="search-container">
+           <a href="{% url 'inicioSesion' %}" style="color: rgb(0, 0, 0);">Iniciar Sesion </a>
+           <a href="{% url 'registro' %}" style="color: rgb(0, 0, 0);">Registrarte</a>
+            <form action="/action_page.php">
+                <input type="text" placeholder="Buscar" name="search">
+                <button class="btn btn-danger" type="submit">Buscar</button>
+            </form>
+        </div>
+    </nav>
+    <!--MENU FIN PRINCIPAL-->
+    
+    
+    
+    <!--SECCION PRODUCTOS-->
+    <div class="container-fluid">
+        <h1 class="titulo_secciones">SECCION GATITO</h1>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+
+                <div class="row tamaño_div_producto" >
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 descripcion ">
+                        <a href="{% url 'Verproductop' %}"><h4>Cepillo para Gatos peludos.</h4></a>
+                        <h6>Descripcion: </h6>
+
+                        <p>Este cepillo ayudara a controlar los pelitos de tu gatito.</p>
+                        <p><b style="font-size: 150%;">PRECIO: $4.999</b></p>
+                    </div>
+    
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
+                        <img class="imagen_productos" src="{% static 'nucleo/imagenes/producto1_perro.jpg' %}" alt="Producto">
+                    </div>
+
+                    
+                </div>
+
+                <div class="row tamaño_div_producto">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 descripcion">
+                        <h4>Rascador para Gatos.</h4>
+                        <h6>Descripcion.</h6>
+
+                        <p>Para que tus gatitos no te maten.</p>
+                        <p><b style="font-size: 150%;">PRECIO: $39.990</b></p>
+                    </div>
+    
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
+                        <img class="imagen_productos" src="{% static 'nucleo/imagenes/rascador.jpg' %}" alt="Producto">
+                    </div>
+
+                    
+                </div>
+                
+                
+                
+
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+
+                <div class="row tamaño_div_producto">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 descripcion">
+                        <h4>Camarote para Gatos</h4>
+                        <h6>Descripcion: </h6>
+
+                        <p>Que tus gatitos duerman juntos</p>
+                        <p><b style="font-size: 150%;">PRECIO: $19.990</b></p>
+                    </div>
+    
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
+                        <img class="imagen_productos" src="{% static 'nucleo/imagenes/camagatitos.jpg' %}" alt="Producto">
+                    </div>
+
+                    
+                </div>
+
+                <div class="row tamaño_div_producto">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 descripcion">
+                        <h4>Baño sanitario para gatos</h4>
+                        <h6>Descripcion: </h6>
+
+                        <p>Para que tu gatito haga las necesidades.</p>
+                        <p><b style="font-size: 150%;">PRECIO: $24.990</b></p>
+                    </div>
+    
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
+                        <img class="imagen_productos" src="{% static 'nucleo/imagenes/bañogatito.jpg' %}" alt="Producto">
+                    </div>
+
+                    
+                </div>
+                
+                
+                
+
+            </div>
+            
+            
+
+            
+
+        </div>
+
+        
+    </div>
+    <!--FIN DE SECCION PRODUCTOS-->
+
+         <!--PIE DE PAGINA-->
+    <footer>
+
+
+        
+        <div class="container-fluid  ">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 img_pie2">
+                    <img src="{% static 'nucleo/imagenes/banneruwu.png' %}" alt="banner" style="width: 100%; height: 100%;">
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-12 col-sm-12 col-lg-12 col-12 pie_pagina ">
+
+
+                    <p class="letra_pie_pag sec1_pie">
+                        Numero de contacto : <b>+56912345678</b>
+                        <br>
+                        Nuestras redes sociales :
+                        <br>
+                        <a href="#" class="fa fa-facebook"
+                            style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
+                        <a href="#" class="fa fa-instagram"
+                            style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
+                        <a href="#" class="fa fa-youtube"
+                            style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
+                    </p>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--FIN pie de pagina-->
+</body>
+
+</html>
