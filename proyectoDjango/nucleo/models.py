@@ -4,14 +4,42 @@ from django.db import models
 
 class Categoria(models.Model):
     id_categoria = models.IntegerField(primary_key=True, verbose_name='id de la categoria')
-    nom_cat = models.CharField(max_length=50, verbose_name='nombre de la categoria')
+    nom_cat = models.CharField(max_length=50,  blank=False, verbose_name='nombre de la categoria')
 
     def __str__(self):
         return self.nom_cat
 
 class Marca(models.Model):
     id_marca = models.IntegerField(primary_key=True, verbose_name='id de la marca')
-    nom_mar = models.CharField(max_length=50,verbose_name='nombre de la marca')
+    nom_mar = models.CharField(max_length=50, blank=False, verbose_name='nombre de la marca')
 
     def __str__(self):
         return self.nom_mar
+
+class Producto(models.Model):
+    id_producto = models.IntegerField(primary_key=True, verbose_name='id del producto')
+    n_producto = models.CharField(max_length=100, blank=False,verbose_name='nombre del producto')
+    stock = models.IntegerField( blank=False,verbose_name='stock del producto')
+    precio = models.IntegerField( blank=False,verbose_name='precio del producto')
+    valoracion = models.IntegerField( blank=False,verbose_name='valoracion del producto')
+    sku = models.IntegerField(blank=False, verbose_name='codigo sku del producto')
+    des_pro = models.CharField(max_length=200,blank=False, verbose_name='descripcion del producto')
+    color_pro = models.CharField(max_length=20,blank=False, verbose_name='color del producto')
+    foto_pro = models.CharField(max_length=20,blank=False, verbose_name='foto del producto')
+    categoria = models.ForeignKey(Categoria,on_delete=models.CASCADE)
+    marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.n_producto
+
+class Contacto(models.Model):
+    id_contacto = models.IntegerField(primary_key=True, verbose_name='id del contacto')
+    p_nombre = models.CharField(max_length=100, blank=False, verbose_name='primer nombre')
+    s_nombre = models.CharField(max_length=100, blank=False, verbose_name='segundo nombre')
+    correo_con = models.CharField(max_length=100, blank=False, verbose_name='correo del contacto')
+    telefono = models.CharField(max_length=11, blank=False, verbose_name='telefono del contacto')
+    comentario = models.CharField(max_length=200, blank=False, verbose_name='comentario del contacto')
+    status_con = models.IntegerField(blank=False, verbose_name='status del comentario')
+ 
+    def __str__(self): 
+        return self.p_nombre 
