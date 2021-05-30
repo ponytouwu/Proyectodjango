@@ -2,6 +2,8 @@ from django.db import models
 
 # Create your models here.
 
+
+
 class Categoria(models.Model):
     id_categoria = models.IntegerField(primary_key=True, verbose_name='id de la categoria')
     nom_cat = models.CharField(max_length=50,  blank=False, verbose_name='nombre de la categoria')
@@ -44,35 +46,7 @@ class Contacto(models.Model):
     def __str__(self): 
         return self.p_nombre 
 
-#NICO
-class Region(models.model):
-    id_region = models.IntegerField(primary_key=True, verbose_name='Id de la region')
-    nombre_region = models.CharField(max_length=100, blank=False, verbose_name='Nombre region')
-    
-    def __str__(self):
-        return self.nombre_region
-
-class Comuna(models.model):
-    id_comuna = models.IntegerField(primary_key=True, verbose_name='Id de la comuna')
-    nombre_comuna = models.CharField(max_length=100, blank=False, verbose_name='Nombre comuna')
-    region = models.ForeignKey(Marca, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.nombre_comuna
-
-
-class Direccion(models.model):
-    id_direccion = models.IntegerField(primary_key=True, verbose_name='Id de la direccion')
-    descrip_dir = models.CharField(max_length=100, blank=False, verbose_name='Descripcion de la direccion')
-    comuna = models.ForeignKey(Marca, on_delete=models.CASCADE)
-    #falta crear tabla usuario para unirla aqui como las foreanas, YA CREADA PARECE
-    Usuario = models.ForeignKey(Marca, on_delete=models.CASCADE)
-    def __str__(self):
-        return self.descrip_dir
-
-
-
-class Tipo_usuario(models.model):
+class Tipo_usuario(models.Model):
     id_usu_tip = models.IntegerField(primary_key=True, verbose_name='Id del usuario')
     nom_usu = models.CharField(max_length=50, blank=False, verbose_name='Tipo de usuario')
     
@@ -99,4 +73,58 @@ class Usuario(models.Model):
     def __str__(self): 
         return self.run_u 
 
+#NICO
+class Region(models.Model):
+    id_region = models.IntegerField(primary_key=True, verbose_name='Id de la region')
+    nombre_region = models.CharField(max_length=100, blank=False, verbose_name='Nombre region')
+    
+    def __str__(self):
+        return self.nombre_region
+
+class Comuna(models.Model):
+    id_comuna = models.IntegerField(primary_key=True, verbose_name='Id de la comuna')
+    nombre_comuna = models.CharField(max_length=100, blank=False, verbose_name='Nombre comuna')
+    region = models.ForeignKey(Marca, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nombre_comuna
+
+
+class Direccion(models.Model):
+    id_direccion = models.IntegerField(primary_key=True, verbose_name='Id de la direccion')
+    descrip_dir = models.CharField(max_length=100, blank=False, verbose_name='Descripcion de la direccion')
+    comuna = models.ForeignKey(Comuna, on_delete=models.CASCADE)
+    #falta crear tabla usuario para unirla aqui como las foreanas, YA CREADA PARECE
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.descrip_dir
+
+
+
+
+
 #AQUI TERMINA LO MIO (NICO), FALTARIA ORDENAR SOLAMENTE
+
+
+
+class Carrito(models.Model):
+    id_carrito = models.IntegerField(primary_key=True, verbose_name='id del carrito')
+    f_comp = models.DateField(blank=False, verbose_name='Fecha de la compra')
+    id_direccion_c = models.CharField(max_length=100,blank=True, verbose_name='direccion de la compra')
+    status = models.IntegerField(blank=False, verbose_name='status del carrito')
+    total_pre = models.IntegerField(blank=False, verbose_name='total del precio producto')
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE) 
+    
+    def __str__(self): 
+        return self.f_comp 
+
+
+class Pro_carrito(models.Model):
+    id_pro_carr = models.IntegerField(primary_key=True, verbose_name='id del producto en el carrito')
+    canti_pro = models.IntegerField(blank=False, verbose_name='cantidad de productos')
+    sub_total = models.IntegerField(blank=False, verbose_name='sub total')
+    producto = models.ForeignKey ( Producto , on_delete = models.CASCADE )
+    carrito = models.ForeignKey(Carrito , on_delete = models.CASCADE)
+
+    def __str__(self): 
+        return self.canti_pro
