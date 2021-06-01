@@ -101,10 +101,10 @@
                     <a class="nav-link colorletranav cambiocolor" href="{% url 'home' %}">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link colorletranav cambiocolor" href="Seccionperruna.html">Perros</a>
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'Seccionperruna' %}">Perros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link colorletranav cambiocolor" href="secciongatuna.html">Gatos</a>
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'secciongatuna' %}">Gatos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link colorletranav cambiocolor" href="{% url 'seccionotros' %}">Otros</a>
@@ -113,7 +113,7 @@
                     <a class="nav-link colorletranav cambiocolor" href="{% url 'contactanos' %}">Contactanos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link colorletranav cambiocolor" href="carrito.html">Carrito</a>
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'carrito' %}">Carrito</a>
                 </li>
                 
                 <li class="nav-item" style="padding-top: 10px;">
@@ -129,8 +129,8 @@
             </ul>
         </div>
         <div class="search-container">
-           <a href="inicioSesion.html" style="color: rgb(0, 0, 0);">Iniciar Sesion </a>
-           <a href="registro.html" style="color: rgb(0, 0, 0);">Registrarte</a>
+           <a href="{% url 'inicioSesion' %}" style="color: rgb(0, 0, 0);">Iniciar Sesion </a>
+           <a href="{% url 'lista_regiones' %}" style="color: rgb(0, 0, 0);">Registrarte</a>
             <form action="/action_page.php">
                 <input type="text" placeholder="Buscar" name="search">
                 <button class="btn btn-danger" type="submit">Buscar</button>

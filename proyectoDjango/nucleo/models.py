@@ -71,7 +71,7 @@ class Usuario(models.Model):
     tipo_usuario = models.ForeignKey(Tipo_usuario, on_delete=models.CASCADE)
     
     def __str__(self): 
-        return self.run_u 
+        return self.alias 
 
 #NICO
 class Region(models.Model):

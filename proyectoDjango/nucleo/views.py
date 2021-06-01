@@ -1,5 +1,6 @@
+from django.db.models.query import InstanceCheckMeta
 from django.shortcuts import redirect, render
-from .models import Region,Usuario
+from .models import Region, Tipo_usuario,Usuario
 
 # Create your views here.
 
@@ -52,8 +53,11 @@ def guardar_usuario(request): # el request es donde se guardan los datos de los 
     codigo_postal = request.GET['postal']
     telefono = request.GET['telefono']
     run_usuario = request.GET['rut']
+    tipo_us = Tipo_usuario.objects.get(id_usu_tip = 2)
 
-    Usuario.objects.create(nombre_completo = nom_completo , alias = nom_usuario, email_u = correo_usuario, telofono_u = telefono, contraseña_u = con_usuario, run_u = run_usuario, cod_post = codigo_postal , modo_osc = 0 ,codigo_postal = 1)
+    Usuario.objects.create(nombre_completo = nom_completo , 
+                           alias = nom_usuario, email_u = correo_usuario, telofono_u = telefono, contraseña_u = con_usuario, run_u = run_usuario, 
+                           cod_post = codigo_postal , modo_osc = 0 , tipo_usuario = tipo_us)
     
     return redirect('lista_regiones')
 
