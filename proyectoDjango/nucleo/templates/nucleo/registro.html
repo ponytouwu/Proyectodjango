@@ -145,7 +145,8 @@
     <div class="container" style="margin-top: 5%; margin-bottom: 3%;">
         <fieldset>
             
-            <form action="home.html" method="GET" name="formulario_contacto" id="formulario_contacto" class="formulario_reg">
+            <form action="{% url 'registro_usuario' %}" method="GET" name="formulario_contacto" id="formulario_contacto" class="formulario_reg">
+                {% csrf_token %}
                 <h1>Registro Cuenta PerriGatos</h1> 
                 <div id="mensaje_error" class="alert alert-danger"></div>
                 
@@ -166,6 +167,12 @@
                     <input type="text" class="form-control" name="nombre" id="nombre"
                         placeholder="Ingrese su nombre completo" >
                 </div>
+
+                <div class="form-group" >
+                    <label for="nombre">rut</label>
+                    <input type="text" class="form-control" name="rut" id="rut"
+                        placeholder="Ingrese su rut completo sin guion" >
+                </div>
                 <div class="form-group">
                     <label for="correo">Correo Electrónico</label>
                     <input type="email" class="form-control" name="correo" id="correo" placeholder="ejemplo@ejemplo.com">
@@ -175,11 +182,10 @@
                     <label for="ciudad">Ciudad</label>
                     <select name="ciudad" id="ciudad" class="form-control" placeholder="Seleccione alguna ciudad">
                         
-                        <option value="santiago">Santiago</option>
-                        <option value="rancagua">Rancagua</option>
-                        <option value="talca">Talca</option>
-                        <option value="concepcion">Concepción</option>
-                        <option value="valdivia">Valdivia</option>
+                        {% for i in regiones%}
+                            <option value="{{ i.id_region }}">{{ i.nombre_region }}</option>
+                        {% endfor %}
+                        
                     </select>
                 </div>
     

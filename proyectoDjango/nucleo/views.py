@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from .models import Region,Usuario
 
 # Create your views here.
 
@@ -34,4 +35,26 @@ def cambiocontra(request):
 
 def recuperacion(request):
     return render(request,'nucleo/recuperacion.html')
+
+def lista_regiones(request):
+    regiones = Region.objects.all() #obtengo los datos de la tabla
+    contexto = {"regiones": regiones} #guardadndo en la variable entre "" los datos de regiones
+    return render(request, 'nucleo/registro.html', contexto)
+
+def guardar_usuario(request): # el request es donde se guardan los datos de los formularios.
+    nom_usuario = request.GET['usuario']
+    con_usuario = request.GET['contraseña']
+    nom_completo = request.GET['nombre']
+    correo_usuario = request.GET['correo']
+    region = request.GET['ciudad']
+    region2 = Region.objects.get(id_region = region)
+    direccion_us = request.GET['direccion']
+    codigo_postal = request.GET['postal']
+    telefono = request.GET['telefono']
+    run_usuario = request.GET['rut']
+
+    Usuario.objects.create(nombre_completo = nom_completo , alias = nom_usuario, email_u = correo_usuario, telofono_u = telefono, contraseña_u = con_usuario, run_u = run_usuario, cod_post = codigo_postal , modo_osc = 0 ,codigo_postal = 1)
+    
+    return redirect('lista_regiones')
+
     
