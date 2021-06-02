@@ -1,6 +1,6 @@
 from django.db.models.query import InstanceCheckMeta
 from django.shortcuts import redirect, render
-from .models import Region, Tipo_usuario, Usuario, Contacto
+from .models import Region, Tipo_usuario, Usuario, Contacto,Producto
 
 # Create your views here.
 
@@ -89,3 +89,9 @@ def guardar_comentario(request):  # guardado de comentario
     Contacto.objects.create(p_nombre = nombre_c, s_nombre = snombre_c, correo_con = correo_c, telefono = telefono_c, comentario = comentario_c, status_con = status_com )
     #no se a donde va el redirect, si tiene que ir a otra parte, pero retornara a la misma pagina
     return render(request, 'nucleo/contactanos.html')
+
+
+def mostrar_producto(request):
+    productos = Producto.objects.all()
+    contexto = {"productos":productos}
+    return render(request, 'nucleo/seccionotros.html', contexto)

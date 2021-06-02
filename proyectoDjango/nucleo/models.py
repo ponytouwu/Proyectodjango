@@ -28,7 +28,7 @@ class Producto(models.Model):
     sku = models.IntegerField(blank=False, verbose_name='codigo sku del producto')
     des_pro = models.CharField(max_length=200,blank=False, verbose_name='descripcion del producto')
     color_pro = models.CharField(max_length=20,blank=False, verbose_name='color del producto')
-    foto_pro = models.CharField(max_length=20,blank=False, verbose_name='foto del producto')
+    foto_pro = models.ImageField(upload_to = "producto")
     categoria = models.ForeignKey(Categoria,on_delete=models.CASCADE)
     marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
 

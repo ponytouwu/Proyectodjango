@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,18 +13,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link type="text/css" rel="stylesheet" href="{% static 'nucleo/css/estilos.css' %}">
     <!-- api mapbox -->
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet"> 
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
     <title>Contactanos</title>
     <!--Para quitar la barra de arriba del traductor-->
     <style type="text/css">
-        body{
+        body {
             top: 0 !important;
         }
-        .goog-te-banner-frame{
+
+        .goog-te-banner-frame {
             display: none;
         }
-        </style>
+    </style>
     <!--Logos redes sociales-->
     <!--
                 padding:  tamaño del ciculito del logo , que tan ancho lo quieres.
@@ -34,8 +36,8 @@
                 margin: separacion entre los logos , el primero es el margin top y bottom , el segundo es de left and rigth
                 border-radius: darle borde circular  al logo.
         -->
-    
-<!--
+
+    <!--
         <script type="text/javascript">
             $(document).ready(function () {
                 $("#mensaje_error").hide(); //Estoy ocultando el div
@@ -176,15 +178,15 @@
 </head>
 
 <body>
-    <script type="text/javascript"> 
-    
-        function googleTranslateElementInit(){
-            new google.translate.TranslateElement({pageLenguage: 'es',layout: google.translate.TranslateElement.InlineLayout.SIMPLE},
-            'google_translate_element');
+    <script type="text/javascript">
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLenguage: 'es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE },
+                'google_translate_element');
         }
-        </script>
-        <script type="text/javascript"
-        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" ></script>
+    </script>
+    <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <!-- mapa body -->
     <!-- cargar el plugin. -->
     <script
@@ -224,10 +226,13 @@
                 </li>
 
                 <li class="nav-item " style="padding-top: 10px;">
-                    <a class="nav-link colorletranav cambiocolor"><div id="google_translate_element"></div></a>
+                    <a class="nav-link colorletranav cambiocolor">
+                        <div id="google_translate_element"></div>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <img src="{% static 'nucleo/imagenes/moon_icon_159962.png' %}" alt="icono luna"  class="icono_luna" onclick="cambiarModo()" style="margin-left: 10%;">
+                    <img src="{% static 'nucleo/imagenes/moon_icon_159962.png' %}" alt="icono luna" class="icono_luna"
+                        onclick="cambiarModo()" style="margin-left: 10%;">
                 </li>
 
 
@@ -251,78 +256,84 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="col-12">
-                    <form class="form-horizontal" method="GET" name="contacto" id="contacto" action="{% url 'guardar_comentario' %}">
+                    <form class="form-horizontal" method="GET" name="contacto" id="contacto"
+                        action="{% url 'guardar_comentario' %}">
                         {% csrf_token %}
                         <div id="mensaje_error" class="alert alert-danger" style="margin-top: 20px;"></div>
-                        
-                            
-                            <legend class="text-center header">Contactanos</legend>
 
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center icon"><i
-                                        class="fa fa-user bigicon "></i></span>
-                                <div class="col-md-8">
-                                    <input id="nombre" name="nombre" type="text" placeholder="Primer nombre"
-                                        class="form-control contactanos">
-                                </div>
+
+                        <legend class="text-center header">Contactanos</legend>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center icon"><i
+                                    class="fa fa-user bigicon "></i></span>
+                            <div class="col-md-8">
+                                <input id="nombre" name="nombre" type="text" placeholder="Primer nombre"
+                                    class="form-control contactanos">
                             </div>
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center icon"><i
-                                        class="fa fa-user bigicon"></i></span>
-                                <div class="col-md-8">
-                                    <input id="apellido" name="apellido" type="text" placeholder="Apellido"
-                                        class="form-control contactanos">
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center icon"><i
+                                    class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="apellido" name="apellido" type="text" placeholder="Apellido"
+                                    class="form-control contactanos">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center icon"><i
+                                    class="fa fa-envelope-o bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="email" name="email" type="email" placeholder="Ingrese su email"
+                                    class="form-control contactanos">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center icon"><i
+                                    class="fa fa-phone-square bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="telefono" name="telefono" type="text" placeholder="+56"
+                                    class="form-control contactanos">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center icon"><i
+                                    class="fa fa-pencil-square-o bigicon"></i></span>
+                            <div class="col-md-8">
+                                <textarea class="form-control contactanos" id="mensaje" name="mensaje"
+                                    placeholder="Ingrese su consulta o reclamo ." rows="7"></textarea>
+
+                                <!--LBoton para escuchar-->
+                                <button type="button" id="hablar" value="Decir" class="btn btn-warning boton_escuchar">
+                                    Click para escuchar su mensaje </button>
+                                <script src="{% static 'nucleo/java/scrip.js' %}"></script>
+                                <!--Llamamos al archivo de js-->
                             </div>
 
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center icon"><i
-                                        class="fa fa-envelope-o bigicon"></i></span>
-                                <div class="col-md-8">
-                                    <input id="email" name="email" type="email" placeholder="Ingrese su email"
-                                        class="form-control contactanos">
-                                </div>
-                            </div>
+                        </div>
 
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center icon"><i
-                                        class="fa fa-phone-square bigicon"></i></span>
-                                <div class="col-md-8">
-                                    <input id="telefono" name="telefono" type="text" placeholder="+56"
-                                        class="form-control contactanos">
-                                </div>
+                        <div class="form-group">
+                            <div class="col-md-12 text-center ">
+                                <button type="submit" class="btn btn-warning btn-lg">Enviar</button>
+                                <button type="reset" class="btn btn-warning btn-lg">Limpiar campos</button>
                             </div>
+                        </div>
 
-                            <div class="form-group">
-                                <span class="col-md-1 col-md-offset-2 text-center icon"><i
-                                        class="fa fa-pencil-square-o bigicon"></i></span>
-                                <div class="col-md-8">
-                                    <textarea class="form-control contactanos" id="mensaje" name="mensaje"
-                                        placeholder="Ingrese su consulta o reclamo ." rows="7"></textarea>
-                                        
-                                        <!--LBoton para escuchar-->
-                                        <button type="button" id="hablar" value="Decir" class="btn btn-warning boton_escuchar" > Click para escuchar su mensaje </button>
-                                        <script src="{% static 'nucleo/java/scrip.js' %}"></script>  <!--Llamamos al archivo de js-->
-                                </div>
 
-                            </div>
 
-                            <div class="form-group">
-                                <div class="col-md-12 text-center " >
-                                    <button type="submit" class="btn btn-warning btn-lg" >Enviar</button>
-                                    <button type="reset" class="btn btn-warning btn-lg">Limpiar campos</button>
-                                </div>
-                            </div>
-                        
                     </form>
                 </div>
             </div>
         </div>
+        
     </div>
-    
+
     <!-- mapa -->
-    <div class="container-fluid" >
-    <div id='map'  class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 offset-1 mapa"></div>
+    <div class="container-fluid">
+        <div id='map' class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 offset-1 mapa"></div>
     </div>
     <!--PIE DE PAGINA-->
     <footer>
@@ -330,7 +341,7 @@
 
 
         <div class="container-fluid  ">
-            
+
             <div class="row ">
                 <div class="col-md-12 col-sm-12 col-lg-12 col-12 pie_pagina ">
 
@@ -355,9 +366,9 @@
             </div>
         </div>
     </footer>
-    
+
     <!--FIN pie de pagina-->
-    
+
 </body>
 
 </html>

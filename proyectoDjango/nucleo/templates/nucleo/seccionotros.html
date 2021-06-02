@@ -219,7 +219,36 @@
                 
 
             </div>
-            
+            <div>
+                <table border="2">
+                    <tr>
+                        <td>nombre</td>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>b</td>
+                        <td>c</td>
+                        <td>c</td>
+                        <td>c</td>
+                        <td>c</td>
+                        <td>c</td>
+                        <td>c</td>
+                    </tr>
+                    {%for m in productos %}
+                    <tr>
+                        <td>{{ m.n_producto}}</td>
+                        <td>{{ m.stock}}</td>
+                        <td>{{ m.precio}}</td>
+                        <td>{{ m.valoracion}}</td>
+                        <td>{{ m.sku}}</td>
+                        <td>{{ m.des_pro}}</td>
+                        <td>{{ m.color_pro}}</td>
+                        <td>{{ m.foto_pro}}</td>
+                        <td>{{ m.categoria.nom_cat}}</td>
+                        <td>{{ m.marca.nom_mar}}</td>
+                    </tr>
+                    {%endfor%}
+                </table>
+            </div>
             
 
             
