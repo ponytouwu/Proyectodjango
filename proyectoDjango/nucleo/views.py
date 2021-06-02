@@ -80,12 +80,12 @@ def guardar_usuario(request):
 def guardar_comentario(request):  # guardado de comentario
     nombre_c = request.GET['nombre']
     snombre_c = request.GET['apellido']
-    correo_con = request.GET['email']
+    correo_c = request.GET['email']
     telefono_c = request.GET['telefono']
-    comentario = request.GET['mensaje']
+    comentario_c = request.GET['mensaje']
     # como no tenemos una tabla donde insertalos, supongo que con este siempre estara en 0=no leido 1=leido, se debe cambiar manualmente cuando se lea
-    status_con = Contacto.objects.get(status_con=0)
+    status_com = 0
 
-    Usuario.objects.create(p_nombre =nombre_c, s_nombre=snombre_c,correo_con=correo_con,telefono=telefono_c,comentario=comentario,status_con=status_con)
+    Contacto.objects.create(p_nombre = nombre_c, s_nombre = snombre_c, correo_con = correo_c, telefono = telefono_c, comentario = comentario_c, status_con = status_com )
     #no se a donde va el redirect, si tiene que ir a otra parte, pero retornara a la misma pagina
-    return redirect('contactanos')
+    return render(request, 'nucleo/contactanos.html')

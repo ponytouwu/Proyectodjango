@@ -35,98 +35,98 @@
                 border-radius: darle borde circular  al logo.
         -->
     
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#mensaje_error").hide(); //Estoy ocultando el div
-            $("#contacto").submit(function () {
-                var mensaje = "Debes completar estos campos para continuar:";
-                //validar que el campo no este vacio
-                if ($("#nombre").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>El campo nombre no puede estar vacio";
-                }
-                if ($("#apellido").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>El campo apellido no puede estar vacio";
-                }
-                if ($("#email").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>El campo email no puede estar vacio";
-                }
-                if ($("#telefono").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>El campo telefono no puede estar vacio";
-                }
-                if ($("#mensaje").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>Tiene que mandar un comentario";
-                }
-                if (isNaN($("#telefono").val())) {
-                    mensaje = mensaje + "<br>El teléfono solo puede contener números";
-                }
-
-                if (mensaje != "Debes corregir los siguientes errores para poder continuar") {
-                    $("#mensaje_error").html(mensaje); //mostrando el texto de la variable en el div
-                    $("#mensaje_error").show(); //haciendo visible mi div
-                    event.preventDefault(); //evito que el formulario se envie    
-                }
-
-
+<!--
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#mensaje_error").hide(); //Estoy ocultando el div
+                $("#contacto").submit(function () {
+                    var mensaje = "Debes completar estos campos para continuar:";
+                    //validar que el campo no este vacio
+                    if ($("#nombre").val().trim().length == 0) {
+                        mensaje = mensaje + "<br>El campo nombre no puede estar vacio";
+                    }
+                    if ($("#apellido").val().trim().length == 0) {
+                        mensaje = mensaje + "<br>El campo apellido no puede estar vacio";
+                    }
+                    if ($("#email").val().trim().length == 0) {
+                        mensaje = mensaje + "<br>El campo email no puede estar vacio";
+                    }
+                    if ($("#telefono").val().trim().length == 0) {
+                        mensaje = mensaje + "<br>El campo telefono no puede estar vacio";
+                    }
+                    if ($("#mensaje").val().trim().length == 0) {
+                        mensaje = mensaje + "<br>Tiene que mandar un comentario";
+                    }
+                    if (isNaN($("#telefono").val())) {
+                        mensaje = mensaje + "<br>El teléfono solo puede contener números";
+                    }
+    
+                    if (mensaje != "Debes corregir los siguientes errores para poder continuar") {
+                        $("#mensaje_error").html(mensaje); //mostrando el texto de la variable en el div
+                        $("#mensaje_error").show(); //haciendo visible mi div
+                        event.preventDefault(); //evito que el formulario se envie    
+                    }
+    
+    
+                });
+                //validar numero de telefono largo sea 9
+                var input = document.getElementById('telefono');
+                input.addEventListener('input', function () {
+                    if (this.value.length > 9)
+                        this.value = this.value.slice(0, 9);
+                })
+    
+                $("#nombre").keypress(function (key) {
+                    window.console.log(key.charCode)
+                    if ((key.charCode < 97 || key.charCode > 122)//letras mayusculas
+                        && (key.charCode < 65 || key.charCode > 90) //letras minusculas
+                        && (key.charCode != 45) //retroceso
+                        && (key.charCode != 241) //ñ
+                        && (key.charCode != 209) //Ñ
+                        && (key.charCode != 32) //espacio
+                        && (key.charCode != 225) //á
+                        && (key.charCode != 233) //é
+                        && (key.charCode != 237) //í
+                        && (key.charCode != 243) //ó
+                        && (key.charCode != 250) //ú
+                        && (key.charCode != 193) //Á
+                        && (key.charCode != 201) //É
+                        && (key.charCode != 205) //Í
+                        && (key.charCode != 211) //Ó
+                        && (key.charCode != 218) //Ú
+    
+                    )
+                        return false;
+                });
+                $("#apellido").keypress(function (key) {
+                    window.console.log(key.charCode)
+                    if ((key.charCode < 97 || key.charCode > 122)//letras mayusculas
+                        && (key.charCode < 65 || key.charCode > 90) //letras minusculas
+                        && (key.charCode != 45) //retroceso
+                        && (key.charCode != 241) //ñ
+                        && (key.charCode != 209) //Ñ
+                        && (key.charCode != 32) //espacio
+                        && (key.charCode != 225) //á
+                        && (key.charCode != 233) //é
+                        && (key.charCode != 237) //í
+                        && (key.charCode != 243) //ó
+                        && (key.charCode != 250) //ú
+                        && (key.charCode != 193) //Á
+                        && (key.charCode != 201) //É
+                        && (key.charCode != 205) //Í
+                        && (key.charCode != 211) //Ó
+                        && (key.charCode != 218) //Ú
+    
+                    )
+                        return false;
+                });
             });
-            //validar numero de telefono largo sea 9
-            var input = document.getElementById('telefono');
-            input.addEventListener('input', function () {
-                if (this.value.length > 9)
-                    this.value = this.value.slice(0, 9);
-            })
-
-            $("#nombre").keypress(function (key) {
-                window.console.log(key.charCode)
-                if ((key.charCode < 97 || key.charCode > 122)//letras mayusculas
-                    && (key.charCode < 65 || key.charCode > 90) //letras minusculas
-                    && (key.charCode != 45) //retroceso
-                    && (key.charCode != 241) //ñ
-                    && (key.charCode != 209) //Ñ
-                    && (key.charCode != 32) //espacio
-                    && (key.charCode != 225) //á
-                    && (key.charCode != 233) //é
-                    && (key.charCode != 237) //í
-                    && (key.charCode != 243) //ó
-                    && (key.charCode != 250) //ú
-                    && (key.charCode != 193) //Á
-                    && (key.charCode != 201) //É
-                    && (key.charCode != 205) //Í
-                    && (key.charCode != 211) //Ó
-                    && (key.charCode != 218) //Ú
-
-                )
-                    return false;
-            });
-            $("#apellido").keypress(function (key) {
-                window.console.log(key.charCode)
-                if ((key.charCode < 97 || key.charCode > 122)//letras mayusculas
-                    && (key.charCode < 65 || key.charCode > 90) //letras minusculas
-                    && (key.charCode != 45) //retroceso
-                    && (key.charCode != 241) //ñ
-                    && (key.charCode != 209) //Ñ
-                    && (key.charCode != 32) //espacio
-                    && (key.charCode != 225) //á
-                    && (key.charCode != 233) //é
-                    && (key.charCode != 237) //í
-                    && (key.charCode != 243) //ó
-                    && (key.charCode != 250) //ú
-                    && (key.charCode != 193) //Á
-                    && (key.charCode != 201) //É
-                    && (key.charCode != 205) //Í
-                    && (key.charCode != 211) //Ó
-                    && (key.charCode != 218) //Ú
-
-                )
-                    return false;
-            });
-        });
-
-
-
-
-    </script>
-
+    
+    
+    
+    
+        </script>
+         -->
 </head>
 
 <style>
@@ -251,10 +251,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="col-12">
-                    <form class="form-horizontal" method="GET" name="contacto" id="contacto">
+                    <form class="form-horizontal" method="GET" name="contacto" id="contacto" action="{% url 'guardar_comentario' %}">
                         {% csrf_token %}
                         <div id="mensaje_error" class="alert alert-danger" style="margin-top: 20px;"></div>
-                        <fieldset>
+                        
+                            
                             <legend class="text-center header">Contactanos</legend>
 
                             <div class="form-group">
@@ -287,7 +288,7 @@
                                 <span class="col-md-1 col-md-offset-2 text-center icon"><i
                                         class="fa fa-phone-square bigicon"></i></span>
                                 <div class="col-md-8">
-                                    <input id="telefono" name="telofono" type="tel" placeholder="+56"
+                                    <input id="telefono" name="telefono" type="text" placeholder="+56"
                                         class="form-control contactanos">
                                 </div>
                             </div>
@@ -312,7 +313,7 @@
                                     <button type="reset" class="btn btn-warning btn-lg">Limpiar campos</button>
                                 </div>
                             </div>
-                        </fieldset>
+                        
                     </form>
                 </div>
             </div>

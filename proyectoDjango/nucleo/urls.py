@@ -17,5 +17,5 @@ urlpatterns = [
     path('lista_regiones',lista_regiones,name="lista_regiones"),
     path('registro_usuario',guardar_usuario,name="registro_usuario"),
     #Ver si esta bien este
-    path('registro_comentario',guardar_comentario,name="registro_comentario"),
+    path('guardar_comentario',guardar_comentario,name="guardar_comentario"),
 ]
