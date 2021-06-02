@@ -252,6 +252,7 @@
             <div class="col-md-12">
                 <div class="col-12">
                     <form class="form-horizontal" method="GET" name="contacto" id="contacto">
+                        {% csrf_token %}
                         <div id="mensaje_error" class="alert alert-danger" style="margin-top: 20px;"></div>
                         <fieldset>
                             <legend class="text-center header">Contactanos</legend>
