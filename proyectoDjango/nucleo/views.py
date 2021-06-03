@@ -6,7 +6,18 @@ from .models import Region, Tipo_usuario, Usuario, Contacto,Producto
 
 
 def home(request):
-    return render(request, 'nucleo/home.html')
+    ofertas_loro = Producto.objects.get(n_producto = "Comida para Loros")
+    ofertas_perro = Producto.objects.get(n_producto = "Cama para tu mascota")
+    ofertas_gato = Producto.objects.get(n_producto = "Comida para gatos y perros")
+    ofertas_hueso = Producto.objects.get(n_producto = "Huesitos 4 por paquete")
+    template = {
+        'ofertas_loro' : ofertas_loro,
+        'ofertas_perro' : ofertas_perro,
+        'gatito_minino' : ofertas_gato,
+        'paquete_huesos' : ofertas_hueso
+
+    }
+    return render(request, 'nucleo/home.html',template)
 
 
 def Verproductop(request):

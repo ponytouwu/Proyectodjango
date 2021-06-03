@@ -19,6 +19,11 @@ class Marca(models.Model):
     def __str__(self):
         return self.nom_mar
 
+#class Oferta(models.Model):
+ #   id_oferta = models.AutoField(primary_key=True, verbose_name='id de la oferta')
+  #  nom_oferta = models.CharField(max_length=100, null = True , verbose_name='nombre oferta')
+
+
 class Producto(models.Model):
     id_producto = models.AutoField(primary_key=True, verbose_name='id del producto')
     n_producto = models.CharField(max_length=100, blank=False,verbose_name='nombre del producto')
@@ -31,6 +36,7 @@ class Producto(models.Model):
     foto_pro = models.ImageField(upload_to = "producto")
     categoria = models.ForeignKey(Categoria,on_delete=models.CASCADE)
     marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
+    
 
     def __str__(self):
         return self.n_producto

@@ -197,17 +197,17 @@
 
             <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-6 ">
                 <div class="estilo_oferta">
-                    <a href="Verproductop.html"> <img class="img_oferta1" src="{% static 'nucleo/imagenes/accesorio1_oferta.jpg' %}" alt="Oferta1"></a>
-                    <h6 class="texto_of1" style="margin-top: 60px;">Cama para tu mascota <b>ANTES: $19.999</b> ahora a
-                        tan solo <b>$12.990</b> </h6>
+                     <img class="img_oferta1" src="{{ofertas_perro.foto_pro.url}}" alt="Oferta1">
+                    <h6 class="texto_of1" style="margin-top: 60px;">{{ofertas_perro.n_producto}}<b> ANTES: $19.999</b> ahora a
+                        tan solo <b>${{ofertas_perro.precio}}</b> </h6>
 
                 </div>
 
             </div>
             <div class="col-6 col-sm-6 col-md-4 col-lg-6 col-xl-6 ">
                 <div class="estilo_oferta">
-                   <a href="Verproductop.html"> <img class="img_oferta1" src="{% static 'nucleo/imagenes/oferta2.jpg' %}" alt="Oferta1"></a>
-                    <h6 class="texto_of1">Comida para gatos y perros a <b style="width: 150%;"> 50%</b> de descuento
+                    <img class="img_oferta1" src="{{gatito_minino.foto_pro.url}}" alt="Oferta1">
+                    <h6 class="texto_of1">{{gatito_minino.n_producto}} a <b style="width: 150%;"> 50%</b> de descuento
                         <b>Hasta agotar stock</b>
                     </h6>
                 </div>
@@ -219,8 +219,8 @@
             <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-6 ">
 
                 <div class="estilo_oferta " style="margin-top: 20px;">
-                    <img class="img_oferta1" src="{% static 'nucleo/imagenes/oferta3.jpg' %}" alt="Oferta1">
-                    <h6 class="texto_of1">Comida para Loros a <b style="width: 150%;"> 70%</b> de descuento
+                    <img class="img_oferta1" src="{{ofertas_loro.foto_pro.url}}" alt="Oferta1">
+                    <h6 class="texto_of1">{{ofertas_loro.n_producto}} a <b style="width: 150%;"> 70%</b> de descuento
                         <b>Hasta agotar stock</b>
                     </h6>
                 </div>
@@ -232,8 +232,8 @@
             <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-6 ">
 
                 <div class="estilo_oferta" style="margin-top: 20px;">
-                    <img class="img_oferta1" src="{% static 'nucleo/imagenes/producto3_perro.jpg' %}" alt="Oferta1">
-                    <h6 class="texto_of1">Huesitos para perro 2 x 1 <b>Hasta agotar stock</b> </h6>
+                    <img class="img_oferta1" src="{{paquete_huesos.foto_pro.url}}" alt="Oferta1">
+                    <h6 class="texto_of1">{{paquete_huesos.n_producto}} 2 x 1 <b>Hasta agotar stock</b> </h6>
                 </div>
 
 
