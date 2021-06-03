@@ -142,117 +142,33 @@
     <div class="container-fluid">
         <h1 class="titulo_secciones">SECCION OTROS</h1>
         <div class="row">
+            {%for p in productos%}
             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 
                 <div class="row tamaño_div_producto" >
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 descripcion ">
-                        <a href="Verproductop.html"><h4>Dispensar de agua para tus aves.</h4></a>
+                        <a href="Verproductop.html"><h4>{{p.n_producto}}</h4></a>
                         <h6>Descripcion: </h6>
 
-                        <p>Manten hidratados a tus aves.</p>
-                        <p><b style="font-size: 150%;">PRECIO: $15.500</b></p>
+                        <p>{{p.des_pro}}</p>
+                        <p><b style="font-size: 150%;">PRECIO: ${{p.precio}}</b></p>
                     </div>
     
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
-                        <img class="imagen_productos" src="{% static 'nucleo/imagenes/dispensadorotros.jpg' %}" alt="Producto">
+                        <img class="imagen_productos" src="{{ p.foto_pro.url }}" alt="Producto">
                     </div>
 
                     
                 </div>
 
-                <div class="row tamaño_div_producto">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 descripcion">
-                        <h4>Comida para tus aves.</h4>
-                        <h6>Descripcion: </h6>
-
-                        <p>Comida para tus aves 1kg</p>
-                        <p><b style="font-size: 150%;">PRECIO: $8.990</b></p>
-                    </div>
-    
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
-                        <img class="imagen_productos" src="{% static 'nucleo/imagenes/ninfascomida.jpg' %}" alt="Producto">
-                    </div>
-
-                    
-                </div>
                 
-                
-                
+                            
 
             </div>
+            {%endfor%}
 
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-
-                <div class="row tamaño_div_producto">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 descripcion">
-                        <h4>Acuario ecofriend</h4>
-                        <h6>Descripcion: </h6>
-
-                        <p>Manten a tus peces y a tu ambiente seguros.</p>
-                        <p><b style="font-size: 150%;">PRECIO: $49.990</b></p>
-                    </div>
-    
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
-                        <img class="imagen_productos" src="{% static 'nucleo/imagenes/acuario.png' %}" alt="Producto">
-                    </div>
-
-                    
-                </div>
-
-                <div class="row tamaño_div_producto">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 descripcion">
-                        <h4>Comida para tus peces</h4>
-                        <h6>Descripcion: </h6>
-
-                        <p>Comida 800gr</p>
-                        <p><b style="font-size: 150%;">PRECIO: $6.990</b></p>
-                    </div>
-    
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
-                        <img class="imagen_productos" src="{% static 'nucleo/imagenes/comidapez.jpg' %}" alt="Producto">
-                    </div>
-
-                    
-                </div>
-                
-                
-                
-
-            </div>
-            <div>
-                <table border="2">
-                    <tr>
-                        <td>nombre</td>
-                        <td>a</td>
-                        <td>b</td>
-                        <td>b</td>
-                        <td>c</td>
-                        <td>c</td>
-                        <td>c</td>
-                        <td>c</td>
-                        <td>c</td>
-                        <td>c</td>
-                    </tr>
-                    {%for m in productos %}
-                    <tr>
-                        <td>{{ m.n_producto}}</td>
-                        <td>{{ m.stock}}</td>
-                        <td>{{ m.precio}}</td>
-                        <td>{{ m.valoracion}}</td>
-                        <td>{{ m.sku}}</td>
-                        <td>{{ m.des_pro}}</td>
-                        <td>{{ m.color_pro}}</td>
-                        <td>{{ m.foto_pro}}</td>
-                        <td>{{ m.categoria.nom_cat}}</td>
-                        <td>{{ m.marca.nom_mar}}</td>
-                    </tr>
-                    {%endfor%}
-                </table>
-            </div>
-            
-
-            
-
+           
+           
         </div>
 
         

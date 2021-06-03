@@ -10,11 +10,20 @@ def home(request):
 
 
 def Verproductop(request):
-    return render(request, 'nucleo/Verproductop.html')
+    verproducto = Producto.objects.get(n_producto = "cepillo para perros peludos")
+    template = {
+        'verproducto' : verproducto
+    }
+    return render(request, 'nucleo/Verproductop.html',template )
 
 
 def seccionotros(request):
-    return render(request, 'nucleo/seccionotros.html')
+    productos = Producto.objects.filter(categoria = 3)
+    data = {
+        'productos' : productos
+        
+    }
+    return render(request, 'nucleo/seccionotros.html',data)
 
 
 def contactanos(request):
@@ -22,11 +31,19 @@ def contactanos(request):
 
 
 def secciongatuna(request):
-    return render(request, 'nucleo/secciongatuna.html')
+    productos = Producto.objects.filter(categoria = 2)
+    template = {
+        'productos' : productos
+    }
+    return render(request, 'nucleo/secciongatuna.html', template)
 
 
 def Seccionperruna(request):
-    return render(request, 'nucleo/Seccionperruna.html')
+    productos = Producto.objects.filter(categoria = 1)
+    template = { #varaible de contexto
+        'productos' : productos # Almacenamos en una "vartiable llamada productos (la que va en '') le asignamos el valor del productos (linea 38) "
+    }
+    return render(request, 'nucleo/Seccionperruna.html', template)
 
 
 def inicioSesion(request):
@@ -91,7 +108,4 @@ def guardar_comentario(request):  # guardado de comentario
     return render(request, 'nucleo/contactanos.html')
 
 
-def mostrar_producto(request):
-    productos = Producto.objects.all()
-    contexto = {"productos":productos}
-    return render(request, 'nucleo/seccionotros.html', contexto)
+

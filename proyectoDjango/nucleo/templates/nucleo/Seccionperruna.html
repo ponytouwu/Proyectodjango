@@ -142,83 +142,30 @@
     <div class="container-fluid">
         <h1 class="titulo_secciones">SECCION PERRITOS</h1>
         <div class="row">
+            {%for p in productos%}
             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 
                 <div class="row tamaño_div_producto" >
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 descripcion ">
-                        <a href="{% url 'Verproductop' %}"><h4>Cepillo para perros peludos</h4></a>
-                        <h6>Descripcion</h6>
+                        <a href="{% url 'Verproductop' %}"><h4>{{p.n_producto}}</h4></a>
+                        <h6>Descripcion: </h6>
 
-                        <p>Este cepillo ayudara a controlar los pelitos de tu perrito</p>
-                        <p><b style="font-size: 150%;">PRECIO: $9.990</b></p>
+                        <p>{{p.des_pro}}</p>
+                        <p><b style="font-size: 150%;">PRECIO: ${{p.precio}}</b></p>
                     </div>
     
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
-                        <img class="imagen_productos" src="{% static 'nucleo/imagenes/producto1_perro.jpg' %}" alt="Producto">
+                        <img class="imagen_productos" src="{{ p.foto_pro.url }}" alt="Producto">
                     </div>
 
                     
                 </div>
 
-                <div class="row tamaño_div_producto">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 descripcion">
-                        <h4>Huesitos 4 por paquete</h4>
-                        <h6>Descripcion</h6>
-
-                        <p>Huesitos para mejorar la dentadura de tu perro o regalonearlo</p>
-                        <p><b style="font-size: 150%;">PRECIO: $5.990</b></p>
-                    </div>
-    
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
-                        <img class="imagen_productos" src="{% static 'nucleo/imagenes/producto3_perro.jpg' %}" alt="Producto">
-                    </div>
-
-                    
-                </div>
                 
-                
-                
+                            
 
             </div>
-
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-
-                <div class="row tamaño_div_producto">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 descripcion">
-                        <h4>Body para perrito adulto</h4>
-                        <h6>Descripcion</h6>
-
-                        <p>Body para que tu perro no se lama las heridas</p>
-                        <p><b style="font-size: 150%;">PRECIO: $19.990</b></p>
-                    </div>
-    
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
-                        <img class="imagen_productos" src="{% static 'nucleo/imagenes/producto_2_sec_perro.jpg' %}" alt="Producto">
-                    </div>
-
-                    
-                </div>
-
-                <div class="row tamaño_div_producto">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 descripcion">
-                        <h4>Shampoo para perro</h4>
-                        <h6>Descripcion</h6>
-
-                        <p>Shampoo para perros con pelaje delicado</p>
-                        <p><b style="font-size: 150%;">PRECIO: $12.990</b></p>
-                    </div>
-    
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
-                        <img class="imagen_productos" src="{% static 'nucleo/imagenes/producto_3_sec_perro.jpg' %}" alt="Producto">
-                    </div>
-
-                    
-                </div>
-                
-                
-                
-
-            </div>
+            {%endfor%}
             
             
 
