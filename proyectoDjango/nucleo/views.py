@@ -1,7 +1,7 @@
 from django.db.models.query import InstanceCheckMeta
 from django.shortcuts import redirect, render
 from .models import Region, Tipo_usuario, Usuario, Contacto,Producto
-
+from django.contrib import messages
 # Create your views here.
 
 
@@ -101,7 +101,7 @@ def guardar_usuario(request):
     Usuario.objects.create(nombre_completo=nom_completo,
                            alias=nom_usuario, email_u=correo_usuario, telofono_u=telefono, contraseña_u=con_usuario, run_u=run_usuario,
                            cod_post=codigo_postal, modo_osc=0, tipo_usuario=tipo_us)
-
+    messages.success(request,"usuario guardado")
     return redirect('lista_regiones')
 
 #como hay id iguales probar si no hace problemas con las del html registro
@@ -116,6 +116,7 @@ def guardar_comentario(request):  # guardado de comentario
 
     Contacto.objects.create(p_nombre = nombre_c, s_nombre = snombre_c, correo_con = correo_c, telefono = telefono_c, comentario = comentario_c, status_con = status_com )
     #no se a donde va el redirect, si tiene que ir a otra parte, pero retornara a la misma pagina
+    messages.success(request,"Mensaje enviado")
     return render(request, 'nucleo/contactanos.html')
 
 

@@ -12,6 +12,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <link rel="icon" type="gif" href="{% static 'nucleo/imagenes/tenor.gif' %}">
         <link type="text/css" rel="stylesheet" href="{% static 'nucleo/css/estilos.css' %}">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <title>Registro </title>
 
         <style type="text/css">
@@ -143,6 +144,17 @@
     <div id="google_translate_element"></div>
 
     <div class="container" style="margin-top: 5%; margin-bottom: 3%;">
+        {% if messages %}
+            {% for m in messages%}
+                <script>
+                    Swal.fire({
+                        "title" : "felicitaciones",
+                        "text" : "{{m}}",
+                        "icon" : "success"
+                    })
+                </script>
+            {% endfor %}
+        {% endif %}
         <fieldset>
             
             <form action="{% url 'registro_usuario' %}" method="GET" name="formulario_contacto" id="formulario_contacto" class="formulario_reg">

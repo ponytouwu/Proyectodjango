@@ -13,6 +13,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link type="text/css" rel="stylesheet" href="{% static 'nucleo/css/estilos.css' %}">
     <!-- api mapbox -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
     <title>Contactanos</title>
@@ -38,10 +39,10 @@
         -->
 
     
-        <script type="text/javascript">
+       <script type="text/javascript">
             $(document).ready(function () {
                 $("#mensaje_error").hide(); //Estoy ocultando el div
-                $("#contacto").submit(function () {
+                $("#contacto").submit(function () { 
                     var mensaje = "Debes completar estos campos para continuar:";
                     //validar que el campo no este vacio
                     if ($("#nombre").val().trim().length == 0) {
@@ -63,7 +64,7 @@
                         mensaje = mensaje + "<br>El teléfono solo puede contener números";
                     }
     
-                    if (mensaje != "Debes corregir los siguientes errores para poder continuar") {
+                    if (mensaje != "Debes completar estos campos para continuar:") {
                         $("#mensaje_error").html(mensaje); //mostrando el texto de la variable en el div
                         $("#mensaje_error").show(); //haciendo visible mi div
                         event.preventDefault(); //evito que el formulario se envie    
@@ -258,6 +259,18 @@
                 <div class="col-12">
                     <form class="form-horizontal" method="GET" name="contacto" id="contacto"
                         action="{% url 'guardar_comentario' %}">
+                        {% if messages %}
+                        {% for m in messages%}
+                            <script>
+                                Swal.fire({
+                                    "title" : "felicitaciones",
+                                    "text" : "{{m}}",
+                                    "icon" : "success"
+                                })
+                            </script>
+                        {% endfor %}
+                    {% endif %}
+                        
                         {% csrf_token %}
                         <div id="mensaje_error" class="alert alert-danger" style="margin-top: 20px;"></div>
 
