@@ -16,7 +16,51 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Modificar producto </title>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#mensaje_error").hide(); //Estoy ocultando el div
+            $("#formulario_modi").submit(function () {
+                var mensaje = "Debes Solucionar los errores para poder Modificar";
 
+                if ($("#id_producto").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo ID no puede estar vacio";
+                }
+                if ($("#nombre").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Nombre no puede estar vacio";
+                }
+
+                if ($("#stock").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo stock no puede estar vacio";
+                }
+
+                if ($("#precio").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo precio no puede estar vacio";
+                }
+                if ($("#valoracion").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo valoracion no puede estar vacio";
+                }
+                if ($("#sku").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo sku no puede estar vacio";
+                }
+
+                if ($("#des_pro").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Descripcion del producto no puede estar vacio";
+                }
+
+                if ($("#color_pro").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Color no puede estar vacio";
+                }
+
+                if (mensaje != "Debes Solucionar los errores para poder Modificar") {
+                    $("#mensaje_error").html(mensaje); //mostrando el texto de la variable en el div
+                    $("#mensaje_error").show(); //haciendo visible mi div
+                    event.preventDefault(); //evito que el formulario se envie
+                }
+
+            });
+        });
+
+    </script>
 </head>
 
 <body>
@@ -33,8 +77,8 @@
         </script>
         {% endfor %}
         {% endif %}
-        <form action="{% url 'modificar_pro' %}" method="POST" enctype="multipart/form-data" name="formulario_contacto" id="formulario_contacto"
-            class="formulario_reg">
+        <form action="{% url 'modificar_pro' %}" method="POST" enctype="multipart/form-data" name="formulario_modi"
+            id="formulario_modi" class="formulario_reg">
             {% csrf_token %}
 
 
@@ -67,37 +111,34 @@
             <div class="form-group">
                 <label for="valoracion">Valoracion (estrellas)</label>
                 <input type="number" class="form-control" name="valoracion" id="valoracion"
-                    placeholder="ejemplo@ejemplo.com" value="{{producto.valoracion}}">
+                    value="{{producto.valoracion}}">
             </div>
 
             <div class="form-group">
                 <label for="sku">Sku</label>
-                <input type="number" class="form-control" name="sku" id="sku" placeholder="ejemplo@ejemplo.com"
-                    value="{{producto.sku}}">
+                <input type="number" class="form-control" name="sku" id="sku" value="{{producto.sku}}">
             </div>
 
             <div class="form-group">
                 <label for="des_pro">Descripcion producto</label>
-                <input type="text" class="form-control" name="des_pro" id="des_pro" placeholder="ejemplo@ejemplo.com"
-                    value="{{producto.des_pro}}">
+                <input type="text" class="form-control" name="des_pro" id="des_pro" value="{{producto.des_pro}}">
             </div>
 
             <div class="form-group">
                 <label for="color_pro">Color producto</label>
-                <input type="text" class="form-control" name="color_pro" id="valorcolor_proacion"
-                    placeholder="ejemplo@ejemplo.com" value="{{producto.color_pro}}">
+                <input type="text" class="form-control" name="color_pro" id="color_pro" value="{{producto.color_pro}}">
             </div>
 
             <div class="form-group">
-                <label for="foto_pro">Foto_pro</label>
-                <input type="file" class="form-control" name="foto_pro" id="foto_pro" placeholder="ejemplo@ejemplo.com"
-                    value="{{producto.foto_pro}}">
+                <label for="foto_pro">Foto del producto</label>
+                <input type="file" class="form-control" name="foto_pro" id="foto_pro" required
+                    value="{{producto.foto_pro.url}}">
             </div>
 
 
             <div class="form-group">
                 <label for="categoria">categoria</label>
-                <select name="categoria" id="categoria" class="form-control" placeholder="Seleccione alguna ciudad">
+                <select name="categoria" id="categoria" class="form-control">
 
                     {% for i in categorias%}
                     {% if i.id_categoria == producto.categoria.id_categoria %}
@@ -111,7 +152,7 @@
 
             <div class="form-group">
                 <label for="marca">marca</label>
-                <select name="marca" id="marca" class="form-control" placeholder="Seleccione alguna ciudad">
+                <select name="marca" id="marca" class="form-control">
 
                     {% for i in marcas%}
                     {% if i.id_marca == producto.marca.id_marca %}
