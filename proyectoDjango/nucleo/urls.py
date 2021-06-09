@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path, include
-from .views import home, Verproductop, seccionotros , contactanos, secciongatuna, Seccionperruna, inicioSesion, registro, carrito, cambiocontra, recuperacion,lista_regiones,guardar_usuario,guardar_comentario
+from .views import home, Verproductop, seccionotros , contactanos, secciongatuna, Seccionperruna, inicioSesion, registro, carrito, cambiocontra, recuperacion,lista_regiones,guardar_usuario,guardar_comentario, listado,eliminar_listado,listar_tablas,modificar_pro
 urlpatterns = [
     path('', home, name="home"),
     path('Verproductop', Verproductop, name="Verproductop"),
@@ -18,5 +18,9 @@ urlpatterns = [
     path('registro_usuario',guardar_usuario,name="registro_usuario"),
     #Ver si esta bien este
     path('guardar_comentario',guardar_comentario,name="guardar_comentario"),
+    path('listado',listado,name="listado"),
+    path('eliminar_listado/<int:id>',eliminar_listado,name="eliminar_listado"),
+    path('listar_tablas/<int:id>',listar_tablas,name="listar_tablas"),
+    path('modificar_pro',modificar_pro,name="modificar_pro"),
     
 ]

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="icon" type="gif" href="{% static 'nucleo/imagenes/tenor.gif' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'nucleo/css/estilos.css' %}">
+    <title>Producto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--Para quitar la barra de arriba del traductor-->
+    <style type="text/css">
+        body {
+            top: 0 !important;
+        }
+
+        .goog-te-banner-frame {
+            display: none;
+        }
+    </style>
+    <!--Logos redes sociales-->
+    <!--
+                padding:  tamaño del ciculito del logo , que tan ancho lo quieres.
+                font-size: Tamaño de los logos
+                width: Tamaño del circulito donde estan los logos
+                text-align: ?
+                text-decoration: color texto
+                margin: separacion entre los logos , el primero es el margin top y bottom , el segundo es de left and rigth
+                border-radius: darle borde circular  al logo.
+        -->
+    <style>
+        .fa {
+            padding: 20px;
+            font-size: 30px;
+            width: 60px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+            border-radius: 50%;
+        }
+
+        .fa-facebook {
+            background: #3B5998;
+            color: white;
+        }
+
+        .fa-youtube {
+            background: #bb0000;
+            color: white;
+        }
+
+        .fa-instagram {
+            background: #125688;
+            color: white;
+        }
+
+        body {
+            background-image: url("{% static 'nucleo/imagenes/fondoprueba3.png' %}");
+            background-repeat: repeat;
+            background-color: rgba(209, 209, 171, 0.473);
+        }
+
+        td{
+            padding: 1%;
+            font-weight: 900;
+        }
+    </style>
+    <!--FIN Logos redes sociales-->
+
+    <!--Modo oscuro-->
+    <script type="text/javascript">
+        function cambiarModo() {
+            var cuerpoweb = document.body;
+            cuerpoweb.classList.toggle("oscuro");
+        }
+    </script>
+
+</head>
+
+<body>
+    <!--Scrip para controlar el traductor de la pagina-->
+    <script type="text/javascript">
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLenguage: 'es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE },
+                'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!--MENU PRINCIPAL-->
+    <nav class="navbar navbar-expand-md bg-danger navbar-dark color_navbar">
+        <a class="navbar-brand colorletranav perrigatos"><img class="imagen_navbar"
+                src="{% static 'nucleo/imagenes/tenor.gif' %}">PerriGatos</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'home' %}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'Seccionperruna' %}">Perros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'secciongatuna' %}">Gatos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'seccionotros' %}">Otros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'contactanos' %}">Contactanos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'carrito' %}">Carrito</a>
+                </li>
+
+                <li class="nav-item" style="padding-top: 10px;">
+                    <a class="nav-link colorletranav cambiocolor">
+                        <div id="google_translate_element"></div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <img src="{% static 'nucleo/imagenes/moon_icon_159962.png' %}" alt="icono luna" class="icono_luna"
+                        onclick="cambiarModo()" style="margin-left: 10%;">
+                </li>
+
+
+
+
+            </ul>
+        </div>
+        <div class="search-container">
+            <a href="{% url 'inicioSesion' %}" style="color: rgb(0, 0, 0);">Iniciar Sesion </a>
+            <a href="{% url 'lista_regiones' %}" style="color: rgb(0, 0, 0);">Registrarte</a>
+            <form action="/action_page.php">
+                <input type="text" placeholder="Buscar" name="search">
+                <button class="btn btn-danger" type="submit">Buscar</button>
+            </form>
+        </div>
+    </nav>
+    <!--MENU FIN PRINCIPAL-->
+    <div class="container" style="margin: 1% 0% 1% 1%;">
+        <div class="row">
+            
+            <table border=2>
+                <tr>
+                    <td>id_producto</td>
+                    <td>n_producto</td>
+                    <td>stock</td>
+                    <td>precio</td>
+                    <td>valoracion</td>
+                    <td>sku</td>
+                    <td>des_pro</td>
+                    <td>color_pro</td>
+                    <td>foto_pro</td>
+                    <td>categoria</td>
+                    <td>marca</td>
+                </tr>
+
+                {% for m in productos %}
+                <tr>
+                    <td>{{ m.id_producto }}</td>
+                    <td>{{ m.n_producto }}</td>
+                    <td>{{ m.stock }}</td>
+                    <td>{{ m.precio }}</td>
+                    <td>{{ m.valoracion }}</td>
+                    <td>{{ m.sku }}</td>
+                    <td>{{ m.des_pro}}</td>
+                    <td>{{ m.color_pro }}</td>
+                    
+
+                        
+
+                        
+                    <td> 
+                        
+                        <img src="{{ m.foto_pro.url }}" alt="" style="width: 10em; height: 10em;">
+                        
+                    </td>
+                    <td>{{ m.categoria}}</td>
+                    <td>{{ m.marca}}</td>
+                    <td><a href="{% url 'eliminar_listado' m.id_producto %}" class="btn btn-danger"> Eliminar producto </a></td>
+                    <td><a href="{% url 'listar_tablas' m.id_producto %}" class="btn btn-primary"> Modificar producto </a></td>
+
+                </tr>
+                {% endfor %}    
+                
+                {% if messages %}
+                {% for m in messages%}
+                <script>
+                    Swal.fire({
+                        "title": "felicitaciones",
+                        "text": "{{m}}",
+                        "icon": "success"
+                    })
+                </script>
+                {% endfor %}
+                {% endif %}
+
+                
+
+
+
+            </table>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

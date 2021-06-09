@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="icon" type="gif" href="{% static 'nucleo/imagenes/tenor.gif' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'nucleo/css/estilos.css' %}">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Modificar producto </title>
+
+
+</head>
+
+<body>
+
+    <div class="container" style="margin-top: 3%; margin-bottom: 3%;">
+        {% if messages %}
+        {% for z in messages%}
+        <script>
+            Swal.fire({
+                "title": "felicitaciones",
+                "text": "{{z}}",
+                "icon": "success"
+            })
+        </script>
+        {% endfor %}
+        {% endif %}
+        <form action="{% url 'modificar_pro' %}" method="POST" enctype="multipart/form-data" name="formulario_contacto" id="formulario_contacto"
+            class="formulario_reg">
+            {% csrf_token %}
+
+
+            <h1>Modificar Productos</h1>
+            <div id="mensaje_error" class="alert alert-danger"></div>
+
+            <div class="form-group">
+                <label for="id_producto">Id del producto</label>
+                <input type="number" class="form-control" name="id_producto" id="id_producto"
+                    placeholder="Ingrese id del producto" value="{{producto.id_producto}}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="nombre">Nombre del producto</label>
+                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese su contraseña"
+                    value="{{producto.n_producto}}" re>
+            </div>
+
+            <div class="form-group">
+                <label for="stock">Stock</label>
+                <input type="number" class="form-control" name="stock" id="stock"
+                    placeholder="Ingrese su nombre completo" value="{{producto.stock}}">
+            </div>
+
+            <div class="form-group">
+                <label for="precio">Precio</label>
+                <input type="number" class="form-control" name="precio" id="precio"
+                    placeholder="Ingrese su rut completo sin guion" value="{{producto.precio}}">
+            </div>
+            <div class="form-group">
+                <label for="valoracion">Valoracion (estrellas)</label>
+                <input type="number" class="form-control" name="valoracion" id="valoracion"
+                    placeholder="ejemplo@ejemplo.com" value="{{producto.valoracion}}">
+            </div>
+
+            <div class="form-group">
+                <label for="sku">Sku</label>
+                <input type="number" class="form-control" name="sku" id="sku" placeholder="ejemplo@ejemplo.com"
+                    value="{{producto.sku}}">
+            </div>
+
+            <div class="form-group">
+                <label for="des_pro">Descripcion producto</label>
+                <input type="text" class="form-control" name="des_pro" id="des_pro" placeholder="ejemplo@ejemplo.com"
+                    value="{{producto.des_pro}}">
+            </div>
+
+            <div class="form-group">
+                <label for="color_pro">Color producto</label>
+                <input type="text" class="form-control" name="color_pro" id="valorcolor_proacion"
+                    placeholder="ejemplo@ejemplo.com" value="{{producto.color_pro}}">
+            </div>
+
+            <div class="form-group">
+                <label for="foto_pro">Foto_pro</label>
+                <input type="file" class="form-control" name="foto_pro" id="foto_pro" placeholder="ejemplo@ejemplo.com"
+                    value="{{producto.foto_pro}}">
+            </div>
+
+
+            <div class="form-group">
+                <label for="categoria">categoria</label>
+                <select name="categoria" id="categoria" class="form-control" placeholder="Seleccione alguna ciudad">
+
+                    {% for i in categorias%}
+                    {% if i.id_categoria == producto.categoria.id_categoria %}
+                    <option value="{{ i.id_categoria }}" selected>{{ i.nom_cat }}</option>
+                    {% else %}
+                    <option value="{{ i.id_categoria }}">{{ i.nom_cat }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="marca">marca</label>
+                <select name="marca" id="marca" class="form-control" placeholder="Seleccione alguna ciudad">
+
+                    {% for i in marcas%}
+                    {% if i.id_marca == producto.marca.id_marca %}
+                    <option value="{{ i.id_marca }}" selected>{{ i.nom_mar }}</option>
+                    {% else %}
+                    <option value="{{ i.id_marca }}">{{ i.nom_mar }}</option>
+                    {% endif %}
+                    {% endfor %}
+
+                </select>
+            </div>
+
+
+
+            <div class="form-group" style="text-align: center;">
+                <button type="submit" class="btn btn-danger">Modificar</button>
+                <button type="reset" class="btn btn-danger">Limpiar campos</button>
+
+            </div>
+            <div> <a href="{% url 'listado' %}"><input type="button" class="btn btn-danger"
+                        value="Volver al listado"></a></div>
+
+
+
+
+
+
+        </form>
+    </div>
+
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 from django.db.models.query import InstanceCheckMeta
 from django.shortcuts import redirect, render
-from .models import Region, Tipo_usuario, Usuario, Contacto,Producto
+from .models import Categoria, Marca, Region, Tipo_usuario, Usuario, Contacto,Producto
 from django.contrib import messages
 # Create your views here.
 
@@ -119,7 +119,68 @@ def guardar_comentario(request):  # guardado de comentario
     messages.success(request,"Mensaje enviado")
     return render(request, 'nucleo/contactanos.html')
 
+def listado(request):
+    productos = Producto.objects.all()
+    data = {
+        'productos' : productos
+    }
+    return render(request, 'nucleo/listado.html', data)
 
+def eliminar_listado(request, id):
+    
+    producto = Producto.objects.get(id_producto = id)
+    producto.delete()
+    messages.success(request,"Producto Eliminado")
+
+    return redirect('listado')
+
+def listar_tablas(request, id):
+    producto = Producto.objects.get(id_producto = id)
+    categorias = Categoria.objects.all()
+    marcas = Marca.objects.all()  # obtengo los datos de la tabla
+    # guardadndo en la variable entre "" los datos de regiones
+    contexto = {
+        "producto" : producto,
+        "categorias": categorias,
+        "marcas" : marcas
+        }
+    return render(request, 'nucleo/modificar_p.html', contexto)
+   
+def modificar_pro(request):
+    id = request.POST['id_producto']
+    n_pro = request.POST['nombre']
+    sto = request.POST['stock']
+    prec = request.POST['precio']
+    val = request.POST['valoracion']
+    sk = request.POST['sku']
+    des = request.POST['des_pro']
+    col = request.POST['color_pro']
+    fot = request.FILES['foto_pro']
+    cat1 = request.POST['categoria']
+    cat2 = Categoria.objects.get(id_categoria = cat1)
+    mar = request.POST['marca']
+    mar2 = Marca.objects.get(id_marca = mar )
+    
+    
+
+    new_pro = Producto.objects.get(id_producto = id)
+    new_pro.id_producto = id
+    new_pro.n_producto = n_pro
+    new_pro.stock = sto
+    new_pro.precio = prec
+    new_pro.valoracion = val
+    new_pro.sku = sk
+    new_pro.des_pro = des
+    new_pro.color_pro = col
+    new_pro.foto_pro = fot
+    new_pro.categoria = cat2
+    new_pro.marca = mar2
+
+    new_pro.save()
+
+    messages.success(request,"Producto Modificado")
+
+    return redirect('listado')
 
 
 
