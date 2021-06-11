@@ -128,10 +128,7 @@
         <div class="search-container">
            <a href="{% url 'inicioSesion' %}" style="color: rgb(0, 0, 0);">Iniciar Sesion </a>
            <a href="{% url 'lista_regiones' %}" style="color: rgb(0, 0, 0);">Registrarte</a>
-            <form action="/action_page.php">
-                <input type="text" placeholder="Buscar" name="search">
-                <button class="btn btn-danger" type="submit">Buscar</button>
-            </form>
+            
         </div>
     </nav>
     <!--MENU FIN PRINCIPAL-->
@@ -147,19 +144,7 @@
 
                 <div class="row tamaño_div_producto" >
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 descripcion ">
-                        {% if p.n_producto == "Acuario ecofriend"%}
-                            <a href="{% url 'acuario' %}"><h4>{{p.n_producto}}</h4></a>
-                        {% elif p.n_producto == "Dispensar de agua para tus aves." %}
-                            <a href="{% url 'dispensador' %}"><h4>{{p.n_producto}}</h4></a>
-                        {% elif p.n_producto == "Comida para tus aves." %}
-                            <a href="{% url 'comida_a' %}"><h4>{{p.n_producto}}</h4></a> 
-                        {% elif p.n_producto == "Comida para tus peces" %}
-                            <a href="{% url 'comida_peces' %}"><h4>{{p.n_producto}}</h4></a>
-                        {% elif p.n_producto == "Comida para Loros" %}
-                            <a href="{% url 'loro' %}"><h4>{{p.n_producto}}</h4></a>
-                        {% else %}
-                            <a href="{% url 'Verproductop' %}"><h4>{{p.n_producto}}</h4></a>
-                        {% endif %}
+                        <a href="{% url 'mostrar_p' p.id_producto %}"><h4>{{p.n_producto}}</h4></a>
                         
                         <h6>Descripcion: </h6>
 

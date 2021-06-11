@@ -1,5 +1,6 @@
 from typing import Tuple
 from django.db import models
+from django.db.models.expressions import F
 
 # Create your models here.
 
@@ -131,4 +132,15 @@ class Pro_carrito(models.Model):
     producto = models.ForeignKey ( Producto , on_delete = models.CASCADE )
     carrito = models.ForeignKey(Carrito , on_delete = models.CASCADE)
 
-    
+class Venta(models.Model):
+    id_venta = models.AutoField(primary_key=True , verbose_name='Id de la venta')
+    fecha_venta = models.DateField(blank=False , verbose_name="fecha de la venta")
+    total_venta = models.IntegerField(blank=False, verbose_name='total de la venta')
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE) 
+
+class Detalle_venta(models.Model):
+    id_detalle = models.AutoField(primary_key=True , verbose_name='Id del detalle de la venta')
+    cantidad_sub = models.IntegerField(blank=False , verbose_name='cantidad subtotal')
+    venta = models.ForeignKey(Venta, on_delete = models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete= models.CASCADE)
+

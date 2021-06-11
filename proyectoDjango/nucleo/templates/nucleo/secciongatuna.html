@@ -131,10 +131,7 @@
         <div class="search-container">
            <a href="{% url 'inicioSesion' %}" style="color: rgb(0, 0, 0);">Iniciar Sesion </a>
            <a href="{% url 'lista_regiones' %}" style="color: rgb(0, 0, 0);">Registrarte</a>
-            <form action="/action_page.php">
-                <input type="text" placeholder="Buscar" name="search">
-                <button class="btn btn-danger" type="submit">Buscar</button>
-            </form>
+            
         </div>
     </nav>
     <!--MENU FIN PRINCIPAL-->
@@ -150,19 +147,7 @@
 
                 <div class="row tamaño_div_producto" >
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 descripcion ">
-                        {% if p.n_producto == "Rascador para Gatos"%}
-                            <a href="{% url 'rascador' %}"><h4>{{p.n_producto}}</h4></a>
-
-                        {% elif p.n_producto == "Camarote para Gatos" %}
-                            <a href="{% url 'camarote' %}"><h4>{{p.n_producto}}</h4></a>
-                            
-                        {% elif p.n_producto == "Baño sanitario para gatos" %}
-                            <a href="{% url 'baño_g' %}"><h4>{{p.n_producto}}</h4></a>
-                        {% elif p.n_producto == "Comida para gatos y perros" %}
-                            <a href="{% url 'comida_g' %}"><h4>{{p.n_producto}}</h4></a>
-                        {% else %}
-                            <a href="{% url 'Verproductop' %}"><h4>{{p.n_producto}}</h4></a>
-                        {% endif %}
+                        <a href="{% url 'mostrar_p' p.id_producto %}"><h4>{{p.n_producto}}</h4></a>
                         <h6>Descripcion: </h6>
 
                         <p>{{p.des_pro}}</p>

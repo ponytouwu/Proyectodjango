@@ -1,7 +1,7 @@
 from django.db.models.query import InstanceCheckMeta
 from django.http import request
 from django.shortcuts import redirect, render
-from .models import Carrito, Categoria, Marca, Pro_carrito, Region, Tipo_usuario, Usuario, Contacto,Producto
+from .models import Carrito, Categoria, Marca, Pro_carrito, Region, Tipo_usuario, Usuario, Contacto,Producto,Venta,Detalle_venta
 from django.contrib import messages
 from django.db.models import Sum
 
@@ -71,9 +71,10 @@ def registro(request):
 
 
 def carrito(request):
-    carro = Pro_carrito.objects.all()
+    car = Carrito.objects.get(id_carrito = 4)
+    carro = Pro_carrito.objects.filter(carrito = car)
     total = Pro_carrito.objects.aggregate(sum1 = Sum('sub_total'))
-
+    
     data = {
         'carro' : carro,
         'total' : total
@@ -196,23 +197,9 @@ def modificar_pro(request):
 
     return redirect('listado')
 
-def huesitos(request):
-    verproducto = Producto.objects.get(n_producto = "Huesitos 4 por paquete")
-    carrito = Carrito.objects.get(id_carrito = 4)
-    template = {
-        'verproducto' : verproducto,
-        'carrito' : carrito
-    }
-    return render(request, 'nucleo/huesitos.html',template )
 
-def body(request):
-    verproducto = Producto.objects.get(n_producto = "Body para perrito adulto")
-    carrito = Carrito.objects.get(id_carrito = 4)
-    template = {
-        'verproducto' : verproducto,
-        'carrito' : carrito
-    }
-    return render(request, 'nucleo/body.html',template )
+
+
 
 def agregar_carr(request):
     id_pro = request.POST['id_productop']
@@ -228,25 +215,10 @@ def agregar_carr(request):
     return redirect('carrito')
 
 
-def shampo(request):
-    verproducto = Producto.objects.get(n_producto = "Shampoo para perro")
-    carrito = Carrito.objects.get(id_carrito = 4)
-    template = {
-        'verproducto' : verproducto,
-        'carrito' : carrito
-    }
-    return render(request, 'nucleo/shampo.html',template )
 
  
 
-def cama_p(request):
-    verproducto = Producto.objects.get(n_producto = "Cama para tu mascota")
-    carrito = Carrito.objects.get(id_carrito = 4)
-    template = {
-        'verproducto' : verproducto,
-        'carrito' : carrito
-    }
-    return render(request, 'nucleo/cama_p.html',template )
+
 
 def eliminar_carro(request, id):
     carrito = Pro_carrito.objects.get(id_pro_carr = id)
@@ -282,86 +254,31 @@ def guardar_producto(request):
     return redirect('listado')
 
 
-def rascador(request):
-    verproducto = Producto.objects.get(n_producto = "Rascador para Gatos")
-    carrito = Carrito.objects.get(id_carrito = 4)
-    template = {
-        'verproducto' : verproducto,
-        'carrito' : carrito
-    }
-    return render(request,'nucleo/rascador.html', template)
 
-def camarote(request):
-    verproducto = Producto.objects.get(n_producto = "Camarote para Gatos")
-    carrito = Carrito.objects.get(id_carrito = 4)
-    template = {
-        'verproducto' : verproducto,
-        'carrito' : carrito
-    }
-    return render(request,'nucleo/camarote_g.html', template)
 
-def baño_g(request):
-    verproducto = Producto.objects.get(n_producto = "Baño sanitario para gatos")
+def mostrar_p(request, id):
+    producto = Producto.objects.get(id_producto = id)
     carrito = Carrito.objects.get(id_carrito = 4)
     template = {
-        'verproducto' : verproducto,
+        'verproducto' : producto,
         'carrito' : carrito
     }
-    return render(request,'nucleo/baño_g.html', template)
+    return render(request,'nucleo/Verproductop.html',template)
 
-def comida_g(request):
-    verproducto = Producto.objects.get(n_producto = "Comida para gatos y perros")
-    carrito = Carrito.objects.get(id_carrito = 4)
-    template = {
-        'verproducto' : verproducto,
-        'carrito' : carrito
-    }
-    return render(request,'nucleo/comida_g.html', template)
+def carro1(request):
+    carr1 = request.POST['carrito']
+    carr2 = Carrito.objects.get(id_carrito = carr1)
+    can = request.POST['cantidad']
+    prec = request.POST['precio_p']
+    id_pro = request.POST['id_productop']
+    id_pro2 = Producto.objects.get(id_producto = id_pro)
+    sub_to = int(prec) * int(can)
 
-def acuario(request):
-    verproducto = Producto.objects.get(n_producto = "Acuario ecofriend")
-    carrito = Carrito.objects.get(id_carrito = 4)
-    template = {
-        'verproducto' : verproducto,
-        'carrito' : carrito
-    }
-    return render(request,'nucleo/acuario.html', template)
+    carro = Pro_carrito.objects.create(canti_pro = can, sub_total = sub_to, producto = id_pro2, carrito = carr2 )
+    
+    return redirect('carrito')
 
-def dispensador(request):
-    verproducto = Producto.objects.get(n_producto = "Dispensar de agua para tus aves.")
-    carrito = Carrito.objects.get(id_carrito = 4)
-    template = {
-        'verproducto' : verproducto,
-        'carrito' : carrito
-    }
-    return render(request,'nucleo/dispensador.html', template)
 
-def comida_a(request):
-    verproducto = Producto.objects.get(n_producto = "Comida para tus aves.")
-    carrito = Carrito.objects.get(id_carrito = 4)
-    template = {
-        'verproducto' : verproducto,
-        'carrito' : carrito
-    }
-    return render(request,'nucleo/comida_a.html', template)
-
-def comida_peces(request):
-    verproducto = Producto.objects.get(n_producto = "Comida para tus peces")
-    carrito = Carrito.objects.get(id_carrito = 4)
-    template = {
-        'verproducto' : verproducto,
-        'carrito' : carrito
-    }
-    return render(request,'nucleo/comida_p.html', template)
-
-def loro(request):
-    verproducto = Producto.objects.get(n_producto = "Comida para Loros")
-    carrito = Carrito.objects.get(id_carrito = 4)
-    template = {
-        'verproducto' : verproducto,
-        'carrito' : carrito
-    }
-    return render(request,'nucleo/comida_loro.html', template)
 
 
 
