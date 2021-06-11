@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path, include
-from .views import home, Verproductop, seccionotros , contactanos, secciongatuna, Seccionperruna, inicioSesion, registro, carrito, cambiocontra, recuperacion,lista_regiones,guardar_usuario,guardar_comentario, listado,eliminar_listado,listar_tablas,modificar_pro
+from .views import home, Verproductop, seccionotros , contactanos, secciongatuna, Seccionperruna, inicioSesion, registro, carrito, cambiocontra, recuperacion,lista_regiones,guardar_usuario,guardar_comentario, listado,eliminar_listado,listar_tablas,modificar_pro,huesitos,body,shampo,agregar_carr,eliminar_carro,rascador,guardar_producto,agregar_p,camarote,baño_g,comida_g,cama_p,acuario,dispensador,comida_a,comida_peces,loro
 urlpatterns = [
     path('', home, name="home"),
     path('Verproductop', Verproductop, name="Verproductop"),
@@ -22,5 +22,24 @@ urlpatterns = [
     path('eliminar_listado/<int:id>',eliminar_listado,name="eliminar_listado"),
     path('listar_tablas/<int:id>',listar_tablas,name="listar_tablas"),
     path('modificar_pro',modificar_pro,name="modificar_pro"),
+    path('huesitos',huesitos,name="huesitos"),
+    path('body',body,name="body"),
+    path('shampo',shampo,name="shampo"),
+    path('agregar_carr',agregar_carr,name="agregar_carr"),
+    path('eliminar_carro/<int:id>',eliminar_carro,name="eliminar_carro"),
+    path('rascador',rascador,name="rascador"),
+    path('guardar_producto',guardar_producto,name="guardar_producto"),
+    
+    path('agregar_p',agregar_p,name="agregar_p"),
+    path('camarote',camarote,name="camarote"),
+    path('baño_g',baño_g,name="baño_g"),
+    path('comida_g',comida_g,name="comida_g"),
+    path('cama_p',cama_p,name="cama_p"),
+    path('acuario',acuario,name="acuario"),
+    path('dispensador',dispensador,name="dispensador"),
+    path('comida_a',comida_a,name="comida_a"),
+    path('comida_peces',comida_peces,name="comida_peces"),
+    path('loro',loro,name="loro"),
+
     
 ]

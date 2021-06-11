@@ -142,12 +142,24 @@
     <div class="container-fluid">
         <h1 class="titulo_secciones">SECCION PERRITOS</h1>
         <div class="row">
-            {%for p in productos%}
+            {% for p in productos %}
             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 
                 <div class="row tamaño_div_producto" >
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 descripcion ">
-                        <a href="{% url 'Verproductop' %}"><h4>{{p.n_producto}}</h4></a>
+                        {% if p.n_producto == "Huesitos 4 por paquete"%}
+                            <a href="{% url 'huesitos' %}"><h4>{{p.n_producto}}</h4></a>
+                        {% elif p.n_producto == "Shampoo para perro" %}
+                            <a href="{% url 'shampo' %}"><h4>{{p.n_producto}}</h4></a>
+                        {% elif p.n_producto == "Body para perrito adulto" %}
+                            <a href="{% url 'body' %}"><h4>{{p.n_producto}}</h4></a>
+                            
+                        {% elif p.n_producto == "Cama para tu mascota" %}
+                            <a href="{% url 'cama_p' %}"><h4>{{p.n_producto}}</h4></a>
+                        {% else %}
+                            <a href="{% url 'Verproductop' %}"><h4>{{p.n_producto}}</h4></a>
+                        {% endif %}
+                        
                         <h6>Descripcion: </h6>
 
                         <p>{{p.des_pro}}</p>
@@ -165,7 +177,7 @@
                             
 
             </div>
-            {%endfor%}
+            {% endfor %}
             
             
 

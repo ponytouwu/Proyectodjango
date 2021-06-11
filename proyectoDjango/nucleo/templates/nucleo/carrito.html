@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <link rel="icon" type="gif" href="{% static 'nucleo/imagenes/tenor.gif' %}">
-        <link type="text/css" rel="stylesheet" href="{% static 'nucleo/css/estilos.css' %}">
-        
-        <title>Seccion Gatuna</title>
-        <!--Para quitar la barra de arriba del traductor-->
-        <style type="text/css">
-            body{
-                top: 0 !important;
-            }
-            .goog-te-banner-frame{
-                display: none;
-            }
-            </style>
-        <!--Logos redes sociales-->
-        <!--uwu
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="icon" type="gif" href="{% static 'nucleo/imagenes/tenor.gif' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'nucleo/css/estilos.css' %}">
+
+    <title>Seccion Gatuna</title>
+    <!--Para quitar la barra de arriba del traductor-->
+    <style type="text/css">
+        body {
+            top: 0 !important;
+        }
+
+        .goog-te-banner-frame {
+            display: none;
+        }
+    </style>
+    <!--Logos redes sociales-->
+    <!--uwu
                 padding:  tamaño del ciculito del logo , que tan ancho lo quieres.
                 font-size: Tamaño de los logos
                 width: Tamaño del circulito donde estan los logos
@@ -33,61 +35,62 @@
                 margin: separacion entre los logos , el primero es el margin top y bottom , el segundo es de left and rigth
                 border-radius: darle borde circular  al logo.
         -->
-        <style>
-            .fa {
-                padding: 20px;
-                font-size: 30px;
-                width: 60px;
-                text-align: center;
-                text-decoration: none;
-                margin: 5px 2px;
-                border-radius: 50%;
-            }
-    
-            .fa-facebook {
-                background: #3B5998;
-                color: white;
-            }
-    
-            .fa-youtube {
-                background: #bb0000;
-                color: white;
-            }
-    
-            .fa-instagram {
-                background: #125688;
-                color: white;
-            }
-            /* fondo */
-            body {
-                background-image: url("{% static 'nucleo/imagenes/fondoprueba3.png' %}");
+    <style>
+        .fa {
+            padding: 20px;
+            font-size: 30px;
+            width: 60px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+            border-radius: 50%;
+        }
+
+        .fa-facebook {
+            background: #3B5998;
+            color: white;
+        }
+
+        .fa-youtube {
+            background: #bb0000;
+            color: white;
+        }
+
+        .fa-instagram {
+            background: #125688;
+            color: white;
+        }
+
+        /* fondo */
+        body {
+            background-image: url("{% static 'nucleo/imagenes/fondoprueba3.png' %}");
             background-repeat: repeat;
             background-color: rgba(209, 209, 171, 0.473);
-            }
-        </style>
-        <!--FIN Logos redes sociales-->
-        
+        }
+    </style>
+    <!--FIN Logos redes sociales-->
+
     <!--Modo oscuro-->
-    <script type="text/javascript"> 
-        function cambiarModo() { 
-          var cuerpoweb = document.body; 
-          cuerpoweb.classList.toggle("oscuro"); 
-        } 
-      </script>
-    
-    </head>
+    <script type="text/javascript">
+        function cambiarModo() {
+            var cuerpoweb = document.body;
+            cuerpoweb.classList.toggle("oscuro");
+        }
+    </script>
+
+</head>
 
 <body>
-    
-        <script>
-        function googleTranslateElementInit(){
-            new google.translate.TranslateElement({pageLenguage: 'es',layout: google.translate.TranslateElement.InlineLayout.SIMPLE},
-            'google_translate_element');
-        }
-        </script>
 
-<script type="text/javascript"
-src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" ></script>
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLenguage: 'es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE },
+                'google_translate_element');
+        }
+    </script>
+
+    <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <!--enlaces-->
     <nav class="navbar navbar-expand-md bg-danger navbar-dark color_navbar">
         <a class="navbar-brand colorletranav perrigatos"><img class="imagen_navbar"
@@ -116,10 +119,13 @@ src="https://translate.google.com/translate_a/element.js?cb=googleTranslateEleme
                     <a class="nav-link colorletranav cambiocolor" href="{% url 'carrito' %}">Carrito</a>
                 </li>
                 <li class="nav-item" style="padding-top: 10px;">
-                    <a class="nav-link colorletranav cambiocolor"><div id="google_translate_element"></div></a>
+                    <a class="nav-link colorletranav cambiocolor">
+                        <div id="google_translate_element"></div>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <img src="{% static 'nucleo/imagenes/moon_icon_159962.png' %}" alt="icono luna"  class="icono_luna" onclick="cambiarModo()" style="margin-left: 10%;">
+                    <img src="{% static 'nucleo/imagenes/moon_icon_159962.png' %}" alt="icono luna" class="icono_luna"
+                        onclick="cambiarModo()" style="margin-left: 10%;">
                 </li>
 
 
@@ -128,8 +134,8 @@ src="https://translate.google.com/translate_a/element.js?cb=googleTranslateEleme
             </ul>
         </div>
         <div class="search-container">
-           <a href="{% url 'inicioSesion' %}" style="color: rgb(0, 0, 0);">Iniciar Sesion </a>
-           <a href="{% url 'lista_regiones' %}" style="color: rgb(0, 0, 0);">Registrarte</a>
+            <a href="{% url 'inicioSesion' %}" style="color: rgb(0, 0, 0);">Iniciar Sesion </a>
+            <a href="{% url 'lista_regiones' %}" style="color: rgb(0, 0, 0);">Registrarte</a>
             <form action="/action_page.php">
                 <input type="text" placeholder="Buscar" name="search">
                 <button class="btn btn-danger" type="submit">Buscar</button>
@@ -139,81 +145,75 @@ src="https://translate.google.com/translate_a/element.js?cb=googleTranslateEleme
     <!--MENU FIN PRINCIPAL-->
 
     <!--carrito-->
-
     <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <form action="" method="POST" name="formulario_carrito" id="formulario_carrito0">
+                    <h1 class="titulo_secciones">Carrito</h1>
+                    <table border = "2" style="margin:  4em auto; width: 100em; height: 20em;">
+                        {% for x in carro %}
+                        <tr style="background: rgb(212, 204, 204);">
+                            <td style="text-align: center;"><img src="{{ x.producto.foto_pro.url }}" alt="imagen_carrito" style="width: 10em; height: 10em;"></td>
+                            <td style="padding: 2%; font-weight: 900; text-align: center;">Cantidad de producto : {{ x.canti_pro}}</td>
+                            <td style="padding: 2%; font-weight: 900; text-align: center;"> Sub total : {{x.sub_total}} <a href="{% url 'eliminar_carro' x.id_pro_carr %}" class="btn btn-danger">Eliminar</a> <a href="" class="btn btn-primary">Modificar</a></td> 
+                            
+                        </tr>
+                        {% endfor %}
+                    </table>
+    
+                    <p style="font-size: xx-large; text-align: center;"> Total: $ {{total.sum1}}  <button type="submit" class="btn btn-warning">PAGAR</button></p>
+                   
+                </form>
+               
+            </div>
 
-        <h2 class="titulos-carrito"  style="text-align: center;">Carrito</h2>
-        <div class="container-fluid">
+        </div>
+    </div>
+
+
+
+    <!--PIE DE PAGINA-->
+    <footer>
+
+
+
+        <div class="container-fluid  ">
             <div class="row">
-                <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4  offset-3" style="margin-top: 3%;">
-                    <div style="border: 2px solid black;background-color: rgb(241, 142, 12);">
-                        <h1p>Canasta de Objetos</h1>
-                    </div>
-                    <div style="border: 2px solid black;">
-                        <p>Cepillo para perros peludos</p>
-                        <p>Cantidad: 1</p>
-                        <p>SKU: 1610656728123</p>
-                        <p>Precio:$19.990</p>
-                        <div style="border: 2px solid black; ">
-                            <p>vacio</p>
-                            <div style="border: 2px solid black; background-color:rgb(241, 142, 12);">
-                                <p>Total de la compra=$19.990</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 img_pie2 "
+                    style="margin-top: 50% !important;">
+                    <img src="{% static 'nucleo/imagenes/banneruwu.png' %}" alt="banner"
+                        style="width: 100%; height: 100%;">
                 </div>
-                <div class="row">
-                    <div class="col-sm-10 col-md-8 col-lg-6 col-xl-10 " style="margin-top: 7%;">
 
-                        <img src="{% static 'nucleo/imagenes/webpay.png' %}" class="imagenladoiz">
-                        <input type="button" value="Pagar">
 
-                    </div>
+
+            </div>
+            <div class="row ">
+                <div class="col-md-12 col-sm-12 col-lg-12 col-12 pie_pagina ">
+
+                    <p class="letra_pie_pag sec1_pie">
+                        Numero de contacto : <b>+56912345678</b>
+                        <br>
+                        Nuestras redes sociales :
+                        <br>
+                        <a href="#" class="fa fa-facebook"
+                            style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
+                        <a href="#" class="fa fa-instagram"
+                            style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
+                        <a href="#" class="fa fa-youtube"
+                            style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
+                    </p>
+
+
+
+
+
                 </div>
             </div>
         </div>
+    </footer>
 
-    </div>
-            <!--PIE DE PAGINA-->
-            <footer>
-
-
-
-                <div class="container-fluid  ">
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 img_pie2 "style="margin-top: 50% !important;">
-                            <img src="{% static 'nucleo/imagenes/banneruwu.png' %}" alt="banner" style="width: 100%; height: 100%;">
-                        </div>
-
-
-
-                    </div>
-                    <div class="row ">
-                        <div class="col-md-12 col-sm-12 col-lg-12 col-12 pie_pagina ">
-
-                            <p class="letra_pie_pag sec1_pie">
-                                Numero de contacto : <b>+56912345678</b>
-                                <br>
-                                Nuestras redes sociales :
-                                <br>
-                                <a href="#" class="fa fa-facebook"
-                                    style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
-                                <a href="#" class="fa fa-instagram"
-                                    style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
-                                <a href="#" class="fa fa-youtube"
-                                    style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
-                            </p>
-
-
-
-
-
-                        </div>
-                    </div>
-                </div>
-            </footer>
-
-            <!--FIN pie de pagina-->
+    <!--FIN pie de pagina-->
 </body>
 
 </html>

@@ -14,17 +14,14 @@
     <link rel="icon" type="gif" href="{% static 'nucleo/imagenes/tenor.gif' %}">
     <link type="text/css" rel="stylesheet" href="{% static 'nucleo/css/estilos.css' %}">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Modificar producto </title>
+    <title>Guardar producto </title>
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         $(document).ready(function () {
             $("#mensaje_error").hide(); //Estoy ocultando el div
             $("#formulario_modi").submit(function () {
                 var mensaje = "Debes Solucionar los errores para poder Modificar";
 
-                if ($("#id_producto").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>El campo ID no puede estar vacio";
-                }
                 if ($("#nombre").val().trim().length == 0) {
                     mensaje = mensaje + "<br>El campo Nombre no puede estar vacio";
                 }
@@ -60,7 +57,7 @@
             });
         });
 
-    </script>
+    </script> -->
 </head>
 
 <body>
@@ -77,63 +74,55 @@
         </script>
         {% endfor %}
         {% endif %}
-        <form action="{% url 'modificar_pro' %}" method="POST" enctype="multipart/form-data" name="formulario_modi"
-            id="formulario_modi" class="formulario_reg">
+        <form action="{% url 'guardar_producto' %}" method="POST" enctype="multipart/form-data" name="agregar_producto"
+            id="agregar_producto">
             {% csrf_token %}
 
 
-            <h1>Modificar Productos</h1>
+            <h1>Agregar Productos</h1>
             <div id="mensaje_error" class="alert alert-danger"></div>
 
             <div class="form-group">
-                <label for="id_producto">Id del producto</label>
-                <input type="number" class="form-control" name="id_producto" id="id_producto"
-                    placeholder="Ingrese id del producto" value="{{producto.id_producto}}" readonly>
-            </div>
-
-            <div class="form-group">
                 <label for="nombre">Nombre del producto</label>
-                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese su contraseña"
-                    value="{{producto.n_producto}}" re>
+                <input type="text" class="form-control" name="nom_pro" id="nom_pro" placeholder="nombre producto">
             </div>
 
             <div class="form-group">
                 <label for="stock">Stock</label>
-                <input type="number" class="form-control" name="stock" id="stock"
-                    placeholder="Ingrese su nombre completo" value="{{producto.stock}}">
+                <input type="number" class="form-control" name="pro_st" id="pro_st" placeholder="Stock del producto">
             </div>
 
             <div class="form-group">
                 <label for="precio">Precio</label>
-                <input type="number" class="form-control" name="precio" id="precio"
-                    placeholder="Ingrese su rut completo sin guion" value="{{producto.precio}}">
+                <input type="number" class="form-control" name="precio_pro" id="precio_pro"
+                    placeholder="precio del producto">
             </div>
             <div class="form-group">
                 <label for="valoracion">Valoracion (estrellas)</label>
-                <input type="number" class="form-control" name="valoracion" id="valoracion"
-                    value="{{producto.valoracion}}">
+                <input type="number" class="form-control" name="valoracion_pro" id="valoracion_pro"
+                    placeholder="Valoracion del productos">
             </div>
 
             <div class="form-group">
                 <label for="sku">Sku</label>
-                <input type="number" class="form-control" name="sku" id="sku" value="{{producto.sku}}">
+                <input type="number" class="form-control" name="sku_pro" id="sku_pro" placeholder="codigo de barra">
             </div>
 
             <div class="form-group">
                 <label for="des_pro">Descripcion producto</label>
-                <input type="text" class="form-control" name="des_pro" id="des_pro" value="{{producto.des_pro}}">
+                <input type="text" class="form-control" name="des_prod" id="des_prod"
+                    placeholder="Descripcion producto">
             </div>
 
             <div class="form-group">
                 <label for="color_pro">Color producto</label>
-                <input type="text" class="form-control" name="color_pro" id="color_pro" value="{{producto.color_pro}}">
+                <input type="text" class="form-control" name="color_prod" id="color_prod">
             </div>
 
             <div class="form-group">
-                <label for="foto_pro">Foto del producto</label>
-                <input type="file" class="form-control" name="foto_pro" id="foto_pro" required
-                    value="{{producto.foto_pro.url}}">
-                <img src="{{producto.foto_pro.url}}" style="width: 15%; height: 15%; margin: 3%">
+                <label for="foto_prod">Foto del producto</label>
+                <input type="file" class="form-control" name="foto_prod" id="foto_prod" required
+                    placeholder="por temas de seguridad ingrese de nuevo la foto">
             </div>
 
 
@@ -169,7 +158,7 @@
 
 
             <div class="form-group" style="text-align: center;">
-                <button type="submit" class="btn btn-danger">Modificar</button>
+                <button type="submit" class="btn btn-danger">Agregar</button>
                 <button type="reset" class="btn btn-danger">Limpiar campos</button>
 
             </div>

@@ -12,7 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="icon" type="gif" href="{% static 'nucleo/imagenes/tenor.gif' %}">
     <link type="text/css" rel="stylesheet" href="{% static 'nucleo/css/estilos.css' %}">
-    <title>Seccion Otros</title>
+    <title>Seccion Perruna</title>
     <!--Para quitar la barra de arriba del traductor-->
     <style type="text/css">
         body{
@@ -73,8 +73,8 @@
       cuerpoweb.classList.toggle("oscuro"); 
     } 
   </script>
-
 </head>
+
 <body>
     <script type="text/javascript"> 
     
@@ -86,7 +86,7 @@
         <script type="text/javascript"
         src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" ></script>
     <!--MENU PRINCIPAL-->
-    <nav class="navbar navbar-expand-md bg-danger navbar-dark color_navbar">
+   <nav class="navbar navbar-expand-md bg-danger navbar-dark color_navbar">
         <a class="navbar-brand colorletranav perrigatos"><img class="imagen_navbar"
                 src="{% static 'nucleo/imagenes/tenor.gif' %}">PerriGatos</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -95,7 +95,7 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link colorletranav cambiocolor" href="{% url 'home' %}">Inicio</a>
+                    <a class="nav-link colorletranav cambiocolor" href="{% url 'home'%}">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link colorletranav cambiocolor" href="{% url 'Seccionperruna'%}">Perros</a>
@@ -135,19 +135,32 @@
         </div>
     </nav>
     <!--MENU FIN PRINCIPAL-->
-    
-    
-    
+
+
+
     <!--SECCION PRODUCTOS-->
     <div class="container-fluid">
-        <h1 class="titulo_secciones">SECCION OTROS</h1>
+        <h1 class="titulo_secciones">SECCION PERRITOS</h1>
         <div class="row">
-            {%for p in productos%}
+            {% for p in productos %}
             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 
                 <div class="row tamaño_div_producto" >
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 descripcion ">
-                        <a href="Verproductop.html"><h4>{{p.n_producto}}</h4></a>
+                        {% if p.n_producto == "Acuario ecofriend"%}
+                            <a href="{% url 'acuario' %}"><h4>{{p.n_producto}}</h4></a>
+                        {% elif p.n_producto == "Dispensar de agua para tus aves." %}
+                            <a href="{% url 'dispensador' %}"><h4>{{p.n_producto}}</h4></a>
+                        {% elif p.n_producto == "Comida para tus aves." %}
+                            <a href="{% url 'comida_a' %}"><h4>{{p.n_producto}}</h4></a> 
+                        {% elif p.n_producto == "Comida para tus peces" %}
+                            <a href="{% url 'comida_peces' %}"><h4>{{p.n_producto}}</h4></a>
+                        {% elif p.n_producto == "Comida para Loros" %}
+                            <a href="{% url 'loro' %}"><h4>{{p.n_producto}}</h4></a>
+                        {% else %}
+                            <a href="{% url 'Verproductop' %}"><h4>{{p.n_producto}}</h4></a>
+                        {% endif %}
+                        
                         <h6>Descripcion: </h6>
 
                         <p>{{p.des_pro}}</p>
@@ -165,53 +178,61 @@
                             
 
             </div>
-            {%endfor%}
+            {% endfor %}
+            
+            
 
-           
-           
+            
+
         </div>
 
         
     </div>
     <!--FIN DE SECCION PRODUCTOS-->
-    
 
-       <!--PIE DE PAGINA-->
-       <footer>
+
+
+
+
+
+        <!--PIE DE PAGINA-->
+        <footer>
 
 
         
-        <div class="container-fluid  ">
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 img_pie2">
-                    <img src="{% static 'nucleo/imagenes/banneruwu.png' %}" alt="banner" style="width: 100%; height: 100%;">
+            <div class="container-fluid  ">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 img_pie2">
+                        <img src="{% static 'nucleo/imagenes/banneruwu.png' %}" alt="banner" style="width: 100%; height: 100%;">
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-12 col-sm-12 col-lg-12 col-12 pie_pagina ">
+    
+    
+                        <p class="letra_pie_pag sec1_pie">
+                            Numero de contacto : <b>+56912345678</b>
+                            <br>
+                            Nuestras redes sociales :
+                            <br>
+                            <a href="#" class="fa fa-facebook"
+                                style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
+                            <a href="#" class="fa fa-instagram"
+                                style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
+                            <a href="#" class="fa fa-youtube"
+                                style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
+                        </p>
+    
+    
+    
+    
+    
+                    </div>
                 </div>
             </div>
-            <div class="row ">
-                <div class="col-md-12 col-sm-12 col-lg-12 col-12 pie_pagina ">
+        </footer>
+    
+        <!--FIN pie de pagina-->
+</body>
 
-
-                    <p class="letra_pie_pag sec1_pie">
-                        Numero de contacto : <b>+56912345678</b>
-                        <br>
-                        Nuestras redes sociales :
-                        <br>
-                        <a href="#" class="fa fa-facebook"
-                            style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
-                        <a href="#" class="fa fa-instagram"
-                            style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
-                        <a href="#" class="fa fa-youtube"
-                            style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
-                    </p>
-
-
-
-
-
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!--FIN pie de pagina-->
 </html>

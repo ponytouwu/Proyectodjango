@@ -66,7 +66,7 @@
 
         body {
             background-image: url("{% static 'nucleo/imagenes/fondoprueba3.png' %}");
-            background-repeat: repeat;
+            background-repeat: no-repeat;
             background-color: rgba(209, 209, 171, 0.473);
         }
 
@@ -74,6 +74,7 @@
             padding: 1%;
             font-weight: 900;
         }
+
     </style>
     <!--FIN Logos redes sociales-->
 
@@ -151,20 +152,20 @@
         </div>
     </nav>
     <!--MENU FIN PRINCIPAL-->
-    <div class="container" style="margin: 1% 0% 1% 1%;">
+    <div class="container" style="margin-top: 1%; margin-left: 10%;">
         <div class="row">
             
             <table border=2>
-                <tr>
+                <tr style="background-color: rgba(128, 120, 120, 0.363);">
                     <td>id_producto</td>
-                    <td>n_producto</td>
+                    <td>nombre del producto</td>
                     <td>stock</td>
                     <td>precio</td>
                     <td>valoracion</td>
                     <td>sku</td>
-                    <td>des_pro</td>
-                    <td>color_pro</td>
-                    <td>foto_pro</td>
+                    <td>descripcion del producto</td>
+                    <td>color del producto</td>
+                    <td>foto del producto</td>
                     <td>categoria</td>
                     <td>marca</td>
                 </tr>
@@ -193,9 +194,12 @@
                     <td>{{ m.marca}}</td>
                     <td><a href="{% url 'eliminar_listado' m.id_producto %}" class="btn btn-danger"> Eliminar producto </a></td>
                     <td><a href="{% url 'listar_tablas' m.id_producto %}" class="btn btn-primary"> Modificar producto </a></td>
+                    
 
                 </tr>
+                
                 {% endfor %}    
+                <a href="{% url 'agregar_p' %}" class="btn btn-primary" style="margin-bottom: 2%; width: 100em;"> Agregar Producto </a>
                 
                 {% if messages %}
                 {% for m in messages%}

@@ -150,7 +150,19 @@
 
                 <div class="row tamaño_div_producto" >
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 descripcion ">
-                        <h4>{{p.n_producto}}</h4>
+                        {% if p.n_producto == "Rascador para Gatos"%}
+                            <a href="{% url 'rascador' %}"><h4>{{p.n_producto}}</h4></a>
+
+                        {% elif p.n_producto == "Camarote para Gatos" %}
+                            <a href="{% url 'camarote' %}"><h4>{{p.n_producto}}</h4></a>
+                            
+                        {% elif p.n_producto == "Baño sanitario para gatos" %}
+                            <a href="{% url 'baño_g' %}"><h4>{{p.n_producto}}</h4></a>
+                        {% elif p.n_producto == "Comida para gatos y perros" %}
+                            <a href="{% url 'comida_g' %}"><h4>{{p.n_producto}}</h4></a>
+                        {% else %}
+                            <a href="{% url 'Verproductop' %}"><h4>{{p.n_producto}}</h4></a>
+                        {% endif %}
                         <h6>Descripcion: </h6>
 
                         <p>{{p.des_pro}}</p>

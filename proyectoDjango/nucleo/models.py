@@ -121,8 +121,7 @@ class Carrito(models.Model):
     total_pre = models.IntegerField(blank=False, verbose_name='total del precio producto')
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE) 
     
-    def __str__(self): 
-        return self.f_comp 
+    
 
 
 class Pro_carrito(models.Model):
@@ -132,5 +131,4 @@ class Pro_carrito(models.Model):
     producto = models.ForeignKey ( Producto , on_delete = models.CASCADE )
     carrito = models.ForeignKey(Carrito , on_delete = models.CASCADE)
 
-    def __str__(self): 
-        return self.canti_pro
+    
