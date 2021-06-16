@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from .models import Carrito, Categoria, Marca, Pro_carrito, Region, Tipo_usuario, Usuario, Contacto,Producto,Venta,Detalle_venta
 from django.contrib import messages
 from django.db.models import Sum
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 
@@ -292,4 +292,11 @@ def login_view(request):
     else:
         messages.error(request,'Usuario o Contraseña erronea')
     return redirect('inicioSesion')
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')
+
+def inicioSesion(request):
+    return render(request,'nucleo/inicioSesion.html')
 
