@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from .models import Carrito, Categoria, Marca, Pro_carrito, Region, Tipo_usuario, Usuario, Contacto,Producto,Venta,Detalle_venta
 from django.contrib import messages
 from django.db.models import Sum
-
+from django.contrib.auth import authenticate, login
 # Create your views here.
 
 
@@ -62,8 +62,7 @@ def Seccionperruna(request):
     return render(request, 'nucleo/Seccionperruna.html', template)
 
 
-def inicioSesion(request):
-    return render(request, 'nucleo/inicioSesion.html')
+
 
 
 def registro(request):
@@ -279,6 +278,18 @@ def carro1(request):
     return redirect('carrito')
 
 
+def login_view(request):
+    usuario = request.POST['username']
+    contra = request.POST['password']
+    user = authenticate(username = usuario, password = contra)
 
-
+    if user is not None:
+        if user.is_active:
+            login(request,user)
+            messages.success(request, 'SE HA INICIADO SESION CORRECTAMENTE')
+        else:
+            messages.error(request,'Usuario desabilitado')
+    else:
+        messages.error(request,'Usuario o Contraseña erronea')
+    return redirect('inicioSesion')
 
