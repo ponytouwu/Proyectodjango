@@ -1,10 +1,12 @@
 from django.db.models.query import InstanceCheckMeta
 from django.http import request
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, resolve_url
 from .models import Carrito, Categoria, Marca, Pro_carrito, Region, Tipo_usuario, Usuario, Contacto,Producto,Venta,Detalle_venta
 from django.contrib import messages
 from django.db.models import Sum
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 # Create your views here.
 
 
@@ -115,6 +117,8 @@ def guardar_usuario(request):
     Usuario.objects.create(nombre_completo=nom_completo,
                            alias=nom_usuario, email_u=correo_usuario, telofono_u=telefono, contraseña_u=con_usuario, run_u=run_usuario,
                            cod_post=codigo_postal, modo_osc=0, tipo_usuario=tipo_us)
+    
+    
     messages.success(request,"usuario guardado")
     return redirect('lista_regiones')
 
@@ -225,6 +229,8 @@ def eliminar_carro(request, id):
     messages.success(request,"Producto eliminado del carrito")
     return redirect('carrito')
 
+
+
 def agregar_p(request):
     categoria = Categoria.objects.all()
     marca = Marca.objects.all()
@@ -249,9 +255,10 @@ def guardar_producto(request):
     mar2 = Marca.objects.get(id_marca=mar)
 
     Producto.objects.create(n_producto=nom_producto, stock=st_pro, precio=pre_pro, valoracion=valo_p,sku=sku_p, des_pro=des_p,color_pro=col_pro, foto_pro=foto_p,categoria = cat2, marca = mar2)
+    
     messages.success(request, "Producto Agregado exitosamente")
     return redirect('listado')
-
+    
 
 
 
@@ -299,4 +306,17 @@ def logout_view(request):
 
 def inicioSesion(request):
     return render(request,'nucleo/inicioSesion.html')
+
+def registro_django(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            messages.success(request, 'Usuario creado')
+            return redirect('home')
+    else:
+        form = UserCreationForm()
+    context = {'form' : form}
+    return render(request , 'nucleo/registro2.html', context)
+
 

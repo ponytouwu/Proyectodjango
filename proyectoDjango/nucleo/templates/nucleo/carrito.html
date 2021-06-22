@@ -146,19 +146,26 @@
         <div class="row">
             <div class="col-12">
                 <form action="" method="POST" name="formulario_carrito" id="formulario_carrito0">
+                    {% csrf_token %}
                     <h1 class="titulo_secciones">Carrito</h1>
                     <table border = "2" style="margin:  4em auto; width: 100em; height: 20em;">
                         {% for x in carro %}
                         <tr style="background: rgb(212, 204, 204);">
-                            <td style="text-align: center;"><img src="{{ x.producto.foto_pro.url }}" alt="imagen_carrito" style="width: 10em; height: 10em;"></td>
-                            <td style="padding: 2%; font-weight: 900; text-align: center;">Cantidad de producto : {{ x.canti_pro}}</td>
-                            <td style="padding: 2%; font-weight: 900; text-align: center;"> Sub total : {{x.sub_total}} <a href="{% url 'eliminar_carro' x.id_pro_carr %}" class="btn btn-danger">Eliminar</a> <a href="" class="btn btn-primary">Modificar</a></td> 
                             
+                                
+                                
+                                <td style="text-align: center;"><img src="{{ x.producto.foto_pro.url }}" alt="imagen_carrito" style="width: 10em; height: 10em;"></td>
+                                <td><label for="cantidad_p">Cantidad de producto :</label><input type="number" value="{{ x.canti_pro}}" id ="cantidad_p" name="cantidad_p"></td>
+                                <td style="padding: 2%; font-weight: 900; text-align: center;"> Sub total : {{x.sub_total}} <a href="{% url 'eliminar_carro' x.id_pro_carr %}" class="btn btn-danger">Eliminar</a> 
+                                  
+                                       
+                           
                         </tr>
                         {% endfor %}
+                        <p style="font-size: xx-large; text-align: center;"> Total: $ {{total.sum1}}  <button type="submit" class="btn btn-warning">PAGAR</button></p>
                     </table>
     
-                    <p style="font-size: xx-large; text-align: center;"> Total: $ {{total.sum1}}  <button type="submit" class="btn btn-warning">PAGAR</button></p>
+                    
                    
                 </form>
                
