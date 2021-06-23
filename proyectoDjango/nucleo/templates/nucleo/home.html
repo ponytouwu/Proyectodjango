@@ -149,7 +149,8 @@
 
             <a href="{% url 'lista_regiones' %}" style="color: rgb(0, 0, 0);">Registrarte</a>
             {% if user.is_authenticated %}
-            <p>Bienvenido {{user.usuario.modo_osc}}</p>
+            <!--{{user.usuario.modo_osc}}-->
+            <p>Bienvenido {{user.username}}</p>
             <a href="{% url 'CerrarSesion' %}" style="color: rgb(0, 0, 0);"> Cerrar Sesion </a>
             {% else %}
             <a href="{% url 'inicioSesion' %}" style="color: rgb(0, 0, 0);"> Iniciar Sesion </a>

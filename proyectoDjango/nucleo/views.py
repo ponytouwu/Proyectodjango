@@ -236,13 +236,23 @@ def eliminar_carro(request, id):
     messages.success(request,"Producto eliminado del carrito")
     return redirect('carrito')
 
+#Duda profe.
+def mod_cantidad(request, id):
+    p = Pro_carrito.objects.get(id_pro_carr = id)
+    #canti = request.POST['cantidad_p']
+    canti = request.POST.get('cantidad_p')
+    print(canti)
+    p.canti_pro = canti
+    p.save()
+
+    return redirect('carrito')
 
 def mod_cantidad2(request):
     p = Pro_carrito.objects.get(id_pro_carr = request.POST['codigo'])
     canti = request.POST['cantidad_p']
     subt = int(p.producto.precio) * int(canti)
     #canti = request.POST.get('cantidad_p')
-    #print(canti)
+   #print(canti)
     p.canti_pro = canti
     p.sub_total = subt
     p.save()
