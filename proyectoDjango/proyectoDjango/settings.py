@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'nucleo',
     'rest_framework',
     'rest_perrigatos',
+      
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+   
 ]
 
 ROOT_URLCONF = 'proyectoDjango.urls'

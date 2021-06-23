@@ -118,7 +118,13 @@ def guardar_usuario(request):
                            alias=nom_usuario, email_u=correo_usuario, telofono_u=telefono, contraseña_u=con_usuario, run_u=run_usuario,
                            cod_post=codigo_postal, modo_osc=0, tipo_usuario=tipo_us)
     
-    
+    user = User.objects.create_user(nom_usuario, correo_usuario, con_usuario)
+    user.first_name = nom_completo
+    user.last_name = nom_completo
+    user.is_staff = 1
+    user.TIPO_US = 1
+    user.modo_osc = 0
+    user.save()
     messages.success(request,"usuario guardado")
     return redirect('lista_regiones')
 
@@ -229,6 +235,15 @@ def eliminar_carro(request, id):
     messages.success(request,"Producto eliminado del carrito")
     return redirect('carrito')
 
+#Duda profe.
+def mod_cantidad(request, id):
+    p = Pro_carrito.objects.get(id_pro_carr = id)
+    canti = request.POST['cantidad_p']
+    #canti = request.POST.get('{{cantidad_p}}')
+    p.canti_pro = canti
+    p.save()
+
+    return redirect('carrito')
 
 
 def agregar_p(request):

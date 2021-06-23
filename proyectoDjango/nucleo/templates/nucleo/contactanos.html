@@ -240,12 +240,14 @@
             </ul>
         </div>
         <div class="search-container">
-            <a href="{% url 'inicioSesion' %}" style="color: rgb(0, 0, 0);">Iniciar Sesion </a>
+
             <a href="{% url 'lista_regiones' %}" style="color: rgb(0, 0, 0);">Registrarte</a>
-            <form action="/action_page.php">
-                <input type="text" placeholder="Buscar" name="search">
-                <button class="btn btn-danger" type="submit">Buscar</button>
-            </form>
+            {% if user.is_authenticated %}
+            <p>Bienvenido {{user.username}}</p>
+            <a href="{% url 'CerrarSesion' %}" style="color: rgb(0, 0, 0);"> Cerrar Sesion </a>
+            {% else %}
+            <a href="{% url 'inicioSesion' %}" style="color: rgb(0, 0, 0);"> Iniciar Sesion </a>
+            {% endif %}
         </div>
     </nav>
     <!--MENU FIN PRINCIPAL-->

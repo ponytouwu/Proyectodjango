@@ -134,10 +134,16 @@
             </ul>
         </div>
         <div class="search-container">
-            <a href="{% url 'inicioSesion' %}" style="color: rgb(0, 0, 0);">Iniciar Sesion </a>
+
             <a href="{% url 'lista_regiones' %}" style="color: rgb(0, 0, 0);">Registrarte</a>
-           
+            {% if user.is_authenticated %}
+            <p>Bienvenido {{user.username}}</p>
+            <a href="{% url 'CerrarSesion' %}" style="color: rgb(0, 0, 0);"> Cerrar Sesion </a>
+            {% else %}
+            <a href="{% url 'inicioSesion' %}" style="color: rgb(0, 0, 0);"> Iniciar Sesion </a>
+            {% endif %}
         </div>
+
     </nav>
     <!--MENU FIN PRINCIPAL-->
 
@@ -157,6 +163,7 @@
                                 <td style="text-align: center;"><img src="{{ x.producto.foto_pro.url }}" alt="imagen_carrito" style="width: 10em; height: 10em;"></td>
                                 <td><label for="cantidad_p">Cantidad de producto :</label><input type="number" value="{{ x.canti_pro}}" id ="cantidad_p" name="cantidad_p"></td>
                                 <td style="padding: 2%; font-weight: 900; text-align: center;"> Sub total : {{x.sub_total}} <a href="{% url 'eliminar_carro' x.id_pro_carr %}" class="btn btn-danger">Eliminar</a> 
+                                   <a href="{% url 'mod_cantidad' x.id_pro_carr %}" class="btn btn-primary">Modificar</a> </td> 
                                   
                                        
                            

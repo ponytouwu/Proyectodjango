@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,14 +16,15 @@
     <title>Inicio</title>
     <!--Para quitar la barra de arriba del traductor-->
     <style type="text/css">
-    body{
-        top: 0 !important;
-    }
-    .goog-te-banner-frame{
-        display: none ;
-    }
+        body {
+            top: 0 !important;
+        }
+
+        .goog-te-banner-frame {
+            display: none;
+        }
     </style>
-    
+
     <!--
             padding:  tamaño del ciculito del logo , que tan ancho lo quieres.
             font-size: Tamaño de los logos
@@ -66,7 +68,7 @@
             background-color: rgba(209, 209, 171, 0.473);
         }
     </style>
-    
+
     <!--FIN Logos redes sociales-->
 
 
@@ -79,26 +81,26 @@
         }
     </style>
     <!--Banner responsivo-->
-    
+
     <!--Modo oscuro-->
-    <script type="text/javascript"> 
-    function cambiarModo() { 
-      var cuerpoweb = document.body; 
-      cuerpoweb.classList.toggle("oscuro"); 
-    }
-    
-    
-  </script>
+    <script type="text/javascript">
+        function cambiarModo() {
+            var cuerpoweb = document.body;
+            cuerpoweb.classList.toggle("oscuro");
+        }
+
+
+    </script>
 </head>
 
 <body>
-        <script type="text/javascript"> 
-        
-        function googleTranslateElementInit(){
-            new google.translate.TranslateElement({pageLenguage: 'es',layout: google.translate.TranslateElement.InlineLayout.SIMPLE},
-            'google_translate_element');
+    <script type="text/javascript">
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLenguage: 'es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE },
+                'google_translate_element');
         }
-        </script>
+    </script>
     <!--MENU PRINCIPAL-->
     <nav class="navbar navbar-expand-md bg-danger navbar-dark color_navbar">
         <a class="navbar-brand colorletranav perrigatos"><img class="imagen_navbar"
@@ -127,13 +129,16 @@
                     <a class="nav-link colorletranav cambiocolor" href="{% url 'carrito' %}">Carrito</a>
                 </li>
                 <li class="nav-item" style="padding-top: 10px;">
-                    <a class="nav-link colorletranav cambiocolor"><div id="google_translate_element"></div></a>
+                    <a class="nav-link colorletranav cambiocolor">
+                        <div id="google_translate_element"></div>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <img src="{% static 'nucleo/imagenes/moon_icon_159962.png' %}" alt="icono luna"  class="icono_luna" onclick="cambiarModo()" style="margin-left: 10%;">
+                    <img src="{% static 'nucleo/imagenes/moon_icon_159962.png' %}" alt="icono luna" class="icono_luna"
+                        onclick="cambiarModo()" style="margin-left: 10%;">
                 </li>
-                
-                
+
+
 
 
 
@@ -141,8 +146,8 @@
             </ul>
         </div>
         <div class="search-container">
-           
-           <a href="{% url 'lista_regiones' %}" style="color: rgb(0, 0, 0);">Registrarte</a>
+
+            <a href="{% url 'lista_regiones' %}" style="color: rgb(0, 0, 0);">Registrarte</a>
             {% if user.is_authenticated %}
             <p>Bienvenido {{user.username}}</p>
             <a href="{% url 'CerrarSesion' %}" style="color: rgb(0, 0, 0);"> Cerrar Sesion </a>
@@ -150,6 +155,8 @@
             <a href="{% url 'inicioSesion' %}" style="color: rgb(0, 0, 0);"> Iniciar Sesion </a>
             {% endif %}
         </div>
+
+
     </nav>
     <!--MENU FIN PRINCIPAL-->
 
@@ -199,8 +206,9 @@
 
             <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-6 ">
                 <div class="estilo_oferta">
-                     <img class="img_oferta1" src="{{ofertas_perro.foto_pro.url}}" alt="Oferta1">
-                    <h6 class="texto_of1" style="margin-top: 60px;">{{ofertas_perro.n_producto}}<b> ANTES: $19.999</b> ahora a
+                    <img class="img_oferta1" src="{{ofertas_perro.foto_pro.url}}" alt="Oferta1">
+                    <h6 class="texto_of1" style="margin-top: 60px;">{{ofertas_perro.n_producto}}<b> ANTES: $19.999</b>
+                        ahora a
                         tan solo <b>${{ofertas_perro.precio}}</b> </h6>
 
                 </div>
@@ -245,11 +253,13 @@
 
         </div>
         <div class="row" style="padding: 3%;">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 " style="border: 2px solid rgb(241, 142, 12); margin-top: 60px; border-radius: 10PX;">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 "
+                style="border: 2px solid rgb(241, 142, 12); margin-top: 60px; border-radius: 10PX;">
 
                 <h4 class="centrado titulo_cliente_sat" style="margin-top: 5px;">Clientes satisfechos</h4>
                 <p class="clientes_sat">
-                    <b style="color: #800980;">Carla Diaz: </b> Los tiempos de entrega son estupendos, y sus precios que decir , lo mejor
+                    <b style="color: #800980;">Carla Diaz: </b> Los tiempos de entrega son estupendos, y sus precios que
+                    decir , lo mejor
                     super recomendada.
                     <br>
                     <b style="color: #800980;">Jorge Mora: </b> Buenardo uwu.
@@ -288,7 +298,8 @@
         <div class="container-fluid  ">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 img_pie2">
-                    <img src="{% static 'nucleo/imagenes/banneruwu.png' %}" alt="banner" style="width: 100%; height: 100%;">
+                    <img src="{% static 'nucleo/imagenes/banneruwu.png' %}" alt="banner"
+                        style="width: 100%; height: 100%;">
                 </div>
             </div>
             <div class="row ">
@@ -307,7 +318,13 @@
                         <a href="#" class="fa fa-youtube"
                             style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
                     </p>
-                    <a href="{% url 'listado'%}" class="btn btn-danger" style="margin-bottom: 1%;">Ver listado productos</a>
+                    {% if user.is_superuser == 1 %}
+                    <a href="{% url 'listado'%}" class="btn btn-danger" style="margin-bottom: 1%;">Ver listado
+                        productos</a>
+                    {% else %}
+                    
+                    {% endif %}
+                   
 
 
 
@@ -318,11 +335,11 @@
             </div>
         </div>
     </footer>
-    
+
     <!--FIN pie de pagina-->
 
     <script type="text/javascript"
-        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" ></script>
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 
