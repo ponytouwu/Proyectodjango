@@ -102,6 +102,7 @@ def lista_regiones(request):
 
 # el request es donde se guardan los datos de los formularios.
 def guardar_usuario(request):
+    
     nom_usuario = request.GET['usuario']
     con_usuario = request.GET['contraseña']
     nom_completo = request.GET['nombre']
@@ -113,18 +114,18 @@ def guardar_usuario(request):
     telefono = request.GET['telefono']
     run_usuario = request.GET['rut']
     tipo_us = Tipo_usuario.objects.get(id_usu_tip=2)
-
+    
+    user1 = User.objects.create_user(username = nom_usuario, email = correo_usuario, password = con_usuario)
+    user1.first_name = nom_completo
+    user1.last_name = nom_completo
+    user1.is_staff = 1
+    
+    user1.save()
     Usuario.objects.create(nombre_completo=nom_completo,
                            alias=nom_usuario, email_u=correo_usuario, telofono_u=telefono, contraseña_u=con_usuario, run_u=run_usuario,
-                           cod_post=codigo_postal, modo_osc=0, tipo_usuario=tipo_us)
+                           cod_post=codigo_postal, modo_osc=0, tipo_usuario=tipo_us, user = user1)
     
-    user = User.objects.create_user(nom_usuario, correo_usuario, con_usuario)
-    user.first_name = nom_completo
-    user.last_name = nom_completo
-    user.is_staff = 1
-    user.TIPO_US = 1
-    user.modo_osc = 0
-    user.save()
+    
     messages.success(request,"usuario guardado")
     return redirect('lista_regiones')
 
@@ -235,12 +236,15 @@ def eliminar_carro(request, id):
     messages.success(request,"Producto eliminado del carrito")
     return redirect('carrito')
 
-#Duda profe.
-def mod_cantidad(request, id):
-    p = Pro_carrito.objects.get(id_pro_carr = id)
+
+def mod_cantidad2(request):
+    p = Pro_carrito.objects.get(id_pro_carr = request.POST['codigo'])
     canti = request.POST['cantidad_p']
-    #canti = request.POST.get('{{cantidad_p}}')
+    subt = int(p.producto.precio) * int(canti)
+    #canti = request.POST.get('cantidad_p')
+    #print(canti)
     p.canti_pro = canti
+    p.sub_total = subt
     p.save()
 
     return redirect('carrito')

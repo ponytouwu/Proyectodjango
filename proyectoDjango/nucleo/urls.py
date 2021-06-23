@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import LoginView, LogoutView
-from .views import home, inicioSesion, seccionotros , contactanos, secciongatuna, Seccionperruna, registro, carrito, cambiocontra, recuperacion,lista_regiones,guardar_usuario,guardar_comentario, listado,eliminar_listado,listar_tablas,modificar_pro,agregar_carr,eliminar_carro,guardar_producto,agregar_p,mostrar_p,carro1,login_view,logout_view,registro_django,mod_cantidad
+from .views import home, inicioSesion, seccionotros , contactanos, mod_cantidad2,secciongatuna, Seccionperruna, registro, carrito, cambiocontra, recuperacion,lista_regiones,guardar_usuario,guardar_comentario, listado,eliminar_listado,listar_tablas,modificar_pro,agregar_carr,eliminar_carro,guardar_producto,agregar_p,mostrar_p,carro1,login_view,logout_view,registro_django
 urlpatterns = [
     path('', home, name="home"),
     path('mostrar_p/<int:id>', mostrar_p, name="mostrar_p"),
@@ -37,7 +37,9 @@ urlpatterns = [
     path('carro1',carro1,name="carro1"),
     path('registro2/',registro_django, name ="registro2" ),
     
-    path('mod_cantidad/<int:id>',mod_cantidad, name ="mod_cantidad" ),
+    
+
+    path('mod_cantidad2',mod_cantidad2, name ="mod_cantidad2" ),
     
     
     

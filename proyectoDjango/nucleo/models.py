@@ -1,7 +1,7 @@
 from typing import Tuple
 from django.db import models
 from django.db.models.expressions import F
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -76,7 +76,7 @@ class Usuario(models.Model):
     cod_post = models.IntegerField(blank=False, verbose_name='codigo postal del usuario')
     modo_osc = models.IntegerField(blank=True, verbose_name='modo oscuro/modo normal')
     tipo_usuario = models.ForeignKey(Tipo_usuario, on_delete=models.CASCADE)
-    
+    user =  models.OneToOneField(User, on_delete=models.CASCADE, null = True)
     def __str__(self): 
         return self.alias 
 
@@ -143,4 +143,3 @@ class Detalle_venta(models.Model):
     cantidad_sub = models.IntegerField(blank=False , verbose_name='cantidad subtotal')
     venta = models.ForeignKey(Venta, on_delete = models.CASCADE)
     producto = models.ForeignKey(Producto, on_delete= models.CASCADE)
-

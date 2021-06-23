@@ -221,7 +221,12 @@
                             style="padding-right: 30px;padding-top: 11px; padding-bottom: 11px;"></a>
                     </p>
 
-
+                    {% if user.is_superuser == 1 %}
+                    <a href="{% url 'listado'%}" class="btn btn-danger" style="margin-bottom: 1%;">Ver listado
+                        productos</a>
+                    {% else %}
+                    
+                    {% endif %}
 
 
 
