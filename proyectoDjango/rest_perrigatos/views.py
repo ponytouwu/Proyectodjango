@@ -14,8 +14,8 @@ from rest_framework.utils import serializer_helpers
 
 @csrf_exempt
 @api_view(['GET', 'POST'])
-#metodo que vimos con el profe para modificar y enviar a traves de la aplicacion, instalar extension advanced REST client
-#luego copiar url numeros/api/lista_producto ver si anda y luego copiar la url en el advance
+# metodo que vimos con el profe para modificar y enviar a traves de la aplicacion, instalar extension advanced REST client
+# luego copiar url numeros/api/lista_producto ver si anda y luego copiar la url en el advance
 def lista_producto(request):
 
     if request.method == 'GET':
@@ -41,3 +41,43 @@ def lista_producto(request):
         else:
 
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def manipular_producto(request, id):
+
+    try:
+
+        p = Producto.objects.get(id_producto=id)
+
+    except Producto.DoesNotExist:
+
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+
+        serializer = ProductoSerializador(p)
+
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+
+        data2 = JSONParser().parse(request)
+
+        serializer = ProductoSerializador(p, data=data2)
+
+        if serializer.is_valid():
+
+            serializer.save()
+
+            return Response(serializer.data)
+
+        else:
+
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+
+        p.delete()
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
