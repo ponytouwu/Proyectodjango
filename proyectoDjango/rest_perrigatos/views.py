@@ -1,6 +1,3 @@
-
-from rest_perrigatos.serializers import ProductoSerializador
-from nucleo.models import Producto
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -8,6 +5,9 @@ from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.utils import serializer_helpers
+from nucleo.models import Producto
+from rest_perrigatos.serializers import ProductoSerializador
+
 
 # Create your views here.
 
@@ -16,7 +16,7 @@ from rest_framework.utils import serializer_helpers
 @api_view(['GET', 'POST'])
 # metodo que vimos con el profe para modificar y enviar a traves de la aplicacion, instalar extension advanced REST client
 # luego copiar url numeros/api/lista_producto ver si anda y luego copiar la url en el advance
-def lista_producto(request):
+def lista_producto1(request):
 
     if request.method == 'GET':
 
@@ -44,7 +44,7 @@ def lista_producto(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def manipular_producto(request, id):
+def manipular_producto1(request, id):
 
     try:
 

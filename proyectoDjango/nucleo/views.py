@@ -1,6 +1,4 @@
-from django.db.models.query import InstanceCheckMeta
-from django.http import request
-from django.shortcuts import redirect, render, resolve_url
+from django.shortcuts import redirect, render
 from .models import Carrito, Categoria, Marca, Pro_carrito, Region, Tipo_usuario, Usuario, Contacto,Producto,Venta,Detalle_venta
 from django.contrib import messages
 from django.db.models import Sum
@@ -15,14 +13,14 @@ def home(request):
     ofertas_perro = Producto.objects.get(n_producto = "Cama para tu mascota")
     ofertas_gato = Producto.objects.get(n_producto = "Comida para gatos y perros")
     ofertas_hueso = Producto.objects.get(n_producto = "Huesitos 4 por paquete")
-    template = {
+    template1 = {
         'ofertas_loro' : ofertas_loro,
         'ofertas_perro' : ofertas_perro,
         'gatito_minino' : ofertas_gato,
         'paquete_huesos' : ofertas_hueso
 
     }
-    return render(request, 'nucleo/home.html',template)
+    return render(request,'nucleo/home.html',template1)
 
 
 def Verproductop(request):

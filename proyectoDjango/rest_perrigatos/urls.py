@@ -1,11 +1,12 @@
-from rest_perrigatos.views import lista_producto,manipular_producto
-from django.urls import path, include
+from django.urls import path
+from .views import lista_producto1,manipular_producto1
+
 
 
 
 urlpatterns = [
-    path('lista_producto',lista_producto, 'lista_producto'),
-    path('datos_producto/<id>',manipular_producto,name="manipular_producto"),
+    path('nueva_lista_producto',lista_producto1, name='nueva_lista_producto'),
+    path('nuevos_datos_producto/<id>',manipular_producto1,name="manipular_producto"),
 
 
 
