@@ -1,3 +1,4 @@
+from django.http import request
 from django.shortcuts import redirect, render
 from .models import Carrito, Categoria, Marca, Pro_carrito, Region, Tipo_usuario, Usuario, Contacto,Producto,Venta,Detalle_venta
 from django.contrib import messages
@@ -13,6 +14,7 @@ def home(request):
     ofertas_perro = Producto.objects.get(n_producto = "Cama para tu mascota")
     ofertas_gato = Producto.objects.get(n_producto = "Comida para gatos y perros")
     ofertas_hueso = Producto.objects.get(n_producto = "Huesitos 4 por paquete")
+    
     template1 = {
         'ofertas_loro' : ofertas_loro,
         'ofertas_perro' : ofertas_perro,
@@ -127,6 +129,72 @@ def guardar_usuario(request):
     messages.success(request,"usuario guardado")
     return redirect('lista_regiones')
 
+
+
+def listar_us(request):
+    usuario = Usuario.objects.all()
+    user_dj = User.objects.all()
+    regiones = Region.objects.all()
+    contexto = {
+        'usuario' : usuario,
+        'user_dj' : user_dj,
+        "regiones": regiones
+    }
+    return render(request,'nucleo/listado_us.html',contexto)
+
+
+def mod_usuario(request, id):
+    usuario1 = Usuario.objects.get(id_usuario = id)
+    
+    tipo_us = Tipo_usuario.objects.all()
+    contexto = {
+        'usuario1' : usuario1,
+        'tipo_us' : tipo_us
+    }
+    return render(request, 'nucleo/modificar_us.html',contexto)
+
+
+def modificar_us(request):
+    id_us = request.GET['id']
+    no_us = request.GET['usuario_mod']
+    contr = request.GET['contraseña_mod']
+    nom_c = request.GET['nombre_mod']
+    rut_m = request.GET['rut_mod']
+    corr_m = request.GET['correo_mod']
+    pos_mod = request.GET['postal_mod']
+    tel_mod = request.GET['telefono_mod']
+    tipo_us = request.GET['tipo_usuario']
+    tipo_us2 = Tipo_usuario.objects.get(id_usu_tip = tipo_us )
+
+    usuario_m = Usuario.objects.get(id_usuario = id_us)
+    usuario_m.nombre_completo = nom_c
+    usuario_m.alias = no_us
+    usuario_m.email_u = corr_m
+    usuario_m.telofono_u = tel_mod
+    usuario_m.contraseña_u = contr
+    usuario_m.run_u = rut_m
+    usuario_m.cod_post = pos_mod
+   
+    usuario_m.tipo_usuario = tipo_us2
+    usuario_m.save()
+
+    usr_user = User.objects.get(username = no_us)
+    usr_user.first_name = nom_c
+    usr_user.save()
+
+    messages.success(request, 'El usuario a sido modificado')
+    return redirect('listar_us')
+
+def eliminar_us(request, id):
+    user = ''
+    us = Usuario.objects.get(id_usuario = id)
+    us.alias = user
+    print(user)
+    us1 = User.objects.get(id = id)
+    us1.delete()
+    us.delete()
+    return redirect('listado_us')
+    
 #como hay id iguales probar si no hace problemas con las del html registro
 def guardar_comentario(request):  # guardado de comentario
     nombre_c = request.GET['nombre']

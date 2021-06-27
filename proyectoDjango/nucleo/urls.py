@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
-from .views import home, inicioSesion, seccionotros , contactanos, mod_cantidad2,secciongatuna, Seccionperruna, registro, carrito, cambiocontra, recuperacion,lista_regiones,guardar_usuario,guardar_comentario, listado,eliminar_listado,listar_tablas,modificar_pro,agregar_carr,eliminar_carro,guardar_producto,agregar_p,mostrar_p,carro1,login_view,logout_view,registro_django,mod_cantidad
+from .views import home, inicioSesion,mod_usuario, eliminar_us,listar_us, modificar_us,seccionotros , contactanos, mod_cantidad2,secciongatuna, Seccionperruna, registro, carrito, cambiocontra, recuperacion,lista_regiones,guardar_usuario,guardar_comentario, listado,eliminar_listado,listar_tablas,modificar_pro,agregar_carr,eliminar_carro,guardar_producto,agregar_p,mostrar_p,carro1,login_view,logout_view,registro_django,mod_cantidad
 urlpatterns = [
     path('', home, name="home"),
     path('mostrar_p/<int:id>', mostrar_p, name="mostrar_p"),
@@ -41,7 +41,9 @@ urlpatterns = [
     path('mod_cantidad/<int:id>',mod_cantidad, name ="mod_cantidad" ),
 
     path('mod_cantidad2',mod_cantidad2, name ="mod_cantidad2" ),
-    
-    
+    path('mod_usuario/<int:id>',mod_usuario, name ="mod_usuario" ),
+    path('listar_us',listar_us, name ="listar_us" ),
+    path('modificar_us',modificar_us, name ="modificar_us" ),
+    path('eliminar_us/<int:id>',eliminar_us, name ="eliminar_us" ),
     
 ]

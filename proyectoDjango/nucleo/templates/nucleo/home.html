@@ -152,6 +152,7 @@
             <!--{{user.usuario.modo_osc}}-->
             <p>Bienvenido {{user.username}}</p>
             <a href="{% url 'CerrarSesion' %}" style="color: rgb(0, 0, 0);"> Cerrar Sesion </a>
+                        
             {% else %}
             <a href="{% url 'inicioSesion' %}" style="color: rgb(0, 0, 0);"> Iniciar Sesion </a>
             {% endif %}
@@ -322,6 +323,8 @@
                     {% if user.is_superuser == 1 %}
                     <a href="{% url 'listado'%}" class="btn btn-danger" style="margin-bottom: 1%;">Ver listado
                         productos</a>
+                        <a href="{% url 'listar_us' %}" class="btn btn-danger" style="margin-bottom: 1%;">Ver listado
+                            usuarios</a>
                     {% else %}
                     
                     {% endif %}
