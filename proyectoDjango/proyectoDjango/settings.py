@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'nucleo',
     'rest_framework',
     'rest_perrigatos',
+    'rest_framework.authtoken',
       
 ]
 
@@ -72,6 +73,16 @@ TEMPLATES = [
         },
     },
 ]
+REST_FRAMEWORK = {
+
+  'DEFAULT_AUTHENTICATION_CLASSES':[
+
+    'rest_framework.authentication.TokenAuthentication',
+
+  ]
+
+
+}
 
 WSGI_APPLICATION = 'proyectoDjango.wsgi.application'
 
