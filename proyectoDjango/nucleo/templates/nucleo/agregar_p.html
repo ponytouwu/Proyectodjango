@@ -16,35 +16,42 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Guardar producto </title>
 
-    <!-- <script type="text/javascript">
+     <script type="text/javascript">
         $(document).ready(function () {
             $("#mensaje_error").hide(); //Estoy ocultando el div
-            $("#formulario_modi").submit(function () {
+            $("#agregar_producto").submit(function () {
                 var mensaje = "Debes Solucionar los errores para poder Modificar";
 
-                if ($("#nombre").val().trim().length == 0) {
+                if ($("#nom_pro").val().trim().length == 0) {
                     mensaje = mensaje + "<br>El campo Nombre no puede estar vacio";
                 }
 
-                if ($("#stock").val().trim().length == 0) {
+                if ($("#pro_st").val().trim().length == 0) {
                     mensaje = mensaje + "<br>El campo stock no puede estar vacio";
                 }
 
-                if ($("#precio").val().trim().length == 0) {
+                if ($("#precio_pro").val().trim().length == 0) {
                     mensaje = mensaje + "<br>El campo precio no puede estar vacio";
                 }
-                if ($("#valoracion").val().trim().length == 0) {
+                if ($("#valoracion_pro").val().trim().length == 0) {
                     mensaje = mensaje + "<br>El campo valoracion no puede estar vacio";
                 }
-                if ($("#sku").val().trim().length == 0) {
+                if ($("#sku_pro").val().trim().length == 0) {
                     mensaje = mensaje + "<br>El campo sku no puede estar vacio";
                 }
+                if($("#sku_pro").val().trim().length < 10){
+                    mensaje = mensaje + "<br>El campo sku debe tener al menos 10 caracteres";
+                }
 
-                if ($("#des_pro").val().trim().length == 0) {
+                if($("#sku_pro").val().trim().length > 10){
+                    mensaje = mensaje + "<br>El campo sku no puede tener mas de 10 digitos";
+                }
+
+                if ($("#des_prod").val().trim().length == 0) {
                     mensaje = mensaje + "<br>El campo Descripcion del producto no puede estar vacio";
                 }
 
-                if ($("#color_pro").val().trim().length == 0) {
+                if ($("#color_prod").val().trim().length == 0) {
                     mensaje = mensaje + "<br>El campo Color no puede estar vacio";
                 }
 
@@ -57,7 +64,7 @@
             });
         });
 
-    </script> -->
+    </script> 
 </head>
 
 <body>
@@ -75,7 +82,7 @@
         {% endfor %}
         {% endif %}
         <form action="{% url 'guardar_producto' %}" method="POST" enctype="multipart/form-data" name="agregar_producto"
-            id="agregar_producto">
+            id="agregar_producto" class = "formulario_reg">
             {% csrf_token %}
 
 

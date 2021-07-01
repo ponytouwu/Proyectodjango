@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
-from .views import home, inicioSesion,mod_usuario, eliminar_us,listar_us, modificar_us,seccionotros , contactanos, mod_cantidad2,secciongatuna, Seccionperruna, registro, carrito, cambiocontra, recuperacion,lista_regiones,guardar_usuario,guardar_comentario, listado,eliminar_listado,listar_tablas,modificar_pro,agregar_carr,eliminar_carro,guardar_producto,agregar_p,mostrar_p,carro1,login_view,logout_view,registro_django,mod_cantidad
+from .views import home, inicioSesion,mod_usuario,mod_us_p,actualziar_us, eliminar_us,listar_us, modificar_us,seccionotros , contactanos, mod_cantidad2,secciongatuna, Seccionperruna, registro, carrito, cambiocontra, recuperacion,lista_regiones,guardar_usuario,guardar_comentario, listado,eliminar_listado,listar_tablas,modificar_pro,eliminar_carro,guardar_producto,agregar_p,mostrar_p,carro1,login_view,logout_view,registro_django,mod_cantidad
 urlpatterns = [
     path('', home, name="home"),
     path('mostrar_p/<int:id>', mostrar_p, name="mostrar_p"),
@@ -17,7 +17,7 @@ urlpatterns = [
     path('inicioSesion',inicioSesion,name='inicioSesion'),
     path('CerrarSesion/',logout_view, name='CerrarSesion'),
     path('registro', registro, name="registro"),
-    path('carrito',login_required(carrito),name="carrito"),
+    path('carrito/<int:id>',login_required(carrito),name="carrito"),
     path('cambiocontra',cambiocontra,name="cambiocontra"),
     path('recuperacion',recuperacion,name='recuperacion'),
     path('lista_regiones',lista_regiones,name="lista_regiones"),
@@ -29,7 +29,7 @@ urlpatterns = [
     path('listar_tablas/<int:id>',listar_tablas,name="listar_tablas"),
     path('modificar_pro',modificar_pro,name="modificar_pro"),
     
-    path('agregar_carr',agregar_carr,name="agregar_carr"),
+    
     path('eliminar_carro/<int:id>',eliminar_carro,name="eliminar_carro"),
     
     path('guardar_producto',guardar_producto,name="guardar_producto"),
@@ -46,4 +46,6 @@ urlpatterns = [
     path('modificar_us',modificar_us, name ="modificar_us" ),
     path('eliminar_us/<int:id>',eliminar_us, name ="eliminar_us" ),
     
+    path('actualziar_us',actualziar_us, name ="actualziar_us" ),
+    path('mod_us_p',mod_us_p, name ="mod_us_p" ),
 ]

@@ -14,52 +14,70 @@ def home(request):
     ofertas_perro = Producto.objects.get(n_producto = "Cama para tu mascota")
     ofertas_gato = Producto.objects.get(n_producto = "Comida para gatos y perros")
     ofertas_hueso = Producto.objects.get(n_producto = "Huesitos 4 por paquete")
+    carrito = Carrito.objects.all()
+    usuarios = Usuario.objects.all()
+
     
     template1 = {
         'ofertas_loro' : ofertas_loro,
         'ofertas_perro' : ofertas_perro,
         'gatito_minino' : ofertas_gato,
-        'paquete_huesos' : ofertas_hueso
+        'paquete_huesos' : ofertas_hueso,
+        'usuario' : usuarios,
+        'carrito' : carrito
 
     }
     return render(request,'nucleo/home.html',template1)
 
 
-def Verproductop(request):
-    verproducto = Producto.objects.get(n_producto = "cepillo para perros peludos")
-    carrito = Carrito.objects.get(id_carrito = 4)
-    template = {
-        'verproducto' : verproducto,
-        'carrito' : carrito
-    }
-    return render(request, 'nucleo/Verproductop.html',template )
+
 
 
 def seccionotros(request):
     productos = Producto.objects.filter(categoria = 3)
+    carrito = Carrito.objects.all()
+    usuarios = Usuario.objects.all()
     data = {
-        'productos' : productos
+        'productos' : productos,
+        'usuario' : usuarios,
+        'carrito' : carrito
         
     }
     return render(request, 'nucleo/seccionotros.html',data)
 
 
 def contactanos(request):
-    return render(request, 'nucleo/contactanos.html')
+    carrito = Carrito.objects.all()
+    usuarios = Usuario.objects.all()
+    data = {
+        
+        'usuario' : usuarios,
+        'carrito' : carrito
+        
+    }
+    return render(request, 'nucleo/contactanos.html',data)
 
 
 def secciongatuna(request):
     productos = Producto.objects.filter(categoria = 2)
+    carrito = Carrito.objects.all()
+    usuarios = Usuario.objects.all()
     template = {
-        'productos' : productos
+        'productos' : productos,
+        'usuario' : usuarios,
+        'carrito' : carrito
     }
     return render(request, 'nucleo/secciongatuna.html', template)
 
 
 def Seccionperruna(request):
     productos = Producto.objects.filter(categoria = 1)
+    carrito = Carrito.objects.all()
+    usuarios = Usuario.objects.all()
     template = { #varaible de contexto
-        'productos' : productos # Almacenamos en una "vartiable llamada productos (la que va en '') le asignamos el valor del productos (linea 38) "
+        'productos' : productos ,# Almacenamos en una "vartiable llamada productos (la que va en '') le asignamos el valor del productos (linea 38) "
+        'usuario' : usuarios,
+        'carrito' : carrito
     }
     return render(request, 'nucleo/Seccionperruna.html', template)
 
@@ -70,18 +88,62 @@ def Seccionperruna(request):
 def registro(request):
     return render(request, 'nucleo/registro.html')
 
+def mostrar_p(request, id):
+    producto = Producto.objects.get(id_producto = id)
+    carrito = Carrito.objects.all()
+    usuarios = Usuario.objects.all()
+    template = {
+        'verproducto' : producto,
+        'carrito' : carrito,
+        'usuario' : usuarios
+    }
+    return render(request,'nucleo/Verproductop.html',template)
 
-def carrito(request):
-    car = Carrito.objects.get(id_carrito = 4)
+def carrito(request, id):
+    car = Carrito.objects.get(id_carrito = id)
     carro = Pro_carrito.objects.filter(carrito = car)
     total = Pro_carrito.objects.aggregate(sum1 = Sum('sub_total'))
     
+    usuarios = Usuario.objects.all()
+    carrito = Carrito.objects.all()
+    prod = Pro_carrito.objects.all()
+    
+
     data = {
         'carro' : carro,
-        'total' : total
+        'total' : total,
+        'usuario' : usuarios,
+        'carrito' : carrito,
+        'prod' : prod
+        
     }
     return render(request, 'nucleo/carrito.html',data)
 
+
+
+
+def carro1(request):
+    
+    
+    carr1 = request.POST['carrito']
+    carr2 = Carrito.objects.get(id_carrito = carr1)
+    can = request.POST['cantidad']
+    prec = request.POST['precio_p']
+    id_pro = request.POST['id_productop']
+    id_pro2 = Producto.objects.get(id_producto = id_pro)
+    sub_to = int(prec) * int(can)
+
+    carro = Pro_carrito.objects.create(canti_pro = can, sub_total = sub_to, producto = id_pro2, carrito = carr2 )
+    
+    return redirect('home')
+
+
+
+def eliminar_carro(request, id):
+    carrito = Pro_carrito.objects.get(id_pro_carr = id)
+    carrito.delete()
+    messages.success(request,"Producto eliminado del carrito")
+    return redirect('carrito')
 
 
 
@@ -115,19 +177,41 @@ def guardar_usuario(request):
     run_usuario = request.GET['rut']
     tipo_us = Tipo_usuario.objects.get(id_usu_tip=2)
     
-    user1 = User.objects.create_user(username = nom_usuario, email = correo_usuario, password = con_usuario)
-    user1.first_name = nom_completo
-    user1.last_name = nom_completo
-    user1.is_staff = 1
+
+    try:
+        a = User.objects.get(username = nom_usuario)
+        messages.error(request,'El nombre de usuario no esta disponible')
+        return redirect('lista_regiones')
+    except User.DoesNotExist:
+        try:
+            b = User.objects.get(email = correo_usuario)
+            messages.error(request,'el correo no esta disponible')
+            return redirect('lista_regiones')
+        except User.DoesNotExist:
+            user1 = User.objects.create_user(nom_usuario,correo_usuario,con_usuario)
+            user1.first_name = nom_completo
+            user1.last_name = nom_completo
+            user1.is_staff = 1
     
-    user1.save()
-    Usuario.objects.create(nombre_completo=nom_completo,
+            user1.save()
+
+    
+    
+            usuario_c = Usuario.objects.create(nombre_completo=nom_completo,
                            alias=nom_usuario, email_u=correo_usuario, telofono_u=telefono, contraseña_u=con_usuario, run_u=run_usuario,
                            cod_post=codigo_postal, modo_osc=0, tipo_usuario=tipo_us, user = user1)
     
+            Carrito.objects.create(f_comp = "2020-10-10" , id_direccion_c = 'un lugar cualquiera', status = 0, total_pre = 0, usuario = usuario_c )
+
+
+
+
+
+
+   
+            messages.success(request,"usuario guardado")
     
-    messages.success(request,"usuario guardado")
-    return redirect('lista_regiones')
+            return redirect('lista_regiones')
 
 
 
@@ -177,8 +261,17 @@ def modificar_us(request):
    
     usuario_m.tipo_usuario = tipo_us2
     usuario_m.save()
-
+    
     usr_user = User.objects.get(username = no_us)
+    if Usuario.objects.filter(tipo_usuario = 1):
+
+        usr_user.is_superuser = True
+        
+        
+    else:
+        usr_user.is_superuser = False
+        
+
     usr_user.first_name = nom_c
     usr_user.save()
 
@@ -186,14 +279,14 @@ def modificar_us(request):
     return redirect('listar_us')
 
 def eliminar_us(request, id):
-    user = ''
+    
     us = Usuario.objects.get(id_usuario = id)
-    us.alias = user
-    print(user)
-    us1 = User.objects.get(id = id)
+    user = us.alias
+   
+    us1 = User.objects.get(username = user)
     us1.delete()
     us.delete()
-    return redirect('listado_us')
+    return redirect('listar_us')
     
 #como hay id iguales probar si no hace problemas con las del html registro
 def guardar_comentario(request):  # guardado de comentario
@@ -246,7 +339,8 @@ def modificar_pro(request):
     sk = request.POST['sku']
     des = request.POST['des_pro']
     col = request.POST['color_pro']
-    fot = request.FILES['foto_pro']
+    
+        
     cat1 = request.POST['categoria']
     cat2 = Categoria.objects.get(id_categoria = cat1)
     mar = request.POST['marca']
@@ -255,6 +349,11 @@ def modificar_pro(request):
     
 
     new_pro = Producto.objects.get(id_producto = id)
+
+    if request.FILES.get('foto_pro') is not None:
+        img_pro = request.POST['foto_pro']
+        new_pro.foto_pro = img_pro
+
     new_pro.id_producto = id
     new_pro.n_producto = n_pro
     new_pro.stock = sto
@@ -263,7 +362,6 @@ def modificar_pro(request):
     new_pro.sku = sk
     new_pro.des_pro = des
     new_pro.color_pro = col
-    new_pro.foto_pro = fot
     new_pro.categoria = cat2
     new_pro.marca = mar2
 
@@ -277,30 +375,7 @@ def modificar_pro(request):
 
 
 
-def agregar_carr(request):
-    id_pro = request.POST['id_productop']
-    id_pro1 = Producto.objects.get(id_producto = id_pro )
-    id_carr = request.POST['carrito']
-    id_carr2 = Carrito.objects.get(id_carrito = id_carr )
-    canti = request.POST['cantidad']
-    preci = request.POST['precio_p']
-    sub_to = int(preci) * int(canti)
 
-    Pro_carrito.objects.create(canti_pro =canti, sub_total = sub_to, producto = id_pro1, carrito = id_carr2)
-    
-    return redirect('carrito')
-
-
-
- 
-
-
-
-def eliminar_carro(request, id):
-    carrito = Pro_carrito.objects.get(id_pro_carr = id)
-    carrito.delete()
-    messages.success(request,"Producto eliminado del carrito")
-    return redirect('carrito')
 
 #Duda profe.
 def mod_cantidad(request, id):
@@ -329,6 +404,7 @@ def mod_cantidad2(request):
 def agregar_p(request):
     categoria = Categoria.objects.all()
     marca = Marca.objects.all()
+    
     data = {
         'categorias' : categoria,
         'marcas' : marca
@@ -357,27 +433,9 @@ def guardar_producto(request):
 
 
 
-def mostrar_p(request, id):
-    producto = Producto.objects.get(id_producto = id)
-    carrito = Carrito.objects.get(id_carrito = 4)
-    template = {
-        'verproducto' : producto,
-        'carrito' : carrito
-    }
-    return render(request,'nucleo/Verproductop.html',template)
 
-def carro1(request):
-    carr1 = request.POST['carrito']
-    carr2 = Carrito.objects.get(id_carrito = carr1)
-    can = request.POST['cantidad']
-    prec = request.POST['precio_p']
-    id_pro = request.POST['id_productop']
-    id_pro2 = Producto.objects.get(id_producto = id_pro)
-    sub_to = int(prec) * int(can)
 
-    carro = Pro_carrito.objects.create(canti_pro = can, sub_total = sub_to, producto = id_pro2, carrito = carr2 )
-    
-    return redirect('carrito')
+
 
 
 def login_view(request):
@@ -415,3 +473,43 @@ def registro_django(request):
     return render(request , 'nucleo/registro2.html', context)
 
 
+def mod_us_p(request):
+    usuario = Usuario.objects.all()
+    contexto = {
+        'us' : usuario
+
+    }
+    return render(request, 'nucleo/modificar_us_p.html',contexto)
+
+
+def actualziar_us(request):
+    id_us = request.GET['id_mod']
+    nom_usuario = request.GET['usuario_mod']
+    con_usuario = request.GET['contra_mod']
+    nom_completo = request.GET['nombre_mod']
+    correo_usuario = request.GET['correo_mod']
+    
+    
+    codigo_postal = request.GET['postal_mod']
+    telefono = request.GET['telefono_mod']
+    run_usuario = request.GET['rut_mod']
+    tipo_us = Tipo_usuario.objects.get(id_usu_tip=2)
+    
+    
+
+
+    new_usu = Usuario.objects.get(id_usuario = id_us)
+    new_usu.nombre_completo = nom_completo
+    new_usu.alias = nom_usuario
+    new_usu.email_u = correo_usuario
+    new_usu.telofono_u = telefono
+    new_usu.contraseña_u = con_usuario
+    new_usu.run_u = run_usuario
+    new_usu.cod_post = codigo_postal
+    new_usu.modo_osc = 0
+    new_usu.tipo_usuario = tipo_us
+    
+
+    new_usu.save()
+
+    return redirect('home')

@@ -148,16 +148,16 @@
             {% for m in messages%}
                 <script>
                     Swal.fire({
-                        "title" : "felicitaciones",
+                        "title" : "AVISO",
                         "text" : "{{m}}",
-                        "icon" : "success"
+                        
                     })
                 </script>
             {% endfor %}
         {% endif %}
         <fieldset>
             
-            <form action="{% url 'registro_usuario' %}" method="GET" name="formulario_contacto" id="formulario_contacto" class="formulario_reg">
+            <form action="{% url 'registro_usuario' %}" method="GET" name="formulario_contacto" id="formulario_contacto" class="formulario_reg" style="margin-bottom: 50px;">
                 {% csrf_token %}
                 <h1>Registro Cuenta PerriGatos</h1> 
                 <div id="mensaje_error" class="alert alert-danger"></div>
