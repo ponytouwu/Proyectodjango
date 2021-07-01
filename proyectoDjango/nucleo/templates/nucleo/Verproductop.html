@@ -187,15 +187,21 @@
                         <p>Valoracion : {{verproducto.valoracion}} ★ </p>
                         <p>SKU: {{verproducto.sku}}</p>
                         <p>Producto Marca: {{verproducto.marca}}</p>
-                        <p>Stock: {{verproducto.stock}}</p>
+                        
 
                         <h3>Cantidad del producto</h3>
 
 
                         <input class="form-control" type="number" required min="1" name="cantidad" id="cantidad"
                             style="width: 15%;">
+                        {% if user.is_authenticated%}
                         <button type="submit" class="btn btn-danger" style="margin-top: 2%; margin-bottom: 2%;">Agregar
                             al carrito</button>
+                        {% else %}
+                        <button class="btn btn-danger" style="margin-top: 2%; margin-bottom: 2%;"><a href="{% url 'inicioSesion'%}" style="color: white;"> Agregar
+                            al carrito</a></button>
+                        {% endif %}
+
                         <input type="number" name="id_productop" id="id_productop" value="{{ verproducto.id_producto }}"
                             hidden>
                             {% for u in usuario%}

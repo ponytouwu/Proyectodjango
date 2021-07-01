@@ -102,7 +102,7 @@ def mostrar_p(request, id):
 def carrito(request, id):
     car = Carrito.objects.get(id_carrito = id)
     carro = Pro_carrito.objects.filter(carrito = car)
-    total = Pro_carrito.objects.aggregate(sum1 = Sum('sub_total'))
+    total = Pro_carrito.objects.filter(carrito = car).aggregate(sum1 = Sum('sub_total'))
     
     usuarios = Usuario.objects.all()
     carrito = Carrito.objects.all()
@@ -135,15 +135,16 @@ def carro1(request):
 
     carro = Pro_carrito.objects.create(canti_pro = can, sub_total = sub_to, producto = id_pro2, carrito = carr2 )
     
-    return redirect('home')
+    return redirect('carrito' , id = carr1)
 
 
 
 def eliminar_carro(request, id):
     carrito = Pro_carrito.objects.get(id_pro_carr = id)
+
     carrito.delete()
-    messages.success(request,"Producto eliminado del carrito")
-    return redirect('carrito')
+    
+    return redirect('carrito', id = carrito.carrito.id_carrito)
 
 
 
@@ -386,7 +387,7 @@ def mod_cantidad(request, id):
     p.canti_pro = canti
     p.save()
 
-    return redirect('carrito')
+    return redirect('carrito', id = p.carrito.id_carrito)
 
 def mod_cantidad2(request):
     p = Pro_carrito.objects.get(id_pro_carr = request.POST['codigo'])
@@ -398,7 +399,7 @@ def mod_cantidad2(request):
     p.sub_total = subt
     p.save()
 
-    return redirect('carrito')
+    return redirect('carrito', id = p.carrito.id_carrito)
 
 
 def agregar_p(request):
@@ -446,12 +447,16 @@ def login_view(request):
     if user is not None:
         if user.is_active:
             login(request,user)
-            messages.success(request, 'SE HA INICIADO SESION CORRECTAMENTE')
+            messages.success(request,'Se a iniciado sesion correctamente')
+            return redirect('home')
         else:
             messages.error(request,'Usuario desabilitado')
+            return redirect('inicioSesion')
     else:
         messages.error(request,'Usuario o Contraseña erronea')
-    return redirect('inicioSesion')
+        return redirect('inicioSesion')
+    
+    
 
 def logout_view(request):
     logout(request)

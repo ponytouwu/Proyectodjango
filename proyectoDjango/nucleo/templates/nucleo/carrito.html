@@ -179,7 +179,7 @@
                                     alt="imagen_carrito" style="width: 10em; height: 10em;">
                                 <input type="hidden" value="{{x.id_pro_carr}}" name="codigo" id="codigo"></td>
 
-                            <td><label for="cantidad_p">Cantidad de producto :</label><input type="number"
+                            <td><label for="cantidad_p">Cantidad de producto :</label><input type="number"min = '1'
                                     value="{{x.canti_pro}}" id="cantidad_p" name="cantidad_p"></td>
                             
                             
@@ -194,8 +194,14 @@
 
                         </tr>
                         {% endfor %}
+                        {%if total.sum1 is None %}
+                        <p style="font-size: xx-large; text-align: center;"> Total: $ 0 <button
+                            type="button" class="btn btn-warning" >PAGAR</button></p>
+                        {% else %}
                         <p style="font-size: xx-large; text-align: center;"> Total: $ {{total.sum1}} <button
-                                type="submit" class="btn btn-warning">PAGAR</button></p>
+                            type="button" class="btn btn-warning" >PAGAR</button></p>
+                        {% endif%}
+                        
                     </table>
 
 

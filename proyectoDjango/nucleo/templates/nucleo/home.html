@@ -133,10 +133,17 @@
                             {% for c in carrito%}
                             {% if u.id_usuario == c.usuario.id_usuario%}
                             <a class="nav-link colorletranav cambiocolor" href="{% url 'carrito' c.id_carrito %}">Carrito</a>
+                            
+                            
                             {% endif %}
                             {%endfor%}
+
+                            {% else %}
+                            
+                            
                             {% endif%}
                             {% endfor %}
+                            
                 </li>
                 <li class="nav-item" style="padding-top: 10px;">
                     <a class="nav-link colorletranav cambiocolor">
@@ -155,6 +162,18 @@
 
             </ul>
         </div>
+        {% if messages %}
+        {% for z in messages%}
+        <script>
+            Swal.fire({
+                "title": "felicitaciones",
+                "text": "{{z}}",
+                "icon": "success"
+            })
+        </script>
+        {% endfor %}
+        {% endif %}
+        
         <div class="search-container">
 
             <a href="{% url 'lista_regiones' %}" style="color: rgb(0, 0, 0);">Registrarte</a>
