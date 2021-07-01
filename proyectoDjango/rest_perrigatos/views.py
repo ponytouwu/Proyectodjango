@@ -1,19 +1,21 @@
 from django.shortcuts import render
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.utils import serializer_helpers
 from nucleo.models import Producto
 from rest_perrigatos.serializers import ProductoSerializador
-
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 
 
 @csrf_exempt
 @api_view(['GET', 'POST'])
+@permission_classes((IsAuthenticated,))
 # metodo que vimos con el profe para modificar y enviar a traves de la aplicacion, instalar extension advanced REST client
 # luego copiar url numeros/api/lista_producto ver si anda y luego copiar la url en el advance
 def lista_producto1(request):
@@ -44,6 +46,7 @@ def lista_producto1(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes((IsAuthenticated,))
 def manipular_producto1(request, id):
 
     try:
