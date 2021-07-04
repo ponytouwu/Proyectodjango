@@ -5,8 +5,8 @@ from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.utils import serializer_helpers
-from nucleo.models import Producto
-from rest_perrigatos.serializers import ProductoSerializador
+from nucleo.models import Contacto, Producto
+from rest_perrigatos.serializers import ContactoSerializador, ProductoSerializador
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
@@ -82,5 +82,82 @@ def manipular_producto1(request, id):
     elif request.method == 'DELETE':
 
         p.delete()
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+
+
+@csrf_exempt
+@api_view(['GET', 'POST'])
+@permission_classes((IsAuthenticated,))
+# metodo que vimos con el profe para modificar y enviar a traves de la aplicacion, instalar extension advanced REST client
+# luego copiar url numeros/api/lista_producto ver si anda y luego copiar la url en el advance
+def lista_contacto(request):
+
+    if request.method == 'GET':
+
+        p = Contacto.objects.all()
+
+        serializer = ContactoSerializador(p, many=True)
+
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+
+        data2 = JSONParser().parse(request)
+
+        serializer = ContactoSerializador(data=data2)
+
+        if serializer.is_valid():
+
+            serializer.save()
+
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        else:
+
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes((IsAuthenticated,))
+def manipular_contacto(request, id):
+
+    try:
+
+        c = Contacto.objects.get(id_contacto=id)
+
+    except Contacto.DoesNotExist:
+
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+
+        serializer = ContactoSerializador(c)
+
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+
+        data2 = JSONParser().parse(request)
+
+        serializer = ContactoSerializador(c, data=data2)
+
+        if serializer.is_valid():
+
+            serializer.save()
+
+            return Response(serializer.data)
+
+        else:
+
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+
+        c.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
