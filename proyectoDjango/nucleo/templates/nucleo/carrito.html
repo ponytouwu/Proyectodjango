@@ -195,13 +195,13 @@
                         </tr>
                         {% endfor %}
                         {%if total.sum1 is None %}
-                        <p style="font-size: xx-large; text-align: center;"> Total: $ 0 <button
-                            type="button" class="btn btn-warning" >PAGAR</button></p>
+                        <p style="font-size: xx-large; text-align: center;"> Total: $ 0 
+                            <a href="{% url 'pago' car.id_carrito %}" class="btn btn-warning">Pagar</a></p>
                         {% else %}
-                        <p style="font-size: xx-large; text-align: center;"> Total: $ {{total.sum1}} <button
-                            type="button" class="btn btn-warning" >PAGAR</button></p>
+                        <p style="font-size: xx-large; text-align: center;"> Total: $ {{total.sum1}} <a href="{% url 'pago' car.id_carrito %}" class="btn btn-warning">Pagar</a></p>
+                            
                         {% endif%}
-                        
+                        <a href="{% url 'pago' car.id_carrito %}"><h1>ASDFIJHSADJFADSH</h1></a>
                     </table>
 
 

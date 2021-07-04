@@ -114,7 +114,8 @@ def carrito(request, id):
         'total' : total,
         'usuario' : usuarios,
         'carrito' : carrito,
-        'prod' : prod
+        'prod' : prod,
+        'car' : car
         
     }
     return render(request, 'nucleo/carrito.html',data)
@@ -516,5 +517,40 @@ def actualziar_us(request):
     
 
     new_usu.save()
+
+    return redirect('home')
+
+
+
+
+
+def pago(request, id):
+    car = Carrito.objects.get(id_carrito = id)
+    us = Usuario.objects.all()
+    carro = Pro_carrito.objects.filter(carrito = car)
+    total = Pro_carrito.objects.filter(carrito = car).aggregate(sum1 = Sum('sub_total'))
+    contexto = {
+        'car' : car,
+        'us' : us,
+        'carro' : carro,
+        'total' : total
+    }
+
+    return render(request, "nucleo/pago.html",contexto)
+
+
+def compra_completa(request):
+    id_carr = request.GET['id_carrito']
+    id_carr2 = Carrito.objects.get(id_carrito = id_carr)
+    id_us = request.GET['id_usuario']
+    id_us2 = Usuario.objects.get(id_usuario = id_us)
+
+    id_carr2.delete()
+
+    Carrito.objects.create(f_comp = "2020-10-10" , id_direccion_c = 'un lugar cualquiera', status = 0, total_pre = 0, usuario = id_us2 )
+
+
+    
+
 
     return redirect('home')

@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
-from .views import home, inicioSesion,mod_usuario,mod_us_p,actualziar_us, eliminar_us,listar_us, modificar_us,seccionotros , contactanos, mod_cantidad2,secciongatuna, Seccionperruna, registro, carrito, cambiocontra, recuperacion,lista_regiones,guardar_usuario,guardar_comentario, listado,eliminar_listado,listar_tablas,modificar_pro,eliminar_carro,guardar_producto,agregar_p,mostrar_p,carro1,login_view,logout_view,registro_django,mod_cantidad
+from .views import home,pago,compra_completa, inicioSesion,mod_usuario,mod_us_p,actualziar_us, eliminar_us,listar_us, modificar_us,seccionotros , contactanos, mod_cantidad2,secciongatuna, Seccionperruna, registro, carrito, cambiocontra, recuperacion,lista_regiones,guardar_usuario,guardar_comentario, listado,eliminar_listado,listar_tablas,modificar_pro,eliminar_carro,guardar_producto,agregar_p,mostrar_p,carro1,login_view,logout_view,registro_django,mod_cantidad
 urlpatterns = [
     path('', home, name="home"),
     path('mostrar_p/<int:id>', mostrar_p, name="mostrar_p"),
@@ -48,4 +48,7 @@ urlpatterns = [
     
     path('actualziar_us',actualziar_us, name ="actualziar_us" ),
     path('mod_us_p',mod_us_p, name ="mod_us_p" ),
+    path('pago/<int:id>',pago, name ="pago" ),
+    
+    path('compra_completa',compra_completa, name ="compra_completa" ),
 ]
