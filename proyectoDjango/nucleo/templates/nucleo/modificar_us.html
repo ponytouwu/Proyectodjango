@@ -212,9 +212,9 @@
 
                     {% for i in tipo_us %}
                     {% if i.id_usu_tip == usuario1.tipo_usuario.id_usu_tip %}
-                    <option value="{{ i.id_usu_tip }}" selected>{{ i.nom_usu }}</option>
+                    <option value="{{ i.id_usu_tip }}" selected>{{ i.nom_usu }} {{ i.id_usu_tip }}</option>
                     {% else %}
-                    <option value="{{ i.id_usu_tip }}">{{ i.nom_usu }}</option>
+                    <option value="{{ i.id_usu_tip }}">{{ i.nom_usu }} {{ i.id_usu_tip }}</option>
                     {% endif %}
                     {% endfor %}
 

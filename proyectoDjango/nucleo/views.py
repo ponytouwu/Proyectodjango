@@ -265,20 +265,25 @@ def modificar_us(request):
     usuario_m.save()
     
     usr_user = User.objects.get(username = no_us)
+    
     if Usuario.objects.filter(tipo_usuario = 1):
 
         usr_user.is_superuser = True
+        usr_user.first_name = nom_c
+        usr_user.save()
+        messages.success(request, 'El usuario a sido modificado')
+        return redirect('listar_us')
         
-        
-    else:
+    elif Usuario.objects.filter(tipo_usuario = 2):
         usr_user.is_superuser = False
+        usr_user.first_name = nom_c
+        usr_user.save()
+        messages.success(request, 'El usuario a sido modificado')
+        return redirect('home')
         
 
-    usr_user.first_name = nom_c
-    usr_user.save()
-
-    messages.success(request, 'El usuario a sido modificado')
-    return redirect('listar_us')
+    
+    
 
 def eliminar_us(request, id):
     

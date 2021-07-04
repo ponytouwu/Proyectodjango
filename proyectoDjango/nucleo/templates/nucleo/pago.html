@@ -34,7 +34,7 @@
 
         <script type="text/javascript">
             $(document).ready(function(){
-                var input=  document.getElementById('postal_mod');
+                var input=  document.getElementById('codigo');
                 input.addEventListener('input',function(){
                 if (this.value.length > 7) 
                 this.value = this.value.slice(0,7); 
@@ -49,23 +49,9 @@
                 
                 $("#mensaje_error").hide(); //Estoy ocultando el div
                 $("#formulario_contacto").submit(function(){
-                var mensaje = "Debes Solucionar los errores para poder Modificar";
+                var mensaje = "Debes Solucionar los errores para poder pagar";
 
-                if($("#usuario_mod").val().trim().length == 0){
-                    mensaje = mensaje + "<br>El campo Nombre Usuario no puede estar vacio";
-                }
-
-                if($("#contraseña_mod").val().trim().length == 0){
-                    mensaje = mensaje + "<br>El campo Contraseña no puede estar vacio";
-                }
-
-                if($("#contraseña_mod").val().trim().length < 10){
-                    mensaje = mensaje + "<br>El campo Contraseña debe tener al menos 10 caracteres";
-                }
-
-                if($("#nombre_mod").val().trim().length == 0){
-                    mensaje = mensaje + "<br>El campo Nombre Completo no puede estar vacio";
-                }
+                
                 
                 if(isNaN($("#confirmacion").val())){
                     mensaje = mensaje + "<br>El teléfono solo puede contener números";
@@ -76,15 +62,15 @@
 
                
 
-                if($("#direccion_mod").val().trim().length == 0){
+                if($("#direccion1").val().trim().length == 0){
                     mensaje = mensaje + "<br>El campo Direccion no puede estar vacio";
                 }
 
-                if($("#postal_mod").val().trim().length == 0){
+                if($("#codigo").val().trim().length == 0){
                     mensaje = mensaje + "<br>El campo Postal no puede estar vacio";
                 }
 
-                if(mensaje != "Debes Solucionar los errores para poder Modificar"){
+                if(mensaje != "Debes Solucionar los errores para poder pagar"){
                     $("#mensaje_error").html(mensaje); //mostrando el texto de la variable en el div
                     $("#mensaje_error").show(); //haciendo visible mi div
                     event.preventDefault(); //evito que el formulario se envie
@@ -162,13 +148,39 @@
                 <h1>Pago PerriGatos</h1>   
 
 
-                <label for="direccion1">Ingrese su direccion</label>
+                <label style="color: black !important;" for="direccion1">Ingrese su direccion</label>
                 <input type="text"  class="form-control" name="direccion1" id="direccion1">
 
-                <label for="confirmacion">Confirme numero de telefono</label>
-                <input type="number" name="confirmacion" id="confirmacion" class="form-control">
-                <label for="num_casa">Ingrese el numero de su hogar</label>
+                
+                <label style="color: black !important;" for="num_casa">Ingrese el numero de su hogar</label>
                 <input type="number" class="form-control" name="num_casa" id="num_casa">
+                {% for u in us%}
+                    
+                            {% if u.alias == user.username%}
+                            
+                            <label style="color: black !important;" for="confirmacion">Confirme numero de telefono</label>
+                            <input type="number" name="confirmacion" id="confirmacion" class="form-control" value="{{u.telofono_u}}"> 
+                            
+                            <label style="color: black !important;" for="codigo">Confirme codigo postal</label>
+                            <input type="number" name="codigo" id="codigo" class="form-control" value="{{u.cod_post}}">  
+                            <a href="https://www.correos.cl/web/guest/codigo-postal" target="_blank">Para saber tu codigo postal haz click aqui</a>  
+                            
+                            {% endif%}
+                            {% endfor %}
+                
+                <div>
+                    <h3>Metodos de pago</h3>
+                    <input type="checkbox" name="check" id="check">
+                    <label style="color: black !important;" for="check">metodo de pago 1</label>
+
+                    <input type="checkbox" name="check2" id="check2">
+                    <label style="color: black !important;" for="check2">metodo de pago 2</label>
+
+                    <input type="checkbox" name="check3" id="check3">
+                    <label style="color: black !important;" for="check3">metodo de pago 3</label>
+
+                    
+                </div>
 
 
                 {%if total.sum1 is None %}
@@ -182,7 +194,7 @@
                 
 
                 
-                <input type="number" value="{{car.id_carrito}}" name="id_carrito">
+                <input type="number" value="{{car.id_carrito}}" name="id_carrito" hidden>
                 
                 
 
@@ -190,12 +202,12 @@
                     
                             {% if u.alias == user.username%}
                             
-                            <input type="number" value="{{u.id_usuario}}" name="id_usuario">  
+                            <input type="number" value="{{u.id_usuario}}" name="id_usuario" hidden>  
                             
                             {% endif%}
                             {% endfor %}
-                
-                <button type="submit" class="btn btn-danger">Pagar</button>
+               
+                <button type="submit" class="btn btn-danger" style="margin: 10px;">Pagar</button>
                 
                 <div > <a href="{% url 'home' %}"><input type="button" class="btn btn-danger" value="Vovler a pagina de inicio"></a></div>
 
